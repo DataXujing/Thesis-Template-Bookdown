@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>master thesis template</title>
-  <meta name="description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform.">
+  <title>Master Thesis Template</title>
+  <meta name="description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="master thesis template" />
+  <meta property="og:title" content="Master Thesis Template" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/logo.png" />
-  <meta property="og:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta property="og:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="github-repo" content="XiangyunHuang/Thesis-Template-Bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="master thesis template" />
+  <meta name="twitter:title" content="Master Thesis Template" />
   
-  <meta name="twitter:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta name="twitter:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="twitter:image" content="images/logo.png" />
 
 <meta name="author" content="Xiang-Yun Huang">
 
 
-<meta name="date" content="2018-09-27">
+<meta name="date" content="2018-10-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="simulations.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -144,10 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="prepare.html"><a href="prepare.html#Modified-Bessel-functions"><i class="fa fa-check"></i><b>2.6</b> 修正的第三类贝塞尔函数</a></li>
 <li class="chapter" data-level="2.7" data-path="prepare.html"><a href="prepare.html#Laplace-approximation"><i class="fa fa-check"></i><b>2.7</b> 拉普拉斯近似</a></li>
 <li class="chapter" data-level="2.8" data-path="prepare.html"><a href="prepare.html#Jeffreys-prior"><i class="fa fa-check"></i><b>2.8</b> Jeffreys 先验分布</a></li>
-<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯理论</a></li>
-<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#bayesian-data-analysis"><i class="fa fa-check"></i><b>2.10</b> 贝叶斯数据分析</a></li>
-<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.11</b> 维数灾难与蒙特卡罗积分</a></li>
-<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.12</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯定理与先验分布</a></li>
+<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.10</b> 维数灾难与蒙特卡罗积分</a></li>
+<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.11</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#section-2.12"><i class="fa fa-check"></i><b>2.12</b> 弱先验信息</a></li>
+<li class="chapter" data-level="2.13" data-path="prepare.html"><a href="prepare.html#section-2.13"><i class="fa fa-check"></i><b>2.13</b> 方差缩减因子</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>3</b> 统计模型</a><ul>
 <li class="chapter" data-level="3.1" data-path="models.html"><a href="models.html#Linear-Models"><i class="fa fa-check"></i><b>3.1</b> 线性模型</a></li>
@@ -164,25 +166,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="algorithms.html"><a href="algorithms.html"><i class="fa fa-check"></i><b>4</b> 参数估计</a><ul>
 <li class="chapter" data-level="4.1" data-path="algorithms.html"><a href="algorithms.html#mle"><i class="fa fa-check"></i><b>4.1</b> 极大似然估计</a></li>
 <li class="chapter" data-level="4.2" data-path="algorithms.html"><a href="algorithms.html#profile-likelihood"><i class="fa fa-check"></i><b>4.2</b> 剖面似然估计</a></li>
-<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#maximum-likelihood-estimates"><i class="fa fa-check"></i><b>4.3</b> 极大似然估计</a></li>
-<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.4</b> 参数估计的算法</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.4.1</b> 拉普拉斯近似算法</a></li>
-<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.4.2</b> 蒙特卡罗极大似然算法</a></li>
-<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.4.3</b> 贝叶斯 MCMC 算法</a></li>
-<li class="chapter" data-level="4.4.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.4.4</b> 低秩近似算法</a></li>
+<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.3</b> 参数估计的算法</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.3.1</b> 拉普拉斯近似算法</a></li>
+<li class="chapter" data-level="4.3.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.3.2</b> 蒙特卡罗极大似然算法</a></li>
+<li class="chapter" data-level="4.3.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.3.3</b> 贝叶斯 MCMC 算法</a></li>
+<li class="chapter" data-level="4.3.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.3.4</b> 低秩近似算法</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.5</b> 贝叶斯 STAN-MCMC 算法</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="algorithms.html"><a href="algorithms.html#section-4.5.1"><i class="fa fa-check"></i><b>4.5.1</b> 算法提出的背景和意义</a></li>
-<li class="chapter" data-level="4.5.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.5.2</b> STAN-MCMC 算法实现过程</a></li>
-<li class="chapter" data-level="4.5.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.5.3</b> 求解模型的 R 包</a></li>
+<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.4</b> 贝叶斯 STAN-MCMC 算法</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 算法提出的背景和意义</a></li>
+<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.4.2</b> STAN-MCMC 算法实现过程</a></li>
+<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.4.3</b> 求解模型的 R 包</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simulations.html"><a href="simulations.html"><i class="fa fa-check"></i><b>5</b> 数值模拟</a><ul>
-<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 一维空间高斯过程</a></li>
-<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-gp"><i class="fa fa-check"></i><b>5.2</b> 平稳空间高斯过程</a></li>
-<li class="chapter" data-level="5.3" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.3</b> 空间广义线性混合效应模型</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="simulations.html"><a href="simulations.html#binomal-sglmm"><i class="fa fa-check"></i><b>5.3.1</b> 响应变量服从二项分布</a></li>
-<li class="chapter" data-level="5.3.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.3.2</b> 响应变量服从泊松分布</a></li>
+<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#spatial-gaussian-processes"><i class="fa fa-check"></i><b>5.1</b> 平稳空间高斯过程</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="simulations.html"><a href="simulations.html#sim-one-gp"><i class="fa fa-check"></i><b>5.1.1</b> 一维平稳空间高斯过程</a></li>
+<li class="chapter" data-level="5.1.2" data-path="simulations.html"><a href="simulations.html#sim-two-gp"><i class="fa fa-check"></i><b>5.1.2</b> 二维平稳空间高斯过程</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.2</b> 空间广义线性混合效应模型</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="simulations.html"><a href="simulations.html#sim-binomal-sglmm"><i class="fa fa-check"></i><b>5.2.1</b> 响应变量服从二项分布</a></li>
+<li class="chapter" data-level="5.2.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.2.2</b> 响应变量服从泊松分布</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> 数据分析</a><ul>
@@ -194,13 +197,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> 总结展望</a></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附录</a><ul>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#sessioninfo"><i class="fa fa-check"></i>软件信息</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#random-number-generation"><i class="fa fa-check"></i>随机数生成</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#compare-algrithms"><i class="fa fa-check"></i>算法比较</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#tables-simulations"><i class="fa fa-check"></i>表格</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>数据模拟</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i><b>7.0.1</b> 模拟平稳高斯过程</a></li>
+<li class="chapter" data-level="7.0.2" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i><b>7.0.2</b> 模拟空间广义线性混合效应模型</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="References.html"><a href="References.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#HMC-Algrithms"><i class="fa fa-check"></i>HMC 算法</a></li>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#compileinfo"><i class="fa fa-check"></i><b>7.1</b> 编译信息</a></li>
+<li class="chapter" data-level="7.2" data-path="appendix.html"><a href="appendix.html#hardwareinfo"><i class="fa fa-check"></i><b>7.2</b> 硬件环境</a></li>
+<li class="chapter" data-level="7.3" data-path="appendix.html"><a href="appendix.html#sysinfo"><i class="fa fa-check"></i><b>7.3</b> 系统环境</a></li>
+<li class="chapter" data-level="7.4" data-path="appendix.html"><a href="appendix.html#softwareinfo"><i class="fa fa-check"></i><b>7.4</b> 软件环境</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">本论文由 bookdown 强力驱动</a></li>
 
 </ul>
 
@@ -211,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">master thesis template</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Master Thesis Template</a>
           </h1>
         </div>
 
@@ -221,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="algorithms" class="section level1">
 <h1><span class="header-section-number">第 4 章</span> 参数估计</h1>
-<p>模型的参数估计是建模分析的重要步骤，鉴于空间广义线性混合效应模型（以下简称 SGLMM 模型）的复杂性，文献综述中用的参数估计方法，比如最小二乘估计（简称LSE）和极大似然估计（简称MLE），其参数估计没有显式的表达式，必须发展有效的算法。目前，文献中的常用算法有低秩近似算法、蒙特卡罗极大似然算法和马尔科夫链蒙特卡罗算法，但这些尚未应用到SGLMM模型的参数估计中，我们应用这些算法去估计模型参数，特别提出了新的算法。本章具体结构如下： 第 <a href="algorithms.html#algrithms">4.4</a> 节介绍求解 SGLMM 模型 <a href="algorithms.html#eq:again-SGLMM">(4.1)</a> 参数的三类算法， 分别是第 <a href="algorithms.html#MCML">4.4.2</a> 小节介绍的蒙特卡罗极大似然算法（以下简称为 MCML 算法）， 第 <a href="algorithms.html#LowRank">4.4.4</a> 小节介绍的低秩近似算法（以下简称为 Low-Rank 算法）， 第 <a href="algorithms.html#MCMC">4.4.3</a> 小节介绍的贝叶斯框架下的马尔科夫链蒙特卡罗算法（以下简称为贝叶斯 MCMC 算法）。在贝叶斯 MCMC 算法的基础上，改进算法实现形式，提出 STAN-MCMC 算法，在第 <a href="algorithms.html#STAN-MCMC">4.5</a> 节予以详细介绍。</p>
+<p>模型的参数估计是建模分析的重要步骤，鉴于空间广义线性混合效应模型（以下简称 SGLMM 模型）的复杂性，文献综述中用的参数估计方法，比如最小二乘估计（简称LSE）和极大似然估计（简称MLE），其参数估计没有显式的表达式，必须发展有效的算法。目前，文献中的常用算法有低秩近似算法、蒙特卡罗极大似然算法和马尔科夫链蒙特卡罗算法，但这些尚未应用到SGLMM模型的参数估计中，我们应用这些算法去估计模型参数，特别提出了新的算法。本章具体结构如下： 第 <a href="algorithms.html#algrithms">4.3</a> 节介绍求解 SGLMM 模型 <a href="algorithms.html#eq:again-SGLMM">(4.1)</a> 参数的三类算法， 分别是第 <a href="algorithms.html#MCML">4.3.2</a> 小节介绍的蒙特卡罗极大似然算法（以下简称为 MCML 算法）， 第 <a href="algorithms.html#LowRank">4.3.4</a> 小节介绍的低秩近似算法（以下简称为 Low-Rank 算法）， 第 <a href="algorithms.html#MCMC">4.3.3</a> 小节介绍的贝叶斯框架下的马尔科夫链蒙特卡罗算法（以下简称为贝叶斯 MCMC 算法）。在贝叶斯 MCMC 算法的基础上，改进算法实现形式，提出 STAN-MCMC 算法，在第 <a href="algorithms.html#STAN-MCMC">4.4</a> 节予以详细介绍。</p>
 <p><span class="math display" id="eq:again-SGLMM">\[\begin{equation}
 g(\mu_i) =T_{i} =d(x_i)&#39;\beta + S(x_i) + Z_i \tag{4.1}
 \end{equation}\]</span></p>
@@ -268,7 +278,7 @@ L(\beta&#39;,\boldsymbol{\theta}&#39;;y) = \int \prod_{i=1}^{n}f(y_i|t_i)f(T|\be
 </div>
 <div id="profile-likelihood" class="section level2">
 <h2><span class="header-section-number">4.2</span> 剖面似然估计</h2>
-<p>众所周知，极大似然估计是一种被广泛接受的统计方法，因其优良的大样本性质。在宽松的正则条件下，极大似然估计服从渐进正态分布，满足无偏性，而且是有效的估计。在空间线性混合效应模型下，响应变量服从高斯分布</p>
+<p>极大似然估计是一种被广泛接受的统计方法，因其优良的大样本性质。在宽松的正则条件下，极大似然估计服从渐进正态分布，满足无偏性，而且是有效的估计。在空间线性混合效应模型下，响应变量服从高斯分布</p>
 <p><span class="math display" id="eq:gaussian-model">\[\begin{equation}
 \mathbf{y} \sim N(D\beta,\sigma^2 R(\phi) + \tau^2\mathbf{I})
 \tag{4.6}
@@ -309,21 +319,13 @@ L_{p}(\alpha) = L(\alpha,\hat{\psi}(\alpha)) = \max_{\psi} (L(\alpha,\psi))
 \end{equation}\]</span></p>
 <p>即我们考虑似然随 <span class="math inline">\(\alpha\)</span> 的变化情况，对每一个 <span class="math inline">\(\alpha\)</span> （保持 <span class="math inline">\(\alpha\)</span> 不变），我们指定 <span class="math inline">\(\psi\)</span> 的值使得对数似然取得最大值。剖面似然就是让我们可以观察到关于 <span class="math inline">\(\alpha\)</span> 的似然曲面，显然，其维数比完全似然面要低，与只有一个参数的对数似然一样，它也可以用来计算单个参数的置信区间。现在，我们注意到简化的对数似然 <a href="algorithms.html#eq:reduced-gauss-log-lik">(4.9)</a> 其实可以看作模型 <a href="algorithms.html#eq:gaussian-model">(4.6)</a> 关于 <span class="math inline">\((\nu^2,\phi)\)</span> 的剖面对数似然 <span class="citation">(Peter J. Diggle and Ribeiro Jr. <a href="#ref-Diggle2007">2007</a>)</span>。</p>
 </div>
-<div id="maximum-likelihood-estimates" class="section level2">
-<h2><span class="header-section-number">4.3</span> 极大似然估计</h2>
-<p>书本定义和性质，在后续章节介绍限制极大似然 Restricted Maximum likelihood, 简称 REML</p>
-<p>惩罚拟似然 Penalized Quasi-Likelihood, 简称 PQL 和边际拟似然 Marginal Quasi-Likelihood, 简称 MQL</p>
-<p>Profile Maximal Likelihood, 简称 PML</p>
-<p>Penalized maximum likelihood estimates are calculated using optimization methods such as the limited memory Broyden-Fletcher-Goldfarb-Shanno algorithm.</p>
-<p>BFGS 拟牛顿法和采样器 <a href="https://bookdown.org/rdpeng/advstatcomp" class="uri">https://bookdown.org/rdpeng/advstatcomp</a></p>
-</div>
 <div id="algrithms" class="section level2">
-<h2><span class="header-section-number">4.4</span> 参数估计的算法</h2>
+<h2><span class="header-section-number">4.3</span> 参数估计的算法</h2>
 <!-- Pairwise likelihood inference [@Pairwise2005] data cloning algorithm [@Baghishani2011] Approximate Monte Carlo EM Gradient [@Hosseini2016]-->
-<p>贝叶斯方法构造马尔科夫链，需要很多次反复迭代，收敛速度慢，求解模型 <a href="models.html#eq:SGLMM">(3.4)</a> 需要花费很多时间， 极大似然和重要性采样相结合的方法出现了，称之为蒙特卡罗极大似然法，简称 MCML。 1994年 Charles J. Geyer 首先从理论证明 MCML 方法的收敛性及相关似然估计的正态性， 为后续算法的开发、改进以及应用提供了理论支持 <span class="citation">(Geyer <a href="#ref-Geyer1994On">1994</a>)</span>。 2002年 Hao Zhang 在做模型的估计和预测的时候提出蒙特卡罗期望极大梯度 (Monte Carlo EM Gradient) 算法 <span class="citation">(Zhang <a href="#ref-Zhang2002On">2002</a>)</span>。2016 年 Fatemeh Hosseini 在 MCEMG 的基础上提出近似蒙特卡罗期望极大梯度 (Approximate Monte Carlo EM Gradient) 算法<span class="citation">(Hosseini <a href="#ref-Hosseini2016">2016</a>)</span>。2004 年 Ole F Christensen 将 MCML 方法用于 SGLMM 模型 <span class="citation">(Christensen <a href="#ref-Christensen2004">2004</a>)</span>，2016 年 Peter J. Diggle 和 Emanuele Giorgi 将 MCML 方法应用于分析西非流行病调查数据。</p>
+<p>贝叶斯方法构造马尔科夫链，需要很多次反复迭代，收敛速度慢，求解模型 <a href="models.html#eq:SGLMM">(3.4)</a> 需要花费很多时间， 极大似然和重要性采样相结合的方法出现了，称之为蒙特卡罗极大似然法，简称 MCML。 1994年 Charles J. Geyer 首先从理论证明 MCML 方法的收敛性及相关似然估计的正态性， 为后续算法的开发、改进以及应用提供了理论支持 <span class="citation">(Geyer <a href="#ref-Geyer1994On">1994</a>)</span>。 2002 年 Hao Zhang 在做模型的估计和预测的时候提出蒙特卡罗期望极大梯度 (Monte Carlo EM Gradient) 算法 <span class="citation">(Zhang <a href="#ref-Zhang2002On">2002</a>)</span>。2016 年 Fatemeh Hosseini 在 MCEMG 的基础上提出近似蒙特卡罗期望极大梯度 (Approximate Monte Carlo EM Gradient) 算法<span class="citation">(Hosseini <a href="#ref-Hosseini2016">2016</a>)</span>。2004 年 Ole F Christensen 将 MCML 方法用于 SGLMM 模型 <span class="citation">(Christensen <a href="#ref-Christensen2004">2004</a>)</span>，2016 年 Peter J. Diggle 和 Emanuele Giorgi 将 MCML 方法应用于分析西非流行病调查数据。</p>
 <p>在依据似然函数做统计推断的情况下，必须解决高维积分的问题，解决高维积分的两条路：采用拉普拉斯近似方法近似积分，蒙特卡罗方法求积分</p>
 <div id="LA" class="section level3">
-<h3><span class="header-section-number">4.4.1</span> 拉普拉斯近似算法</h3>
+<h3><span class="header-section-number">4.3.1</span> 拉普拉斯近似算法</h3>
 <p>主要参考文献 <span class="citation">(Bonat and Ribeiro Jr. <a href="#ref-Bonat2016Practical">2016</a>)</span>，空间广义线性混合效应模型的结构表述如下</p>
 <p><span class="math display" id="eq:sglmm">\[\begin{equation}
 \begin{aligned}
@@ -410,7 +412,7 @@ Q&#39;&#39;(\mathbf{s}) =  -\mathrm{diag} \{b&#39;&#39;(D\boldsymbol{\beta} + \m
 <p>牛顿-拉夫森算法收敛速度是很快的，但是必须提供一个很好的初值。合理的初值对于快速收敛到近似似然函数 <span class="math inline">\(\ell(\boldsymbol{\theta};\mathbf{y})\)</span> 的极大值点很重要。我们给出一个简单的策略指定外迭代中的初值 <span class="math inline">\(\boldsymbol{\theta}_{0}\)</span>，首先拟合一个简单的广义线性模型，获得回归系数 <span class="math inline">\(\boldsymbol{\beta}\)</span> 的初值，基于这些值计算线性预测值 <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span>；然后计算残差 <span class="math inline">\(\hat{\boldsymbol{r}} = (\hat{\boldsymbol{\mu}} - \mathbf{y})\)</span>， <span class="math inline">\(\hat{\boldsymbol{r}}\)</span> 的方差作为 <span class="math inline">\(\sigma^2\)</span> 的初值，如果 SGLMM 带有块金效应（非空间相关的随机效应），就用 <span class="math inline">\(\sigma^2\)</span> 的初值的一定比例（如 10%）作为 <span class="math inline">\(\tau^2\)</span> 的初值；最后，<span class="math inline">\(\phi\)</span> 的初值选择两个距离最大的观测点之间的距离的10%，比较保险的办法是选择不同的 <span class="math inline">\(\phi\)</span> 作为初值。</p>
 </div>
 <div id="MCML" class="section level3">
-<h3><span class="header-section-number">4.4.2</span> 蒙特卡罗极大似然算法</h3>
+<h3><span class="header-section-number">4.3.2</span> 蒙特卡罗极大似然算法</h3>
 <p>模型 <a href="algorithms.html#eq:BL-SGLMM">(4.2)</a> 中参数 <span class="math inline">\(\beta\)</span> 和 <span class="math inline">\(\boldsymbol{\theta}&#39; = (\sigma^2,\phi,\tau^2)\)</span> 的似然函数是通过对 <span class="math inline">\(T_i\)</span> 内的随机效应积分获得的。 用大写 <span class="math inline">\(D\)</span> 表示 <span class="math inline">\(n\times p\)</span> 的数据矩阵, <span class="math inline">\(y&#39; = (y_1,y_2,\cdots,y_n)\)</span> 表示各空间位置 <span class="math inline">\(x_i\)</span> 处响应变量的观测值，对应模型 <a href="algorithms.html#eq:BL-SGLMM">(4.2)</a> 中的 <span class="math inline">\(Y_i \sim \mathrm{Binomial}(m_i,p_i)\)</span>， <span class="math inline">\(T = (T_1,T_2,\ldots,T_n)\)</span> 的边际分布是 <span class="math inline">\(N(D\beta, \Sigma(\boldsymbol{\theta}))\)</span>， 其中，协方差矩阵 <span class="math inline">\(\Sigma(\boldsymbol{\theta})\)</span> 的对角元是 <span class="math inline">\(\sigma^2+\tau^2\)</span>， 非对角元是 <span class="math inline">\(\sigma^2\rho(u_{ij})\)</span>， <span class="math inline">\(u_{ij}\)</span> 是位置 <span class="math inline">\(x_i\)</span> 与 <span class="math inline">\(x_j\)</span> 之间的距离。在给定 <span class="math inline">\(T&#39;=t&#39;=(t_1,t_2,\cdots,t_n)\)</span> 下， <span class="math inline">\(Y&#39;=(Y_1,\cdots,Y_n)\)</span> 的条件分布是独立二项概率分布函数的乘积 <span class="math inline">\(f(y|t)=\prod_{i=1}^{n}f(y_{i}|t_{i})\)</span>， 因此， <span class="math inline">\(\beta\)</span> 和 <span class="math inline">\(\boldsymbol{\theta}\)</span> 的似然函数可以写成</p>
 <p><span class="math display" id="eq:likelihood">\[\begin{equation}
 L(\beta,\boldsymbol{\theta}) = f(y;\beta,\boldsymbol{\theta}) = \int_{\mathbb{R}^{n}}N(t;D\beta,\Sigma(\boldsymbol{\theta}))f(y|t)dt \tag{4.20}
@@ -435,8 +437,8 @@ L_{m}(\beta,\boldsymbol{\theta})=\frac{1}{m}\sum_{i=1}^{n}\frac{N(t_{i};D\beta,\
 <p>既然给定的初始值 <span class="math inline">\(\beta_{0},\boldsymbol{\theta}_{0}\)</span> 必定与真实的极大似然估计值不同，第 <span class="math inline">\(m\)</span> 步迭代获得的似然函数值 <span class="math inline">\(L_{m}(\hat{\beta}_{m}, \hat{\boldsymbol{\theta})}_{m}\)</span> 与 1 的距离可以用来刻画蒙特卡罗近似的准确度。实际操作中，用 <span class="math inline">\(\hat{\beta}_{m}\)</span> 和 <span class="math inline">\(\hat{\boldsymbol{\theta}}_{m}\)</span> 表示最大化 <span class="math inline">\(L_{m}(\beta, \boldsymbol{\theta})\)</span> 获得的 MCML 估计，重复迭代 <span class="math inline">\(\beta_{0} = \hat{\beta}_{m}\)</span> 和 <span class="math inline">\(\boldsymbol{\theta}_{0} = \hat{\boldsymbol{\theta}}_{m}\)</span> 直到收敛。 求蒙特卡罗近似的对数似然 <span class="math inline">\(l_{m}(\beta, \boldsymbol{\theta}) = \log L_{m}(\beta, \boldsymbol{\theta})\)</span> 的极值，可以使用 <strong>PrevMap</strong> 包，迭代 <span class="math inline">\(L_{m}(\beta, \boldsymbol{\theta})\)</span> 的过程中，可以选择 BFGS 算法。 MCML 估计 <span class="math inline">\(\boldsymbol{\theta}_{m}\)</span> 的标准误差 (standard errors) 取似然函数 <span class="math inline">\(l_{m}(\beta,\boldsymbol{\theta})\)</span> 的负黑塞矩阵的逆的对角线元素的平方根。迭代次数足够多时（ <span class="math inline">\(m\)</span> 充分大，一般取到 10000 及以上），此时蒙特卡罗误差可忽略，即方程 <a href="algorithms.html#eq:likelihood-approx">(4.22)</a> 近似 <a href="algorithms.html#eq:likelihood2">(4.21)</a> 的误差可忽略。</p>
 </div>
 <div id="MCMC" class="section level3">
-<h3><span class="header-section-number">4.4.3</span> 贝叶斯 MCMC 算法</h3>
-<p>凡是贝叶斯推断，必然用到 MCMC 算法，常见的有 Metropolis-Hastings 算法 <span class="citation">(Diggle, Tawn, and Moyeed <a href="#ref-Diggle1998">1998</a>; P. Diggle et al. <a href="#ref-Diggle2002Childhood">2002</a>)</span> Langevin-Hastings 算法 （geoRglm/geoCount 实现） 汉密尔顿蒙特卡罗算法 （Stan/PrevMap 实现）</p>
+<h3><span class="header-section-number">4.3.3</span> 贝叶斯 MCMC 算法</h3>
+<!-- 凡是贝叶斯推断，必然用到 MCMC 算法，常见的有 Metropolis-Hastings 算法 [@Diggle1998; @Diggle2002Childhood] Langevin-Hastings 算法 （geoRglm/geoCount 实现） 汉密尔顿蒙特卡罗算法 （Stan/PrevMap 实现） -->
 <p>在贝叶斯框架里，<span class="math inline">\(\beta, \boldsymbol{\theta}\)</span> 的后验分布由贝叶斯定理和 <span class="math inline">\(\beta, \boldsymbol{\theta}\)</span> 的联合先验分布确定。假定 <span class="math inline">\(\beta, \boldsymbol{\theta}\)</span> 的先验分布如下：</p>
 <p><span class="math display">\[
 \theta \sim  g(\cdot), \quad \beta | \sigma^2 \sim  N(\cdot; \xi, \sigma^2 \Omega)
@@ -468,12 +470,12 @@ L_{m}(\beta,\boldsymbol{\theta})=\frac{1}{m}\sum_{i=1}^{n}\frac{N(t_{i};D\beta,\
 <p>其中，<span class="math inline">\(i = 1,\ldots, n\)</span>， 上述动态汉密尔顿微分方程根据 leapfrog 方法离散 <span class="citation">(Brooks et al. <a href="#ref-Brooks2011">2011</a>)</span>， 然后求解离散后的方程组获得近似解。</p>
 </div>
 <div id="LowRank" class="section level3">
-<h3><span class="header-section-number">4.4.4</span> 低秩近似算法</h3>
+<h3><span class="header-section-number">4.3.4</span> 低秩近似算法</h3>
 <!-- 重述模型 -->
 <!-- 低秩近似的想法源于 1996年 Trevor Hastie 在 [@Pseudosplines1996] -->
 <p>低秩近似算法分两部分来阐述，第一部分讲空间高斯过程的近似，第二部分将该近似方法应用于SGLMM模型。</p>
 <div id="low-rank-gp" class="section level4">
-<h4><span class="header-section-number">4.4.4.1</span> 空间高斯过程的近似</h4>
+<h4><span class="header-section-number">4.3.4.1</span> 空间高斯过程的近似</h4>
 <p>空间高斯过程 <span class="math inline">\(\mathcal{S}\)</span>， <span class="math inline">\(\mathcal{S} = \{S(x),x\in\mathbb{R}^2\}\)</span>，对任意给定一组空间位置 <span class="math inline">\(x_1,x_2,\ldots,x_n, \forall x_{i} \in \mathbb{R}^2\)</span>，随机变量 <span class="math inline">\(S(x_i),i = 1,2,\ldots,n\)</span> 的联合分布 <span class="math inline">\(\mathcal{S}=\{S(x_1),S(x_2),\ldots,S(x_n)\}\)</span> 是多元高斯分布，其由均值 <span class="math inline">\(\mu(x) = \mathrm{E}[S(x)]\)</span> 和协方差 <span class="math inline">\(G_{ij} =\gamma(x_i,x_j)= \mathrm{Cov}\{S(x_i),S(x_j)\}\)</span> 完全确定，即 <span class="math inline">\(\mathcal{S} \sim \mathrm{MVN}(\mu_{S},G)\)</span>。</p>
 <p>低秩近似算法使用奇异值分解协方差矩阵 <span class="math inline">\(G\)</span> <span class="citation">(Peter J. Diggle and Ribeiro Jr. <a href="#ref-Diggle2007">2007</a>)</span>， 将协方差矩阵 <span class="math inline">\(G\)</span> 分解，也意味着将空间高斯过程 <span class="math inline">\(\mathcal{S}\)</span> 分解，分解过程如下</p>
 <p><span class="math display" id="eq:svd-S1">\[\begin{equation}
@@ -505,8 +507,8 @@ S(x) = \sum_{j=1}^{m}A_{j}f_{j}(x), \forall x \in \mathbb{R}^2 \tag{4.27}
 \end{equation*}\]</span></p>
 <p>随机系数 <span class="math inline">\(A_{j}\)</span> 满足相互独立。</p>
 </div>
-<div id="section-4.4.4.2" class="section level4">
-<h4><span class="header-section-number">4.4.4.2</span> 低秩近似算法</h4>
+<div id="section-4.3.4.2" class="section level4">
+<h4><span class="header-section-number">4.3.4.2</span> 低秩近似算法</h4>
 <p>为方便叙述起见，低秩近似算法以模型 <a href="algorithms.html#eq:lowrank-SGLMM">(4.29)</a> 为描述对象，它是模型 <a href="algorithms.html#eq:again-SGLMM">(4.1)</a> 的特殊形式，主要区别是模型 <a href="algorithms.html#eq:lowrank-SGLMM">(4.29)</a> 中，联系函数 <span class="math inline">\(g(\mu) = \log\big(\frac{\mu}{1-\mu}\big)\)</span></p>
 <p><span class="math display" id="eq:lowrank-SGLMM">\[\begin{equation}
 \log\{\frac{p_i}{1-p_i}\}  = T_{i} = d(x_i)&#39;\beta + S(x_i) + Z_{i} \tag{4.29}
@@ -523,7 +525,7 @@ K(u; \phi, \kappa) = \frac{\Gamma(\kappa + 1)^{1/2}\kappa^{(\kappa+1)/4}u^{(\kap
 <p><span class="math display" id="eq:lr-approx">\[\begin{equation}
 S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32}
 \end{equation}\]</span></p>
-<p>式<a href="algorithms.html#eq:lr-approx">(4.32)</a>中， <span class="math inline">\((\tilde{x}_{1},\ldots,\tilde{x}_{r})\)</span> 表示空间网格的格点，<span class="math inline">\(U_{i}\)</span> 是独立同分布的高斯变量，均值为0， 方差<span class="math inline">\(\sigma^2\)</span>。 特别地， 尺度参数<span class="math inline">\(\phi\)</span>越大时，空间曲面越平缓，如图 <a href="models.html#fig:matern-2d">3.1</a>所示，在格点数 <span class="math inline">\(r\)</span> 比较少时也能得到不错的近似效果。 此外， 空间格点数 <span class="math inline">\(r\)</span> 与样本量 <span class="math inline">\(n\)</span> 是独立的， 因此， 低秩近似算法在样本量比较大时， 计算效率还比较高。</p>
+<p>式<a href="algorithms.html#eq:lr-approx">(4.32)</a>中， <span class="math inline">\((\tilde{x}_{1},\ldots,\tilde{x}_{r})\)</span> 表示空间网格的格点，<span class="math inline">\(U_{i}\)</span> 是独立同分布的高斯变量，均值为0， 方差<span class="math inline">\(\sigma^2\)</span>。 特别地， 尺度参数<span class="math inline">\(\phi\)</span>越大时，空间曲面越平缓，如图 <a href="models.html#fig:matern-2d">3.2</a>所示，在格点数 <span class="math inline">\(r\)</span> 比较少时也能得到不错的近似效果。 此外， 空间格点数 <span class="math inline">\(r\)</span> 与样本量 <span class="math inline">\(n\)</span> 是独立的， 因此， 低秩近似算法在样本量比较大时， 计算效率还比较高。</p>
 <p>注意到平稳空间高斯过程 <span class="math inline">\(S(x)\)</span> 经过方程 <a href="algorithms.html#eq:lr-approx">(4.32)</a> 的近似已不再平稳。通过乘以 <span class="math display">\[\frac{1}{n}\sum_{i = 1}^n \sum_{j = 1}^m K(\|\tilde{x}_{j}-\tilde{x}_{i}\|; \phi, \kappa)^2\]</span> 来调整 <span class="math inline">\(\sigma^2\)</span>。 事实上，调整后的 <span class="math inline">\(\sigma^2\)</span> 会更接近于高斯过程 <span class="math inline">\(S(x)\)</span> 的实际方差。</p>
 <p>低秩近似的关键是对高斯过程 <span class="math inline">\(\mathcal{S}\)</span> 的协方差矩阵 <span class="math inline">\(\Sigma(\theta)\)</span> 做降维分解， 这对 <span class="math inline">\(\Sigma(\theta)\)</span> 的逆和行列式运算是非常重要的，在计算之前，将 <span class="math inline">\(K(\theta)\)</span> 表示为 <span class="math inline">\(n\times r\)</span> 的核矩阵，它是由自相关函数（或称核函数）决定的空间距离矩阵，协方差矩阵 <span class="math inline">\(\Sigma(\theta) = \sigma^2K(\theta)K(\theta)&#39;+\tau^2 I_{n}\)</span>，<span class="math inline">\(I_{n}\)</span> 是 <span class="math inline">\(n\times n\)</span> 的单位矩阵。根据 Woodbury 公式可得 <span class="math display">\[\Sigma(\theta)^{-1} = \sigma^2\nu^{-2}(I_{n}-\nu^{-2}K(\theta)(\nu^{-2}K(\theta)&#39; K(\theta)+I_{r})^{-1}K(\theta)&#39;)\]</span> 其中， <span class="math inline">\(\nu^2 = \tau^2/\sigma^2\)</span>，求 <span class="math inline">\(n\)</span> 阶方阵 <span class="math inline">\(\Sigma(\theta)\)</span> 的逆变成求 <span class="math inline">\(r\)</span> 阶方阵的逆， 从而达到了降维的目的。 下面再根据 Sylvester 行列式定理计算 <span class="math inline">\(\Sigma(\theta)\)</span> 的行列式 <span class="math inline">\(|\Sigma(\theta)|\)</span></p>
 <p><span class="math display">\[\begin{eqnarray*}
@@ -535,11 +537,11 @@ S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32
 </div>
 </div>
 <div id="STAN-MCMC" class="section level2">
-<h2><span class="header-section-number">4.5</span> 贝叶斯 STAN-MCMC 算法</h2>
+<h2><span class="header-section-number">4.4</span> 贝叶斯 STAN-MCMC 算法</h2>
 <p>介绍先验分布 <span class="citation">(SAS Institute Inc. <a href="#ref-SAS2017">2017</a>)</span></p>
-<div id="section-4.5.1" class="section level3">
-<h3><span class="header-section-number">4.5.1</span> 算法提出的背景和意义</h3>
-<p>贝叶斯 MCMC 算法是一个计算密集型的算法，高效的实现对理论和应用都有非常重要的意义。因此，早在1989年剑桥大学研究人员开发出了 Windows 上的应用程序 WinBUGS，并被广泛使用。随着个人电脑的普及、Linux 和 MacOS 系统的蓬勃发展， 只能运行于 Windows 系统上的 WinBUGS 逐渐落后于时代，并在 2008 年宣布停止开发。 随后， OpenBUGS 以开源的开发方式重现了 WinBUGS 的功能，还可跨平台运行，弥补了 WinBUGS 的不足，而后又出现了同类的开源软件 JAGS。 无论是 OpenBUGS 还是 JAGS 都无法适应当代计算机硬件的迅猛发展， 它们的设计由于历史局限性， 已经无法满足在兼容性、 扩展性和高效性方面的要求。 因此， 哥伦比亚大学的统计系以开源的方式开发了新一代贝叶斯推断子程序库 Stan， 它与前辈们最明显的最直观的不同在于，它不是一个像 WinBUGS/OpenBUGS/JAGS 那样的软件有菜单窗口， <a href="http://mc-stan.org/">Stan</a> 是一种概率编程语言 <span class="citation">(Carpenter et al. <a href="#ref-Stan2017JSS">2017</a>)</span>， 可以替代 BUGS ( <strong>B</strong>ayesian inference <strong>U</strong>sing <strong>G</strong>ibbs <strong>S</strong>ampling ) <span class="citation">(Lunn et al. <a href="#ref-BUGS2009">2009</a>)</span> 作为 MCMC 算法的高效实现。相比较于同类软件，Stan 的优势有：底层完全基于 C++ 实现；拥有活跃和快速发展的社区；支持在CPU/GPU上大规模并行计算；独立于系统和硬件平台；提供多种编程语言的接口，如 PyStan、 RStan 等等。 在大数据的背景下， 拥有数千台服务器的企业越来越多， 计算机资源达到前所未有的规模， 这为Stan的广泛应用打下了基础， 我们基于 R 语言编程接口实现求解 SGLMM 模型的贝叶斯 MCMC 算法（以下简称 STAN-MCMC 算法）。</p>
+<div id="section-4.4.1" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> 算法提出的背景和意义</h3>
+<p>贝叶斯 MCMC 算法是一个计算密集型的算法，高效的实现对理论和应用都有非常重要的意义。因此，早在 1989 年剑桥大学研究人员开发出了 Windows 上的应用程序 WinBUGS，并被广泛使用。随着个人电脑的普及、Linux 和 MacOS 系统的蓬勃发展， 只能运行于 Windows 系统上的 WinBUGS 逐渐落后于时代，并在 2008 年宣布停止开发。 随后， OpenBUGS 以开源的开发方式重现了 WinBUGS 的功能，还可跨平台运行，弥补了 WinBUGS 的不足，而后又出现了同类的开源软件 JAGS。 无论是 OpenBUGS 还是 JAGS 都无法适应当代计算机硬件的迅猛发展， 它们的设计由于历史局限性， 已经无法满足在兼容性、 扩展性和高效性方面的要求。 因此， 哥伦比亚大学的统计系以开源的方式开发了新一代贝叶斯推断子程序库 Stan， 它与前辈们最明显的最直观的不同在于，它不是一个像 WinBUGS/OpenBUGS/JAGS 那样的软件有菜单窗口， <a href="http://mc-stan.org/">Stan</a> 是一种概率编程语言 <span class="citation">(Carpenter et al. <a href="#ref-Stan2017JSS">2017</a>)</span>， 可以替代 BUGS ( <strong>B</strong>ayesian inference <strong>U</strong>sing <strong>G</strong>ibbs <strong>S</strong>ampling ) <span class="citation">(Lunn et al. <a href="#ref-BUGS2009">2009</a>)</span> 作为 MCMC 算法的高效实现。相比较于同类软件，Stan 的优势有：底层完全基于 C++ 实现；拥有活跃和快速发展的社区；支持在CPU/GPU上大规模并行计算；独立于系统和硬件平台；提供多种编程语言的接口，如 PyStan、 RStan 等等。 在大数据的背景下， 拥有数千台服务器的企业越来越多， 计算机资源达到前所未有的规模， 这为Stan的广泛应用打下了基础， 我们基于 R 语言编程接口实现求解 SGLMM 模型的贝叶斯 MCMC 算法（以下简称 STAN-MCMC 算法）。</p>
 <!-- 可用于贝叶斯框架下，空间广义线性混合效应模型的参数估计基于 GPU 加速是一个不错的选择， Stan 开发者也把 GPU 加速列入开发日程。SCIKIT-CUDA 和 ArrayFire 等基于 CUDA 开发的通用加速框架获得越来越多的关注。基于 Stan 实现的汉密尔顿蒙特卡罗算法 -->
 <!-- 不管怎么改进 MCMC 算法，它始终是一个计算量非常大，非常耗时的算法，那么高效地实现就比较有意义，基于 C++ 语言编写的高性能计算库 Stan，其主要目的是实现 -->
 <!-- 1. 全贝叶斯推断使用 No-U-Turn 采样器，一种汉密尔顿蒙特卡罗算法的变种 -->
@@ -549,8 +551,8 @@ S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32
 <!-- 主要参考了 2007 年书籍，算法的适应性和针对特定问题的高效率， -->
 </div>
 <div id="STANMCMC" class="section level3">
-<h3><span class="header-section-number">4.5.2</span> STAN-MCMC 算法实现过程</h3>
-<p>为了与本章第 <a href="algorithms.html#MCMC">4.4.3</a> 节提出的贝叶斯 MCMC 算法比较，我们基于它编写了程序。目前，我与 Paul Bürkner 一起开发了 <strong>brms</strong> 包 <span class="citation">(Bürkner <a href="#ref-brms2017JSS">2017</a>)</span>， 主要工作是修复程序调用和文档书写错误， 特别是与求解 SGLMM 模型相关的<code>gp</code>函数，相关细节见 <strong>brms</strong> 的 Github 开发仓库。</p>
+<h3><span class="header-section-number">4.4.2</span> STAN-MCMC 算法实现过程</h3>
+<p>为了与本章第 <a href="algorithms.html#MCMC">4.3.3</a> 节提出的贝叶斯 MCMC 算法比较，我们基于它编写了程序。目前，我与 Paul Bürkner 一起开发了 <strong>brms</strong> 包 <span class="citation">(Bürkner <a href="#ref-brms2017JSS">2017</a>)</span>， 主要工作是修复程序调用和文档书写错误， 特别是与求解 SGLMM 模型相关的<code>gp</code>函数，相关细节见 <strong>brms</strong> 的 Github 开发仓库。</p>
 <p>在 SGLMM 模型下，STAN-MCMC 算法，先从条件分布 <span class="math inline">\([S|\theta,\beta,Y]\)</span> 抽样，然后是 <span class="math inline">\([\theta|S]\)</span> ，最后是 <span class="math inline">\([\beta|S,Y]\)</span>，具体步骤如下：</p>
 <ol style="list-style-type: decimal">
 <li>选择初始值 <span class="math inline">\(\theta,\beta,S\)</span>，如 <span class="math inline">\(\beta\)</span> 的初始值来自正态分布，<span class="math inline">\(\theta\)</span> 的初始值来自对数正态分布；</li>
@@ -561,7 +563,7 @@ S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32
 </ol>
 <p>即到达平稳的初始位置，然后根据后续的平稳序列采样，获得各参数的后验分布的样本及对应估计值。程序实现的主要步骤（以 R 语言接口 <strong>rstan</strong> 和 <strong>brms</strong> 为例说明）：</p>
 <ol style="list-style-type: decimal">
-<li>安装 C++ 编译工具，如果在 Windows 平台上，就从 R 官网下载安装 RTools， 它包含一套完整的 C++ 开发工具。 然后添加 gcc/g++ 编译器的路径到系统环境变量。 如果在Linux系统上， 这些工具都是自带的， 环境变量也不用配置， 减少了很多麻烦。其它配置细节见 Stan 开发官网<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>。</li>
+<li>安装 C++ 编译工具，如果在 Windows 平台上，就从 R 官网下载安装 RTools， 它包含一套完整的 C++ 开发工具。 然后添加 gcc/g++ 编译器的路径到系统环境变量。 如果在Linux系统上， 这些工具都是自带的， 环境变量也不用配置， 减少了很多麻烦。其它配置细节见 Stan 开发官网<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>。</li>
 <li>在 R 软件控制台，安装 <strong>rstan</strong> 和 <strong>brms</strong> 包以及相关依赖包。</li>
 <li><p>加载 <strong>rstan</strong> 和 <strong>brms</strong> 包，配置参数如下：</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 加载程序包</span>
@@ -591,7 +593,7 @@ S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32
 </ol>
 </div>
 <div id="-r-" class="section level3">
-<h3><span class="header-section-number">4.5.3</span> 求解模型的 R 包</h3>
+<h3><span class="header-section-number">4.4.3</span> 求解模型的 R 包</h3>
 <p>R语言作为免费自由的统计计算和绘图环境，因其更新快，社区庞大，扩展包更是超过了 13000 个，提供了大量前沿统计方法的代码实现。如 <strong>spBayes</strong> 包使用贝叶斯 MCMC 算法估计 SGLMM 模型的参数 <span class="citation">(Finley, Banerjee, and E.Gelfand <a href="#ref-spBayes2015">2015</a>)</span>； <strong>coda</strong> 包诊断马尔科夫链的平稳性 <span class="citation">(Plummer et al. <a href="#ref-coda2006">2006</a>)</span>；<strong>MCMCvis</strong> 包分析和可视化贝叶斯 MCMC 算法的输出， 提取模型参数， 转化 JAGS、Stan 和 BUGS 软件的输出结果到R对象，以利后续分析；<strong>geoR</strong> 包 在空间线性混合效应模型上实现了贝叶斯 MCMC 算法 <span class="citation">(Ribeiro Jr. and Diggle <a href="#ref-geoR2001">2001</a>)</span>；<strong>geoRglm</strong> 包在 <strong>geoR</strong> 包的基础上将模型范围扩展到 SGLMM 模型 <span class="citation">(Christensen and Ribeiro Jr. <a href="#ref-geoRglm2002">2002</a>)</span>；<strong>glmmBUGS</strong> 包提供了 WinBUGS、 OpenBUGS 和 JAGS 软件的统一接口 <span class="citation">(Brown and Zhou <a href="#ref-glmmBUGS2010MCMC">2010</a>)</span>；<strong>gstat</strong> 包迁移自S语言，提供了克里金插值方法 <span class="citation">(Gräler, Pebesma, and Heuvelink <a href="#ref-gstat2016">2016</a>)</span>。 目前，R 语言社区提供的求解 SGLMM 模型的 R 包和功能实现，见表 <a href="algorithms.html#tab:sglmm-packages">4.1</a>。</p>
 <table>
 <caption><span id="tab:sglmm-packages">表 4.1: </span> 求解空间广义线性混合效应模型的 R 包功能比较：加号 + 表示可用，减号 - 表示不可用，星号 * 标记的只在空间线性混合效应模型下可用</caption>
@@ -747,12 +749,6 @@ S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32
 <div id="ref-Huang2016COS">
 <p>黄湘云. 2016. “R 语言做符号计算.” <a href="https://cosx.org/2016/07/r-symbol-calculate" class="uri">https://cosx.org/2016/07/r-symbol-calculate</a>.</p>
 </div>
-<div id="ref-Diggle1998">
-<p>Diggle, Peter J., J. A. Tawn, and R. A. Moyeed. 1998. “Model-Based Geostatistics.” <em>Journal of the Royal Statistical Society, Series C</em> 47 (3): 299–350.</p>
-</div>
-<div id="ref-Diggle2002Childhood">
-<p>Diggle, Peter, Rana Moyeed, Barry Rowlingson, and Madeleine Thomson. 2002. “Childhood Malaria in the Gambia: A Case-Study in Model-Based Geostatistics.” <em>Journal of the Royal Statistical Society, Series C</em> 51 (4): 493–506.</p>
-</div>
 <div id="ref-Christensen2006">
 <p>Christensen, Ole F, Gareth O Roberts, and Martin Sköld. 2006. “Robust Markov Chain Monte Carlo Methods for Spatial Generalized Linear Mixed Models.” <em>Journal of Computational and Graphical Statistics</em> 15 (1): 1–17.</p>
 </div>
@@ -795,8 +791,8 @@ S(x) \approx \sum_{i = 1}^r K(\|x-\tilde{x}_{i}\|; \phi, \kappa) U_{i} \tag{4.32
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p><a href="https://github.com/stan-dev/rstan/wiki" class="uri">https://github.com/stan-dev/rstan/wiki</a><a href="algorithms.html#fnref3" class="footnote-back">↩</a></p></li>
+<ol start="2">
+<li id="fn2"><p><a href="https://github.com/stan-dev/rstan/wiki" class="uri">https://github.com/stan-dev/rstan/wiki</a><a href="algorithms.html#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -838,9 +834,9 @@ gitbook.start({
 "link": "https://github.com/XiangyunHuang/Thesis-Template-Bookdown/edit/master/03-estimations.Rmd",
 "text": "编辑"
 },
-"download": ["Thesis-Template-Bookdown.pdf", "Thesis-Template-Bookdown.epub", "Thesis-Template-Bookdown.mobi"],
+"download": ["Thesis-Template-Bookdown.pdf"],
 "toc": {
-"collapse": "none"
+"collapse": "section"
 }
 });
 });
@@ -852,7 +848,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

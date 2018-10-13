@@ -11,5 +11,5 @@
 
 ```{=latex}
 \setlength{\bibsep}{0ex}
-\bibliography{refer.bib,book.bib}
+\bibliography{latex/refer.bib,latex/book.bib}
 ```

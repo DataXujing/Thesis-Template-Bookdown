@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>master thesis template</title>
-  <meta name="description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform.">
+  <title>Master Thesis Template</title>
+  <meta name="description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="master thesis template" />
+  <meta property="og:title" content="Master Thesis Template" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/logo.png" />
-  <meta property="og:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta property="og:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="github-repo" content="XiangyunHuang/Thesis-Template-Bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="master thesis template" />
+  <meta name="twitter:title" content="Master Thesis Template" />
   
-  <meta name="twitter:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta name="twitter:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="twitter:image" content="images/logo.png" />
 
 <meta name="author" content="Xiang-Yun Huang">
 
 
-<meta name="date" content="2018-09-27">
+<meta name="date" content="2018-10-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="applications.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -144,10 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="prepare.html"><a href="prepare.html#Modified-Bessel-functions"><i class="fa fa-check"></i><b>2.6</b> 修正的第三类贝塞尔函数</a></li>
 <li class="chapter" data-level="2.7" data-path="prepare.html"><a href="prepare.html#Laplace-approximation"><i class="fa fa-check"></i><b>2.7</b> 拉普拉斯近似</a></li>
 <li class="chapter" data-level="2.8" data-path="prepare.html"><a href="prepare.html#Jeffreys-prior"><i class="fa fa-check"></i><b>2.8</b> Jeffreys 先验分布</a></li>
-<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯理论</a></li>
-<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#bayesian-data-analysis"><i class="fa fa-check"></i><b>2.10</b> 贝叶斯数据分析</a></li>
-<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.11</b> 维数灾难与蒙特卡罗积分</a></li>
-<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.12</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯定理与先验分布</a></li>
+<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.10</b> 维数灾难与蒙特卡罗积分</a></li>
+<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.11</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#section-2.12"><i class="fa fa-check"></i><b>2.12</b> 弱先验信息</a></li>
+<li class="chapter" data-level="2.13" data-path="prepare.html"><a href="prepare.html#section-2.13"><i class="fa fa-check"></i><b>2.13</b> 方差缩减因子</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>3</b> 统计模型</a><ul>
 <li class="chapter" data-level="3.1" data-path="models.html"><a href="models.html#Linear-Models"><i class="fa fa-check"></i><b>3.1</b> 线性模型</a></li>
@@ -164,25 +166,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="algorithms.html"><a href="algorithms.html"><i class="fa fa-check"></i><b>4</b> 参数估计</a><ul>
 <li class="chapter" data-level="4.1" data-path="algorithms.html"><a href="algorithms.html#mle"><i class="fa fa-check"></i><b>4.1</b> 极大似然估计</a></li>
 <li class="chapter" data-level="4.2" data-path="algorithms.html"><a href="algorithms.html#profile-likelihood"><i class="fa fa-check"></i><b>4.2</b> 剖面似然估计</a></li>
-<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#maximum-likelihood-estimates"><i class="fa fa-check"></i><b>4.3</b> 极大似然估计</a></li>
-<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.4</b> 参数估计的算法</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.4.1</b> 拉普拉斯近似算法</a></li>
-<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.4.2</b> 蒙特卡罗极大似然算法</a></li>
-<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.4.3</b> 贝叶斯 MCMC 算法</a></li>
-<li class="chapter" data-level="4.4.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.4.4</b> 低秩近似算法</a></li>
+<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.3</b> 参数估计的算法</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.3.1</b> 拉普拉斯近似算法</a></li>
+<li class="chapter" data-level="4.3.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.3.2</b> 蒙特卡罗极大似然算法</a></li>
+<li class="chapter" data-level="4.3.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.3.3</b> 贝叶斯 MCMC 算法</a></li>
+<li class="chapter" data-level="4.3.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.3.4</b> 低秩近似算法</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.5</b> 贝叶斯 STAN-MCMC 算法</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="algorithms.html"><a href="algorithms.html#section-4.5.1"><i class="fa fa-check"></i><b>4.5.1</b> 算法提出的背景和意义</a></li>
-<li class="chapter" data-level="4.5.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.5.2</b> STAN-MCMC 算法实现过程</a></li>
-<li class="chapter" data-level="4.5.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.5.3</b> 求解模型的 R 包</a></li>
+<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.4</b> 贝叶斯 STAN-MCMC 算法</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 算法提出的背景和意义</a></li>
+<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.4.2</b> STAN-MCMC 算法实现过程</a></li>
+<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.4.3</b> 求解模型的 R 包</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simulations.html"><a href="simulations.html"><i class="fa fa-check"></i><b>5</b> 数值模拟</a><ul>
-<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 一维空间高斯过程</a></li>
-<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-gp"><i class="fa fa-check"></i><b>5.2</b> 平稳空间高斯过程</a></li>
-<li class="chapter" data-level="5.3" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.3</b> 空间广义线性混合效应模型</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="simulations.html"><a href="simulations.html#binomal-sglmm"><i class="fa fa-check"></i><b>5.3.1</b> 响应变量服从二项分布</a></li>
-<li class="chapter" data-level="5.3.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.3.2</b> 响应变量服从泊松分布</a></li>
+<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#spatial-gaussian-processes"><i class="fa fa-check"></i><b>5.1</b> 平稳空间高斯过程</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="simulations.html"><a href="simulations.html#sim-one-gp"><i class="fa fa-check"></i><b>5.1.1</b> 一维平稳空间高斯过程</a></li>
+<li class="chapter" data-level="5.1.2" data-path="simulations.html"><a href="simulations.html#sim-two-gp"><i class="fa fa-check"></i><b>5.1.2</b> 二维平稳空间高斯过程</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.2</b> 空间广义线性混合效应模型</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="simulations.html"><a href="simulations.html#sim-binomal-sglmm"><i class="fa fa-check"></i><b>5.2.1</b> 响应变量服从二项分布</a></li>
+<li class="chapter" data-level="5.2.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.2.2</b> 响应变量服从泊松分布</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> 数据分析</a><ul>
@@ -194,13 +197,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> 总结展望</a></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附录</a><ul>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#sessioninfo"><i class="fa fa-check"></i>软件信息</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#random-number-generation"><i class="fa fa-check"></i>随机数生成</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#compare-algrithms"><i class="fa fa-check"></i>算法比较</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#tables-simulations"><i class="fa fa-check"></i>表格</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>数据模拟</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i><b>7.0.1</b> 模拟平稳高斯过程</a></li>
+<li class="chapter" data-level="7.0.2" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i><b>7.0.2</b> 模拟空间广义线性混合效应模型</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="References.html"><a href="References.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#HMC-Algrithms"><i class="fa fa-check"></i>HMC 算法</a></li>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#compileinfo"><i class="fa fa-check"></i><b>7.1</b> 编译信息</a></li>
+<li class="chapter" data-level="7.2" data-path="appendix.html"><a href="appendix.html#hardwareinfo"><i class="fa fa-check"></i><b>7.2</b> 硬件环境</a></li>
+<li class="chapter" data-level="7.3" data-path="appendix.html"><a href="appendix.html#sysinfo"><i class="fa fa-check"></i><b>7.3</b> 系统环境</a></li>
+<li class="chapter" data-level="7.4" data-path="appendix.html"><a href="appendix.html#softwareinfo"><i class="fa fa-check"></i><b>7.4</b> 软件环境</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">本论文由 bookdown 强力驱动</a></li>
 
 </ul>
 
@@ -211,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">master thesis template</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Master Thesis Template</a>
           </h1>
         </div>
 
@@ -221,210 +231,242 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="simulations" class="section level1">
 <h1><span class="header-section-number">第 5 章</span> 数值模拟</h1>
-<p>空间广义线性混合效应模型（以下简称 SGLMM 模型）在广义线性混合效应模型（以下简称 GLMM 模型）基础上添加了与空间位置相关的随机效应，这种随机效应在文中称为空间效应 <span class="citation">(Diggle, Tawn, and Moyeed <a href="#ref-Diggle1998">1998</a>)</span>。 它与采样点的位置、数量有关，采样点的位置决定空间过程的协方差结构， 而采样点的数量决定空间效应的维度，从而导致 SGLMM 模型比一般的 GLMM 模型复杂。作为过渡，我们在第 <a href="simulations.html#sim-gp">5.2</a> 节模拟了平稳高斯过程。 第 <a href="simulations.html#sim-sglmm">5.3</a> 节模拟 SGLMM 模型， 分两个小节展开叙述，第 <a href="simulations.html#binomal-sglmm">5.3.1</a> 小节模拟响应变量服从二项分布的情形， 第 <a href="simulations.html#possion-sglmm">5.3.2</a> 小节模拟响应变量服从泊松分布的情形， 在这两个小节里， 比较了蒙特卡罗极大似然算法（Monte Carlo Maximum Likelihood，简称 MCML）， 低秩近似算法（以下简称 Low-Rank 算法）， 贝叶斯马尔科夫链蒙特卡罗算法（以下简称贝叶斯 MCMC 算法）和 贝叶斯 STAN-MCMC 算法的性能差异。</p>
-<p>后面每个模型及参数设置都要详细说明，包括模拟过程要对应到前面的算法步骤，分不同的样本量n=50,70,90和参数设置<span class="math inline">\(\phi,\sigma^2,\tau^2\)</span>取不同的值做模拟，</p>
-<p>|<span class="math inline">\(\hat\beta_0(std,rmse)\)</span>| 一个位置有三个值，估计值、对应的标准差和均方误差，好好思考下大表格要怎么放，markdown语法下的表格怎么做，|<span class="math inline">\(\hat\phi(std,rmse)\)</span>,<span class="math inline">\(\hat\sigma^2(std,rmse)\)</span>|</p>
-<p>模拟空间广义线性混合效应模型 <a href="simulations.html#eq:sim-sglmm">(5.1)</a> 分三节进行，第一节模拟空间高斯过程 <span class="math inline">\(S(x)\)</span>，第二节模拟响应变量 <span class="math inline">\(Y\)</span> 服从二项分布 ，第三节模拟响应变量 <span class="math inline">\(Y\)</span> 服从正态分布。空间高斯过程在模型 <a href="simulations.html#eq:sim-sglmm">(5.1)</a> 中作为随机效应存在，不同于一般随机效应的地方在于它与样本的空间位置有关，一般地，假定 <span class="math inline">\(S(x)\)</span> 服从 <span class="math inline">\(N\)</span> 元高斯分布 <span class="math inline">\(N(\mu_{S},G)\)</span>，<span class="math inline">\(x = (d_1,d_2) \in \mathbb{R}^2\)</span>， <span class="math inline">\(\mu_{S} = \mathbf{0}_{N\times1}\)</span>， <span class="math inline">\(G_{(ij)} = \mathrm{Cov}(S(x_i),S(x_j))=\sigma^2*\rho(u_{ij})\)</span>， <span class="math inline">\(S(x)\)</span> 的相关函数 <span class="math inline">\(\rho(u_{ij}) = \exp(-u_{ij}/\phi), u_{ij} \equiv \|x_{i}-x_{j}\|_2\)</span>，其中 <span class="math inline">\(\phi\)</span> 和 <span class="math inline">\(\sigma^2\)</span> 都是未知待估参数。可见
-采样点的位置 <span class="math inline">\((d_1,d_2)\)</span> 和相关函数 <span class="math inline">\(\rho(u)\)</span> 一起决定空间高斯过程的形式，并且 <span class="math inline">\(S(x)\)</span> 的维度就是采样点的数目 <span class="math inline">\(N\)</span>。这样通常导致空间效应的维度比协变量的数目大很多，模型 <a href="simulations.html#eq:sim-sglmm">(5.1)</a> 的估计问题也比一般的广义线性混合效应模型困难。</p>
+<p>空间广义线性混合效应模型在广义线性混合效应模型基础上添加了与空间位置相关的随机效应，这种随机效应在文献中常称为空间效应 <span class="citation">(Diggle, Tawn, and Moyeed <a href="#ref-Diggle1998">1998</a>)</span>。 它与采样点的位置、数量都有关系， 其中采样点的位置决定空间过程的协方差结构， 而采样点的数量决定空间效应的维度，从而导致空间广义线性混合效应模型比普通的广义线性混合效应模型复杂。作为过渡，我们在第 <a href="simulations.html#sim-one-gp">5.1.1</a> 和 <a href="simulations.html#sim-two-gp">5.1.2</a> 节模拟了一维和二维平稳高斯过程。 第 <a href="simulations.html#sim-sglmm">5.2</a> 节模拟 SGLMM 模型， 分两个小节展开叙述，第 <a href="simulations.html#sim-binomal-sglmm">5.2.1</a> 小节模拟响应变量服从二项分布的情形， 第 <a href="simulations.html#possion-sglmm">5.2.2</a> 小节模拟响应变量服从泊松分布的情形，在这两个小节里， 比较了蒙特卡罗极大似然算法，低秩近似算法，贝叶斯马尔科夫链蒙特卡罗算法和贝叶斯 STAN-MCMC 算法的性能差异。</p>
+<p>模拟空间广义线性混合效应模型 <a href="simulations.html#eq:sim-sglmm">(5.1)</a> 分三节进行，第一节模拟空间高斯过程 <span class="math inline">\(S(x)\)</span>，第二节模拟响应变量 <span class="math inline">\(Y\)</span> 服从二项分布 ，第三节模拟响应变量 <span class="math inline">\(Y\)</span> 服从正态分布。空间高斯过程在模型 <a href="simulations.html#eq:sim-sglmm">(5.1)</a> 中作为随机效应存在，不同于一般随机效应的地方在于它与样本的空间位置有关，一般地，假定 <span class="math inline">\(S(x)\)</span> 服从 <span class="math inline">\(N\)</span> 元高斯分布 <span class="math inline">\(N(\mu_{S},G)\)</span>，<span class="math inline">\(x = (d_1,d_2) \in \mathbb{R}^2\)</span>， <span class="math inline">\(\mu_{S} = \mathbf{0}_{N\times1}\)</span>， <span class="math inline">\(G_{(ij)} = \mathrm{Cov}(S(x_i),S(x_j))=\sigma^2*\rho(u_{ij})\)</span>， <span class="math inline">\(S(x)\)</span> 的相关函数 <span class="math inline">\(\rho(u_{ij}) = \exp(-u_{ij}/\phi), u_{ij} \equiv \|x_{i}-x_{j}\|_2\)</span>，其中 <span class="math inline">\(\phi\)</span> 和 <span class="math inline">\(\sigma^2\)</span> 都是未知待估参数。可见采样点的位置 <span class="math inline">\((d_1,d_2)\)</span> 和相关函数 <span class="math inline">\(\rho(u)\)</span> 一起决定空间高斯过程的形式，并且 <span class="math inline">\(S(x)\)</span> 的维度就是采样点的数目 <span class="math inline">\(N\)</span>。这样通常导致空间效应的维度比协变量的数目大很多，模型 <a href="simulations.html#eq:sim-sglmm">(5.1)</a> 的估计问题也比一般的广义线性混合效应模型困难。</p>
 <p><span class="math display" id="eq:sim-sglmm">\[\begin{equation}
 g(\mu_i) = d(x_i)&#39;\beta + S(x_i) + Z_i \tag{5.1}
 \end{equation}\]</span></p>
-<div id="section-5.1" class="section level2">
-<h2><span class="header-section-number">5.1</span> 一维空间高斯过程</h2>
-<p>一维</p>
-</div>
-<div id="sim-gp" class="section level2">
-<h2><span class="header-section-number">5.2</span> 平稳空间高斯过程</h2>
-<p>这里，我们在规则平面上模拟平稳高斯过程 <span class="math inline">\(\mathcal{S} = S(x), x \in \mathbb{R}^2\)</span>， 其均值为0， 自协方差函数为</p>
-<p><span class="math display" id="eq:exp-quad">\[\begin{equation}
-\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2\exp\big\{-\big( \frac{ \| x_{i} - x_{j} \|_{2}}{\sqrt{2}\phi}\big)^{\kappa}\big\}  \tag{5.2}
-\end{equation}\]</span></p>
-<p>设置参数 <span class="math inline">\(\kappa = 2,\phi=1,\sigma^2=1\)</span>，单位平面区域为 <span class="math inline">\([0,1]\times[0,1]\)</span>， 将此区域划分为 <span class="math inline">\(7\times 7\)</span> 的小网格，设置每个格点为采样的位置。由自协方差函数 <a href="simulations.html#eq:exp-quad">(5.2)</a> 可以获得 <span class="math inline">\(\mathcal{S}\)</span> 的协方差矩阵，然后使用 R包 <strong>MASS</strong> 提供的 <code>mvrnorm</code> 函数产生多元正态分布随机数。 模拟数据生成的图像见图 <a href="simulations.html#fig:gp">5.1</a>， 格点上的值即为平稳空间高斯过程在该点的取值 （为方便显示，已四舍五入保留两位小数）。</p>
-<div class="figure" style="text-align: center"><span id="fig:gp"></span>
-<img src="04-simulations_files/figure-html/gp-1.png" alt="平稳空间高斯过程：自相关函数为幂指数族" width="70%" />
+<div id="spatial-gaussian-processes" class="section level2">
+<h2><span class="header-section-number">5.1</span> 平稳空间高斯过程</h2>
+<div id="sim-one-gp" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> 一维平稳空间高斯过程</h3>
+<p>一维情形下，平稳高斯过程 <span class="math inline">\(S(x)\)</span> 的协方差函数采用幂指数型，见公式 <a href="simulations.html#eq:cov-exp-quad">(5.3)</a>，当 <span class="math inline">\(\kappa =1\)</span> 时，为指数型，见公式 <a href="simulations.html#eq:cov-exp-quad">(5.3)</a>。分 <span class="math inline">\(\kappa =1\)</span> 和 <span class="math inline">\(\kappa =1\)</span>，模拟两个一维平稳空间高斯过程，协方差参数均为 <span class="math inline">\(\sigma^2 = 1\)</span>，<span class="math inline">\(\phi = 0.15\)</span>，均值向量都是 <span class="math inline">\(\mathbf{0}\)</span>，在 <span class="math inline">\([-2,2]\)</span> 的区间上，产生 2000 个服从均匀分布的随机数，由这些随机数的未知和协方差函数公式 <a href="simulations.html#eq:cov-exp">(5.2)</a> 或 <a href="simulations.html#eq:cov-exp-quad">(5.3)</a> 计算得到 2000 维的高斯分布的协方差矩阵 <span class="math inline">\(G\)</span>，为保证协方差矩阵的正定性，在矩阵对角线上添加扰动 <span class="math inline">\(1 \times 10^{-12}\)</span>，然后即可根据 Cholesky 分解该对称正定矩阵，得到下三角块 <span class="math inline">\(L\)</span>，使得 <span class="math inline">\(G = L \times L^{\top}\)</span>，再产生 2000 个服从标准正态分布的随机向量 <span class="math inline">\(\eta\)</span>，而 <span class="math inline">\(L\eta\)</span> 即为所需的服从平稳高斯过程的一组随机数。</p>
+<p><span class="math display" id="eq:cov-exp-quad" id="eq:cov-exp">\[\begin{align}
+\mathsf{Cov}(S(x_i), S(x_j)) &amp; = \sigma^2 \exp\big\{ - \frac{|x_{i} - x_{j}|}{ \phi } \big\}  \tag{5.2} \\
+\mathsf{Cov}(S(x_i), S(x_j)) &amp; = \sigma^2 \exp\big\{ -\big( \frac{ |x_{i} - x_{j}| }{ \phi } \big) ^ {\kappa} \big\}, 0 &lt; \kappa \leq 2  \tag{5.3} 
+\end{align}\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:one-dim-gp"></span>
+<img src="figures/one-dim-gp-exp.png" alt="模拟一维平稳空间高斯过程，协方差函数分别为指数型 (5.2) 和幂二次指数型 (5.3)，均值为 \(\mathbf{0}\)，协方差参数 \(\sigma^2 = 1\)，\(\phi = 0.15\)，横坐标表示采样的位置，纵坐标是目标值 \(S(x)\)，图中 2000 个灰色点表示服从相应随机过程的随机数，橘黄色点是从中随机选择的 36 个点。" width="70%" /><img src="figures/one-dim-gp-exp-quad.png" alt="模拟一维平稳空间高斯过程，协方差函数分别为指数型 (5.2) 和幂二次指数型 (5.3)，均值为 \(\mathbf{0}\)，协方差参数 \(\sigma^2 = 1\)，\(\phi = 0.15\)，横坐标表示采样的位置，纵坐标是目标值 \(S(x)\)，图中 2000 个灰色点表示服从相应随机过程的随机数，橘黄色点是从中随机选择的 36 个点。" width="70%" />
 <p class="caption">
-图 5.1: 平稳空间高斯过程：自相关函数为幂指数族
+图 5.1: 模拟一维平稳空间高斯过程，协方差函数分别为指数型 <a href="simulations.html#eq:cov-exp">(5.2)</a> 和幂二次指数型 <a href="simulations.html#eq:cov-exp-quad">(5.3)</a>，均值为 <span class="math inline">\(\mathbf{0}\)</span>，协方差参数 <span class="math inline">\(\sigma^2 = 1\)</span>，<span class="math inline">\(\phi = 0.15\)</span>，横坐标表示采样的位置，纵坐标是目标值 <span class="math inline">\(S(x)\)</span>，图中 2000 个灰色点表示服从相应随机过程的随机数，橘黄色点是从中随机选择的 36 个点。
 </p>
 </div>
-<p>紧接上文，模拟模型当中的空间效应 <span class="math inline">\(S(x)\)</span> ， 其相关函数可以为指数族或者梅隆族，函数形式如公式 <a href="simulations.html#eq:exp-matern">(5.3)</a> 所示，为描述简单起见，以指数族说明。</p>
+
+<p>根据定理 <a href="prepare.html#thm:stationary-mean-square-properties">2.4</a>，指数型协方差函数的平稳高斯过程在原点连续但是不可微，而幂二次指数型协方差函数在原点无穷可微，可微性越好图像上表现越光滑，对比图 <a href="simulations.html#fig:one-dim-gp">5.1</a> 的两个子图， 可以看出，在协方差参数 <span class="math inline">\(\sigma^2 = 1\)</span>，<span class="math inline">\(\phi = 0.15\)</span> 相同的情况下，<span class="math inline">\(\kappa\)</span> 越大越光滑。</p>
+</div>
+<div id="sim-two-gp" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> 二维平稳空间高斯过程</h3>
+<p>二维情形下，在规则平面上模拟平稳高斯过程 <span class="math inline">\(\mathcal{S} = S(x), x \in \mathbb{R}^2\)</span>， 其均值向量为零向量 <span class="math inline">\(\mathbf{0}\)</span>， 协方差函数为指数型 (见公式 <a href="simulations.html#eq:cov-exp">(5.2)</a>) ，协方差参数 <span class="math inline">\(\phi = 1, \sigma^2 = 1\)</span>。在单位平面区域为 <span class="math inline">\([0,1] \times [0,1]\)</span> 模拟服从上述二维空间平稳高斯过程，不妨将此区域划分为 <span class="math inline">\(6 \times 6\)</span> 的小网格，而每个格点作为采样的位置，共计 36个采样点，在这些采样点上的观察值即为目标值 <span class="math inline">\(S(x)\)</span>。</p>
+<p>类似本章第 <a href="simulations.html#sim-one-gp">5.1.1</a> 节模拟一维平稳空间过程的步骤， 首先根据采样点位置坐标和协方差函数 <a href="simulations.html#eq:cov-exp-quad">(5.3)</a> 计算得目标空间过程的 <span class="math inline">\(\mathcal{S}\)</span> 协方差矩阵 <span class="math inline">\(G\)</span>，然后使用 R 包 <strong>MASS</strong> 提供的 <code>mvrnorm</code> 函数产生多元正态分布随机数，与 <a href="simulations.html#sim-one-gp">5.1.1</a> 节不同的是这里采用特征值分解，即 <span class="math inline">\(G = L\Lambda L^{\top}\)</span>，与 Cholesky 分解相比，特征值分解更稳定些，但是 Cholesky 分解更快，Stan 即采用此法，后续过程与一维模拟一致。模拟获得的随机数用图 <a href="simulations.html#fig:sim-two-gp">5.2</a> 表示， 格点上的值即为平稳空间高斯过程在该点的取值 (为方便显示，已四舍五入保留两位小数)。</p>
+<div class="figure" style="text-align: center"><span id="fig:sim-two-gp"></span>
+<img src="04-simulations_files/figure-html/sim-two-gp-1.png" alt="模拟二维平稳空间高斯过程，自相关函数为指数形式，水平方向为横坐标，垂直方向为纵坐标，图中的橘黄色点是采样的位置，其上的数字是目标值 $S(x)$" width="45%" /><img src="04-simulations_files/figure-html/sim-two-gp-2.png" alt="模拟二维平稳空间高斯过程，自相关函数为指数形式，水平方向为横坐标，垂直方向为纵坐标，图中的橘黄色点是采样的位置，其上的数字是目标值 $S(x)$" width="45%" />
+<p class="caption">
+图 5.2: 模拟二维平稳空间高斯过程，自相关函数为指数形式，水平方向为横坐标，垂直方向为纵坐标，图中的橘黄色点是采样的位置，其上的数字是目标值 <span class="math inline">\(S(x)\)</span>
+</p>
+</div>
+<p>同 <a href="simulations.html#sim-one-gp">5.1.1</a> 节，二维平稳空间高斯过程 <span class="math inline">\(S(x)\)</span> 的协方差函数也可以为更一般的梅隆型，如公式 <a href="simulations.html#eq:exp-matern">(5.4)</a> 所示。</p>
 <p><span class="math display" id="eq:exp-matern">\[\begin{equation}
-\rho(u) =
-\begin{cases}
-\exp(-(u/\phi)^{\kappa}) &amp; \text{指数族}\\
-\{2^{\kappa -1}\Gamma(\kappa)\}^{-1}(u/\phi)^{\kappa}\mathcal{K}_{\kappa}(u/\phi) &amp; \text{梅隆族}
-\end{cases} \tag{5.3}
+\rho(u) = \sigma^2 \{ 2^{\kappa -1} \Gamma(\kappa) \}^{-1}( u/\phi )^{\kappa} \mathcal{K}_{\kappa}( u / \phi ) \tag{5.4}
 \end{equation}\]</span></p>
-<p>固定样本量 <span class="math inline">\(n=1600\)</span> ，其它参数为 <span class="math inline">\(\sigma^2=1,\phi=25,\kappa=1\)</span> ，在区域 <span class="math inline">\([-0.2,1.2]\times [-0.2,1.2]\)</span> 上，分别模拟规则网格上的采样和 随机采样，图中 <span class="math inline">\(S(x)\)</span> 的值越大，颜色越红，反之，颜色越蓝。使用R函数 <code>dist</code> 计算样本点之间的距离，用 <code>MASS::mvrnorm</code> 函数生成服从多元高斯分布的随机数。</p>
+<p>且在区域 <span class="math inline">\([0,1] \times [0,1]\)</span> 上也可以随机采点，如图 <a href="simulations.html#fig:sim-two-gp">5.2</a> 的右子图所示。</p>
+<p>模拟平稳空间高斯过程的其它 R 包实现方法： Paulo J. Ribeiro Jr. 和 Peter J. Diggle 开发了 <strong>geoR</strong> 包 <span class="citation">(Ribeiro Jr. and Diggle <a href="#ref-geoR2001">2001</a>)</span>，提供的 <code>grf</code> 函数除了实现 Cholesky 分解，还实现了奇异值分解，特征值分解协方差矩阵的算法。当采样点不太多时，Cholesky 分解已经足够好，下面的第 <a href="simulations.html#sim-sglmm">5.2</a> 节对平稳空间高斯过程的数值模拟即采用此法，当采样点很多，为了加快模拟的速度，可以选用 Martin Schlather 等开发的 <strong>RandomFields</strong> 包 <span class="citation">(Schlather et al. <a href="#ref-RandomFields2015">2015</a>)</span>，内置的 <code>GaussRF</code> 函数实现了用高斯马尔科夫随机场近似平稳空间高斯过程的算法，此外，Håvard Rue 等 (2009年) <span class="citation">(Rue, Martino, and Chopin <a href="#ref-Rue2009">2009</a>)</span> 也实现了从平稳高斯过程到高斯马尔科夫随机场的近似算法，开发了更为高效的 INLA 程序库 <span class="citation">(Lindgren and Rue <a href="#ref-INLA2015">2015</a>)</span>，其内置的近似程序得到了广泛的应用 <span class="citation">(Gómez-Rubio and Rue <a href="#ref-Virgilio2018">2018</a>; Marta Blangiardo <a href="#ref-Blangiardo2015">2015</a>; Xiaofeng Wang and Faraway <a href="#ref-Faraway2018">2018</a>)</span>。</p>
+</div>
 </div>
 <div id="sim-sglmm" class="section level2">
-<h2><span class="header-section-number">5.3</span> 空间广义线性混合效应模型</h2>
-<p>模拟的空间广义线性混合效应模型是</p>
-<p><span class="math display" id="eq:sim-SGLMM">\[\begin{equation}
-g(\mu_i) = \beta_{0} + \beta_{1} * X_{1} + \beta_{2} * X_{2} + S(x) \tag{5.4}
+<h2><span class="header-section-number">5.2</span> 空间广义线性混合效应模型</h2>
+<div id="sim-binomal-sglmm" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> 响应变量服从二项分布</h3>
+<p>响应变量服从二项分布 <span class="math inline">\(Y_{i} \sim \mathrm{Binomal}(m_{i},p(x_{i}))\)</span>，在位置 <span class="math inline">\(x_i\)</span> 处，以概率 <span class="math inline">\(p(x_i)\)</span> 重复抽取了 <span class="math inline">\(m_i\)</span> 个样本，总样本数 <span class="math inline">\(M=\sum_{i=1}^{N}m_i\)</span>，<span class="math inline">\(N\)</span> 是采样点的个数，二项空间广义线性混合效应模型为 <a href="simulations.html#eq:binom-SGLMM">(5.5)</a>，联系函数为 <span class="math inline">\(g(\mu_i) = \log\{\frac{p(x_i)}{1-p(x_i)}\}\)</span>，<span class="math inline">\(S(x)\)</span> 是均值为 <span class="math inline">\(\mathbf{0}\)</span>，协方差函数为 <span class="math inline">\(\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi), \kappa = 0.5\)</span> 的平稳空间高斯过程。</p>
+<p><span class="math display" id="eq:binom-SGLMM">\[\begin{equation}
+g(\mu_i) = \log\{\frac{p(x_i)}{1-p(x_i)}\} = \alpha + S(x_i) \tag{5.5}
 \end{equation}\]</span></p>
-<p>其中，<span class="math inline">\(\beta_0\)</span> 是截距，<span class="math inline">\(\beta_{1},\beta_{2}\)</span> 是固定效应 <span class="math inline">\(X_{1}\)</span> 和 <span class="math inline">\(X_{2}\)</span> 的系数，<span class="math inline">\(S(x)\)</span> 是平稳空间高斯过程，其均值为0，自协方差函数为 <span class="math inline">\(\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)\)</span>，在后续的模拟中 <span class="math inline">\(\kappa = 2\)</span>，<span class="math inline">\(g\)</span> 是联系函数，由响应变量 <span class="math inline">\(Y\)</span> 服从的分布决定，在第 <a href="simulations.html#binomal-sglmm">5.3.1</a> 小节中，<span class="math inline">\(g(\mu_i) = \log\{\frac{p(x_i)}{1-p(x_i)}\}\)</span>，<span class="math inline">\(Y_{i} \sim \mathrm{Binomal}(m_{i},p(x_{i}))\)</span>，在位置 <span class="math inline">\(x_i\)</span> 处，以概率 <span class="math inline">\(p(x_i)\)</span> 重复抽取了 <span class="math inline">\(m_i\)</span> 个样本，总样本数 <span class="math inline">\(M=\sum_{i=1}^{N}m_i\)</span>，<span class="math inline">\(N\)</span> 是采样点的个数，在第 <a href="simulations.html#possion-sglmm">5.3.2</a> 小节中，<span class="math inline">\(Y_i \sim \mathrm{Possion}(\lambda(x_{i}))\)</span>，类似地，<span class="math inline">\(g(\mu_i) = \log\{\lambda(x_{i})\}\)</span>。</p>
-<div id="binomal-sglmm" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> 响应变量服从二项分布</h3>
-<p>响应变量服从二项分布，模型为 <a href="simulations.html#eq:sim-SGLMM">(5.4)</a>， 固定效应参数 <span class="math inline">\(\beta = (\beta_0,\beta_1,\beta_2)\)</span>， 空间效应参数 <span class="math inline">\(\boldsymbol{\theta} = (\sigma^2,\phi)\)</span>。 参数设置为 <span class="math inline">\(\beta = c(-1,1,0.5), \boldsymbol{\theta} = (1,1)\)</span>，采样点数目为 <span class="math inline">\(N=49\)</span>， 每个采样点抽取的样本数 <span class="math inline">\(m_i = 100,i = 1,2,\ldots,N\)</span>，在这组参数下，重复产生 100 个数据集。 分别使用低秩近似算法(LR)， 蒙特卡罗最大似然算法 (MCML)， 贝叶斯 MCMC 算法 (MCMC) 和贝叶斯 STAN-MCMC 算法 (STAN-MCMC) 估计模型的参数。</p>
+<p>固定效应参数 <span class="math inline">\(\alpha = 0\)</span>，协方差参数记为 <span class="math inline">\(\boldsymbol{\theta} = (\sigma^2, \phi) = (0.5, 0.2)\)</span>，采样点数目为 <span class="math inline">\(N = 64\)</span>，每个采样点抽取的样本数 <span class="math inline">\(m_i = 4, i = 1, 2, \ldots, 64\)</span>。首先模拟平稳空间高斯过程 <span class="math inline">\(S(x)\)</span>，在单位区域 <span class="math inline">\([0,1] \times [0,1]\)</span> 划分为 <span class="math inline">\(8 \times 8\)</span> 的网格，格点选为采样位置，用 <strong>geoR</strong> 包提供的 <code>grf</code> 函数产生协方差参数为 <span class="math inline">\(\boldsymbol{\theta} = (\sigma^2,\phi) = (0.5, 0.2)\)</span> 的平稳空间高斯过程，由公式 <a href="simulations.html#eq:binom-SGLMM">(5.5)</a> 可知 <span class="math inline">\(p(x_i) = \exp(S(x_i))/(1 + \exp(S(x_i)))\)</span>， 即每个格点处二项分布的概率值，然后依此概率，由 <code>rbinom</code> 函数产生服从二项分布的观察值 <span class="math inline">\(Y_i\)</span>，<span class="math inline">\(Y_i\)</span> 的取值范围为 <span class="math inline">\(0, 1, 2, 3, 4\)</span>，模拟的数据集可以用图 <a href="simulations.html#fig:binom-without-nugget-geoRglm">5.3</a> 直观表示。</p>
+<div class="figure" style="text-align: center"><span id="fig:binom-without-nugget-geoRglm"></span>
+<img src="figures/binom-without-nugget-geoRglm.png" alt="左图表示二维规则平面上的平稳空间高斯过程，格点是采样点的位置，其上的数字是 $p(x)$ 的值，已经四舍五入保留两位小数，右图表示观察值 $Y$ 随空间位置的变化，格点上的值即为观察值 $Y$，图中的两个圈分别是第1个(左下)和第29个(右上)采样点" width="90%" />
+<p class="caption">
+图 5.3: 左图表示二维规则平面上的平稳空间高斯过程，格点是采样点的位置，其上的数字是 <span class="math inline">\(p(x)\)</span> 的值，已经四舍五入保留两位小数，右图表示观察值 <span class="math inline">\(Y\)</span> 随空间位置的变化，格点上的值即为观察值 <span class="math inline">\(Y\)</span>，图中的两个圈分别是第1个(左下)和第29个(右上)采样点
+</p>
+</div>
+<p>基于 Langevin-Hastings 采样器实现的马尔科夫链蒙特卡罗算法，参数 <span class="math inline">\(\alpha\)</span> 的先验分布选均值为 0，方差为 1 的标准正态分布，参数 <span class="math inline">\(\phi\)</span> 的先验分布选期望为 0.2 的指数分布，参数 <span class="math inline">\(\sigma^2\)</span> 的先验分布是非中心的逆卡方分布，其非中心化参数为 0.5，自由度为 5，各参数的先验选择来自 Ole F. Christensen 和 Peter J. Ribeiro Jr. (2002年) <span class="citation">(Christensen and Ribeiro Jr. <a href="#ref-geoRglm2002">2002</a>)</span>。Langevin-Hastings 算法运行 11000 次迭代，前 1000 次迭代用作热身 (warm-up)，后 10 万次迭代里间隔 100 采样。</p>
+<p><span class="math display">\[\begin{align}
+\alpha   &amp; \sim \mathcal{N}(0,1) \\
+\phi     &amp; \sim \mathrm{Exp}(0.2) \\
+\sigma^2 &amp; \sim \mathrm{Inv-}\chi^2(5,0.5)
+\end{align}\]</span></p>
 <table>
-<caption><span id="tab:simulation-norm">表 5.1: </span> 正态分布情形下的数值模拟比较</caption>
+<caption><span id="tab:MCLH-vs-NUTS">表 5.1: </span> Langevin-Hastings 算法与 NUTS 算法的数值模拟比较，模型参数 <span class="math inline">\(\alpha,\phi,\sigma^2\)</span> 的估计值（后验分布的均值）、方差（后验分布的方差）和 5 个分位点（后验分布的 5 个分位点），采样点数目分别考虑了 <span class="math inline">\(N = 36, 64, 81, 100\)</span> 的情况，括号内为相应参数的真值</caption>
 <thead>
 <tr class="header">
-<th align="center">参数</th>
-<th align="center">真值</th>
-<th align="center">估计</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center">CPU (s)</th>
-<th align="center"></th>
-<th align="center"></th>
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">var</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">N</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\beta_{0}\)</span></td>
-<td align="center">1.977</td>
-<td align="center">1.016</td>
-<td align="center">0.803</td>
-<td align="center">21.937</td>
-<td align="center">0.857</td>
-<td align="center">0.960</td>
-<td align="center">298.250</td>
+<td align="left"><span class="math inline">\(\alpha\)</span></td>
+<td align="right">-0.354(0)</td>
+<td align="right">0.079</td>
+<td align="right">-0.938</td>
+<td align="right">-0.524</td>
+<td align="right">-0.361</td>
+<td align="right">-0.173</td>
+<td align="right">0.215</td>
+<td align="right">36</td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(\beta_{1}\)</span></td>
-<td align="center">1.966</td>
-<td align="center">1.007</td>
-<td align="center">0.796</td>
-<td align="center">28.172</td>
-<td align="center">1.365</td>
-<td align="center">0.516</td>
-<td align="center">464.420</td>
+<td align="left"><span class="math inline">\(\phi\)</span></td>
+<td align="right">0.121(0.2)</td>
+<td align="right">0.006</td>
+<td align="right">0.005</td>
+<td align="right">0.055</td>
+<td align="right">0.110</td>
+<td align="right">0.180</td>
+<td align="right">0.285</td>
+<td align="right">36</td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\beta_{2}\)</span></td>
-<td align="center">1.958</td>
-<td align="center">1.007</td>
-<td align="center">0.796</td>
-<td align="center">38.114</td>
-<td align="center">1.159</td>
-<td align="center">0.970</td>
-<td align="center">634.720</td>
+<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="right">0.683(0.5)</td>
+<td align="right">0.147</td>
+<td align="right">0.215</td>
+<td align="right">0.408</td>
+<td align="right">0.596</td>
+<td align="right">0.850</td>
+<td align="right">1.667</td>
+<td align="right">36</td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(\sigma^2\)</span></td>
-<td align="center">1.935</td>
-<td align="center">1.008</td>
-<td align="center">0.796</td>
-<td align="center">44.317</td>
-<td align="center">3.916</td>
-<td align="center">0.264</td>
-<td align="center">326.780</td>
+<td align="left"><span class="math inline">\(\alpha\)</span></td>
+<td align="right">0.003(0)</td>
+<td align="right">0.089</td>
+<td align="right">-0.596</td>
+<td align="right">-0.169</td>
+<td align="right">0.013</td>
+<td align="right">0.179</td>
+<td align="right">0.609</td>
+<td align="right">64</td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(\phi\)</span></td>
-<td align="center">1.00</td>
-<td align="center">1.05</td>
-<td align="center">0.80</td>
-<td align="center">0.14</td>
-<td align="center">1.68</td>
-<td align="center">0.94</td>
-<td align="center">238.05</td>
+<td align="left"><span class="math inline">\(\phi\)</span></td>
+<td align="right">0.194(0.2)</td>
+<td align="right">0.004</td>
+<td align="right">0.070</td>
+<td align="right">0.145</td>
+<td align="right">0.195</td>
+<td align="right">0.250</td>
+<td align="right">0.295</td>
+<td align="right">64</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="right">0.656(0.5)</td>
+<td align="right">0.096</td>
+<td align="right">0.254</td>
+<td align="right">0.449</td>
+<td align="right">0.592</td>
+<td align="right">0.781</td>
+<td align="right">1.453</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\beta\)</span></td>
+<td align="right">-0.155(0)</td>
+<td align="right">0.044</td>
+<td align="right">-0.565</td>
+<td align="right">-0.284</td>
+<td align="right">-0.156</td>
+<td align="right">-0.03</td>
+<td align="right">0.273</td>
+<td align="right">81</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\phi\)</span></td>
+<td align="right">0.116(0.2)</td>
+<td align="right">0.006</td>
+<td align="right">0.005</td>
+<td align="right">0.055</td>
+<td align="right">0.105</td>
+<td align="right">0.17</td>
+<td align="right">0.280</td>
+<td align="right">81</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="right">0.468(0.5)</td>
+<td align="right">0.057</td>
+<td align="right">0.180</td>
+<td align="right">0.311</td>
+<td align="right">0.414</td>
+<td align="right">0.56</td>
+<td align="right">1.129</td>
+<td align="right">81</td>
 </tr>
 </tbody>
 </table>
-<!-- \begin{table}[!h] -->
-<!-- \begin{center} -->
-<!-- \caption{ 100个数据集的模拟结果：估计，标准差和估计的均方误差 \label{tab:binomal-LRvsMCML}} -->
-<!-- \setlength{\tabcolsep}{2pt} -->
-<!-- \vspace{0.1in} -->
-<!-- \begin{tabular}{lcccccccccc} -->
-<!--  \hline -->
-<!--   参数 &  真值 & \multicolumn{3}{c}{LR8$^*$} & \multicolumn{3}{c}{LR16$^*$} &  -->
-<!--  \multicolumn{3}{c}{MCML} \\ -->
-<!--   \cmidrule(r){3-5}  \cmidrule(r){6-8} \cmidrule(r){9-11} -->
-<!--  \noalign{\smallskip}  -->
-<!--                 &      & 估计   & 标准差 & 均方误差 & 估计   & 标准差 & 均方误差   & 估计  & 标准差 & 均方误差 \\  -->
-<!--    \hline -->
-<!--    $\beta_{0}$  & -1.0 & -1.837 & 0.118  &  0.592   & -1.259 & 0.126  & 0.110      & -1.086 & 0.294   &  0.103 \\  -->
-<!--    $\beta_{1}$  & 1.0  & 1.143  & 0.071  &  0.133   & 1.291  & 0.073  & 0.063      & 0.989  & 0.072   &  0.049 \\  -->
-<!--    $\beta_{2}$  & 0.5  & 0.413  & 0.025  &  0.073   & 0.241  & 0.026  & 0.014      & 0.339  & 0.012   &  0.012 \\  -->
-<!--    $\sigma^2$   & 1.0  & 0.528  & 0.177  &  4.060   & 0.499  & 0.090  & 0.060      & 0.268  & 0.405   &  0.013 \\  -->
-<!--    $\phi$       & 1.0  & 0.478  & 0.052  &  0.131   & 0.110  & 0.041  & 0.007      & 0.073  & 0.167   &  0.007 \\  -->
-<!--    \hline -->
-<!--  \end{tabular} -->
-<!-- \end{center} -->
-<!-- \vspace{0.05in} -->
-<!-- * LR8/LR16：低秩近似算法分别使用 $8\times 8$ 和 $16\times 16$ 个采样点， -->
-<!-- \end{table} -->
-<!-- \begin{table} -->
-<!-- \begin{center} -->
-<!-- \caption{ 100 个数据集的模拟结果：估计，标准差和估计的均方误差 \label{tab:binomal-MCMCvsSTAN}} -->
-<!-- \setlength{\tabcolsep}{2pt} -->
-<!-- \vspace{0.1in} -->
-<!-- \begin{tabular}{lccccccc} -->
-<!--  \hline -->
-<!--   参数 &  真值 & \multicolumn{3}{c}{贝叶斯MCMC} & \multicolumn{3}{c}{贝叶斯STAN-MCMC}  \\ -->
-<!--   \cmidrule(r){3-5}  \cmidrule(r){6-8}  -->
-<!--  \noalign{\smallskip}  -->
-<!--                 &     & 估计  & 标准差 & 均方误差 & 估计  & 标准差 & 均方误差 \\  -->
-<!--    \hline -->
-<!--    $\beta_{0}$  & -1.0 & -1.239 & 0.848 &  0.777   & -1.225 & 0.248  & 0.112      \\  -->
-<!--    $\beta_{1}$  & 1.0  & 0.985 & 0.052  &  2.941e-03   & 1.026  & 0.054  & 3.607e-03      \\  -->
-<!--    $\beta_{2}$  & 0.5  & 0.519 & 0.019  &  7.422e-04   & 0.503  & 0.016  & 2.649e-04      \\  -->
-<!--    $\sigma^2$   & 1.0  & 0.803 & 0.521  &  0.310   & 0.322  & 0.283  & 0.540      \\  -->
-<!--    $\phi$       & 1.0  & 0.182 & 0.069  &  0.673   & 0.514  & 0.322  & 0.341      \\  -->
-<!--    \hline -->
-<!--  \end{tabular} -->
-<!-- \end{center} -->
-<!-- \end{table} -->
+<p>参数 <span class="math inline">\(\alpha,\phi,\sigma^2\)</span> 的贝叶斯估计没有显式表达式，通常用后验分布的均值作为参数的估计， 估计的精度或者说好坏用后验分布的方差衡量，而均方误差在参数估计取后验均值时，就是后验方差，所以表 <a href="simulations.html#tab:MCLH-vs-NUTS">5.1</a> 不再提供估计的均方误差值，而是提供了 5 个后验分布的分位点，在 95% 的置信水平下，样本分位点 0.025 和 0.975 的值组成了置信区间的上下界。64 个采样点处 <span class="math inline">\(p(x_i), i = 1, \ldots, 64\)</span> 的后验分布的均值、方差、标准差和 5个分位点见附表 <a href="appendix.html#tab:LH-binom-SGLMM">7.1</a></p>
 </div>
 <div id="possion-sglmm" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> 响应变量服从泊松分布</h3>
-<p>响应变量服从泊松分布，模型为 <a href="simulations.html#eq:sim-SGLMM">(5.4)</a>，固定效应参数 <span class="math inline">\(\beta = (\beta_0, \beta_1, \beta_2)\)</span>， 空间效应参数 <span class="math inline">\(\boldsymbol{\theta} = (\sigma^2,\phi)\)</span>。 参数设置为 <span class="math inline">\(\beta = c(-1,1,0.5), \boldsymbol{\theta} = (1,1)\)</span>， 采样点数目为 <span class="math inline">\(N=49\)</span>， 每个采样点抽取的样本数 <span class="math inline">\(m_i = 100,i = 1,2,\ldots,N\)</span>，在这组参数下，重复产生 100 个数据集。</p>
-<!-- \begin{table} -->
-<!-- \begin{center} -->
-<!-- \caption{ 100个数据集的模拟结果：估计，标准差和估计的均方误差 \label{tab:possion-LRvsMCML}} -->
-<!-- \setlength{\tabcolsep}{2pt} -->
-<!-- \vspace{0.1in} -->
-<!-- \begin{tabular}{lcccccccccc} -->
-<!--  \hline -->
-<!--   参数 &  真值 & \multicolumn{3}{c}{LR8} & \multicolumn{3}{c}{LR16} &  -->
-<!--  \multicolumn{3}{c}{MCML} \\ -->
-<!--   \cmidrule(r){3-5}  \cmidrule(r){6-8} \cmidrule(r){9-11} -->
-<!--  \noalign{\smallskip}  -->
-<!--                 &     & 估计  & 标准差 & 均方误差 & 估计  & 标准差 & 均方误差 & 估计  & 标准差 & 均方误差 \\  -->
-<!--    \hline -->
-<!--    $\beta_{0}$  & -1.0 & -1.837 & 0.118  &  0.592   & -1.259 & 0.126  & 0.110      & -1.086 & 0.294   &  0.103 \\  -->
-<!--    $\beta_{1}$  & 1.0  & 1.143  & 0.071  &  0.133   & 1.291  & 0.073  & 0.063      & 0.989  & 0.072   &  0.049 \\  -->
-<!--    $\beta_{2}$  & 0.5  & 0.413  & 0.025  &  0.073   & 0.241  & 0.026  & 0.014      & 0.339  & 0.012   &  0.012 \\  -->
-<!--    $\sigma^2$   & 1.0  & 0.528  & 0.177  &  4.060   & 0.499  & 0.090  & 0.060      & 0.268  & 0.405   &  0.013 \\  -->
-<!--    $\phi$       & 1.0  & 0.478  & 0.052  &  0.131   & 0.110  & 0.041  & 0.007      & 0.073  & 0.167   &  0.007 \\  -->
-<!--    \hline -->
-<!--  \end{tabular} -->
-<!-- \end{center} -->
-<!-- \end{table} -->
-<!-- \begin{table} -->
-<!-- \begin{center} -->
-<!-- \caption{ 100个数据集的模拟结果：估计，标准差和估计的均方误差 \label{tab:possion-MCMCvsSTAN}} -->
-<!-- \setlength{\tabcolsep}{2pt} -->
-<!-- \vspace{0.1in} -->
-<!-- \begin{tabular}{lccccccc} -->
-<!--  \hline -->
-<!--   参数 &  真值 & \multicolumn{3}{c}{贝叶斯MCMC} & \multicolumn{3}{c}{贝叶斯STAN-MCMC}  \\ -->
-<!--   \cmidrule(r){3-5}  \cmidrule(r){6-8}  -->
-<!--  \noalign{\smallskip}  -->
-<!--                 &     & 估计  & 标准差 & 均方误差 & 估计  & 标准差 & 均方误差 \\  -->
-<!--    \hline -->
-<!--    $\beta_{0}$  & -1.0 & -5.430 & 0.562  &  1.994   & -2.060 & 0.825  & 1.805    \\  -->
-<!--    $\beta_{1}$  & 1.0  & 0.942 & 0.082  &  0.110   & 1.113  & 0.311  & 0.109    \\  -->
-<!--    $\beta_{2}$  & 0.5  & 0.591 & 0.039  &  0.992   & 0.563  & 0.066  & 8.463e-03     \\  -->
-<!--    $\sigma^2$   & 1.0  & 0.415 & 0.264  &  0.412   & 0.830  & 0.497  & 0.276    \\  -->
-<!--    $\phi$       & 1.0  & 0.514 & 0.492  &  0.478   & 0.392  & 0.223  & 0.418    \\  -->
-<!--    \hline -->
-<!--  \end{tabular} -->
-<!-- \end{center} -->
-<!-- \end{table} -->
+<h3><span class="header-section-number">5.2.2</span> 响应变量服从泊松分布</h3>
+<p>响应变量 <span class="math inline">\(Y\)</span> 服从泊松分布，即 <span class="math inline">\(Y_i \sim \mathrm{Possion}(\lambda(x_{i}))\)</span>，泊松空间广义线性混合效应模型 <a href="simulations.html#eq:pois-SGLMM">(5.6)</a></p>
+<p><span class="math display" id="eq:pois-SGLMM">\[\begin{equation}
+g(\mu_i) = \log(\lambda(x_i)) = \alpha + S(x_i) \tag{5.6}
+\end{equation}\]</span></p>
+<p>其中，<span class="math inline">\(S(x)\)</span> 是平稳空间高斯过程，其均值为 <span class="math inline">\(\mathbf{0}\)</span>，协方差函数为 <span class="math inline">\(\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)\)</span>，<span class="math inline">\(\kappa = 0.5\)</span>，联系函数 <span class="math inline">\(g(\mu_i) = \log\{\lambda(x_{i})\}\)</span>。</p>
+<p>类似 <a href="simulations.html#sim-binomal-sglmm">5.2.1</a> 小节产生随机数的过程，</p>
+<table>
+<caption><span id="tab:Pois-MCLV-vs-NUTS">表 5.2: </span> 模型参数真值设置为 <span class="math inline">\(\alpha = 1, \sigma^2 = 1, \phi = 0.2, \kappa = 0.5\)</span></caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">var</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\alpha\)</span></td>
+<td align="right">0.983</td>
+<td align="right">0.034</td>
+<td align="right">0.628</td>
+<td align="right">0.868</td>
+<td align="right">0.985</td>
+<td align="right">1.102</td>
+<td align="right">1.335</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\phi\)</span></td>
+<td align="right">0.324</td>
+<td align="right">0.054</td>
+<td align="right">0.020</td>
+<td align="right">0.140</td>
+<td align="right">0.280</td>
+<td align="right">0.460</td>
+<td align="right">0.900</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="right">0.883</td>
+<td align="right">0.083</td>
+<td align="right">0.446</td>
+<td align="right">0.681</td>
+<td align="right">0.833</td>
+<td align="right">1.036</td>
+<td align="right">1.610</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -433,6 +475,30 @@ g(\mu_i) = \beta_{0} + \beta_{1} * X_{1} + \beta_{2} * X_{2} + S(x) \tag{5.4}
 <div id="refs" class="references">
 <div id="ref-Diggle1998">
 <p>Diggle, Peter J., J. A. Tawn, and R. A. Moyeed. 1998. “Model-Based Geostatistics.” <em>Journal of the Royal Statistical Society, Series C</em> 47 (3): 299–350.</p>
+</div>
+<div id="ref-geoR2001">
+<p>Ribeiro Jr., Paulo J., and Peter J. Diggle. 2001. “geoR: A Package for Geostatistical Analysis.” <em>R News</em> 1 (2): 14–18.</p>
+</div>
+<div id="ref-RandomFields2015">
+<p>Schlather, Martin, Alexander Malinowski, Peter J. Menck, Marco Oesting, and Kirstin Strokorb. 2015. “Analysis, Simulation and Prediction of Multivariate Random Fields with Package RandomFields.” <em>Journal of Statistical Software</em> 63 (8): 1–25.</p>
+</div>
+<div id="ref-Rue2009">
+<p>Rue, Håvard, Sara Martino, and Nicholas Chopin. 2009. “Approximate Bayesian Inference for Latent Gaussian Models Using Integrated Nested Laplace Approximations (with Discussion).” <em>Journal of the Royal Statistical Society, Series B</em> 71: 319–92.</p>
+</div>
+<div id="ref-INLA2015">
+<p>Lindgren, Finn, and Håvard Rue. 2015. “Bayesian Spatial Modelling with R-INLA.” <em>Journal of Statistical Software</em> 63 (19): 1–25.</p>
+</div>
+<div id="ref-Virgilio2018">
+<p>Gómez-Rubio, Virgilio, and Håvard Rue. 2018. “Markov Chain Monte Carlo with the Integrated Nested Laplace Approximation.” <em>Statistics and Computing</em> 28 (5): 1033–51.</p>
+</div>
+<div id="ref-Blangiardo2015">
+<p>Marta Blangiardo, Michela Cameletti. 2015. <em>Spatial and Spatio-Temporal Bayesian Models with R-INLA</em>. Chichester, UK: John Wiley; Sons Inc.</p>
+</div>
+<div id="ref-Faraway2018">
+<p>Xiaofeng Wang, Ryan Yue, and Julian Faraway. 2018. <em>Bayesian Regression with INLA</em>. Boca Raton, Florida: Chapman; Hall/CRC.</p>
+</div>
+<div id="ref-geoRglm2002">
+<p>Christensen, O.F., and P.J. Ribeiro Jr. 2002. “geoRglm: A Package for Generalised Linear Spatial Models.” <em>R News</em> 2 (2): 26–28.</p>
 </div>
 </div>
             </section>
@@ -474,9 +540,9 @@ gitbook.start({
 "link": "https://github.com/XiangyunHuang/Thesis-Template-Bookdown/edit/master/04-simulations.Rmd",
 "text": "编辑"
 },
-"download": ["Thesis-Template-Bookdown.pdf", "Thesis-Template-Bookdown.epub", "Thesis-Template-Bookdown.mobi"],
+"download": ["Thesis-Template-Bookdown.pdf"],
 "toc": {
-"collapse": "none"
+"collapse": "section"
 }
 });
 });
@@ -488,7 +554,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

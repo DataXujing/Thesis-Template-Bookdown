@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>master thesis template</title>
-  <meta name="description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform.">
+  <title>Master Thesis Template</title>
+  <meta name="description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="master thesis template" />
+  <meta property="og:title" content="Master Thesis Template" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/logo.png" />
-  <meta property="og:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta property="og:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="github-repo" content="XiangyunHuang/Thesis-Template-Bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="master thesis template" />
+  <meta name="twitter:title" content="Master Thesis Template" />
   
-  <meta name="twitter:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta name="twitter:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="twitter:image" content="images/logo.png" />
 
 <meta name="author" content="Xiang-Yun Huang">
 
 
-<meta name="date" content="2018-09-27">
+<meta name="date" content="2018-10-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="models.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -144,10 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="prepare.html"><a href="prepare.html#Modified-Bessel-functions"><i class="fa fa-check"></i><b>2.6</b> 修正的第三类贝塞尔函数</a></li>
 <li class="chapter" data-level="2.7" data-path="prepare.html"><a href="prepare.html#Laplace-approximation"><i class="fa fa-check"></i><b>2.7</b> 拉普拉斯近似</a></li>
 <li class="chapter" data-level="2.8" data-path="prepare.html"><a href="prepare.html#Jeffreys-prior"><i class="fa fa-check"></i><b>2.8</b> Jeffreys 先验分布</a></li>
-<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯理论</a></li>
-<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#bayesian-data-analysis"><i class="fa fa-check"></i><b>2.10</b> 贝叶斯数据分析</a></li>
-<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.11</b> 维数灾难与蒙特卡罗积分</a></li>
-<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.12</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯定理与先验分布</a></li>
+<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.10</b> 维数灾难与蒙特卡罗积分</a></li>
+<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.11</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#section-2.12"><i class="fa fa-check"></i><b>2.12</b> 弱先验信息</a></li>
+<li class="chapter" data-level="2.13" data-path="prepare.html"><a href="prepare.html#section-2.13"><i class="fa fa-check"></i><b>2.13</b> 方差缩减因子</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>3</b> 统计模型</a><ul>
 <li class="chapter" data-level="3.1" data-path="models.html"><a href="models.html#Linear-Models"><i class="fa fa-check"></i><b>3.1</b> 线性模型</a></li>
@@ -164,25 +166,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="algorithms.html"><a href="algorithms.html"><i class="fa fa-check"></i><b>4</b> 参数估计</a><ul>
 <li class="chapter" data-level="4.1" data-path="algorithms.html"><a href="algorithms.html#mle"><i class="fa fa-check"></i><b>4.1</b> 极大似然估计</a></li>
 <li class="chapter" data-level="4.2" data-path="algorithms.html"><a href="algorithms.html#profile-likelihood"><i class="fa fa-check"></i><b>4.2</b> 剖面似然估计</a></li>
-<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#maximum-likelihood-estimates"><i class="fa fa-check"></i><b>4.3</b> 极大似然估计</a></li>
-<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.4</b> 参数估计的算法</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.4.1</b> 拉普拉斯近似算法</a></li>
-<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.4.2</b> 蒙特卡罗极大似然算法</a></li>
-<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.4.3</b> 贝叶斯 MCMC 算法</a></li>
-<li class="chapter" data-level="4.4.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.4.4</b> 低秩近似算法</a></li>
+<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.3</b> 参数估计的算法</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.3.1</b> 拉普拉斯近似算法</a></li>
+<li class="chapter" data-level="4.3.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.3.2</b> 蒙特卡罗极大似然算法</a></li>
+<li class="chapter" data-level="4.3.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.3.3</b> 贝叶斯 MCMC 算法</a></li>
+<li class="chapter" data-level="4.3.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.3.4</b> 低秩近似算法</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.5</b> 贝叶斯 STAN-MCMC 算法</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="algorithms.html"><a href="algorithms.html#section-4.5.1"><i class="fa fa-check"></i><b>4.5.1</b> 算法提出的背景和意义</a></li>
-<li class="chapter" data-level="4.5.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.5.2</b> STAN-MCMC 算法实现过程</a></li>
-<li class="chapter" data-level="4.5.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.5.3</b> 求解模型的 R 包</a></li>
+<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.4</b> 贝叶斯 STAN-MCMC 算法</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 算法提出的背景和意义</a></li>
+<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.4.2</b> STAN-MCMC 算法实现过程</a></li>
+<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.4.3</b> 求解模型的 R 包</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simulations.html"><a href="simulations.html"><i class="fa fa-check"></i><b>5</b> 数值模拟</a><ul>
-<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 一维空间高斯过程</a></li>
-<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-gp"><i class="fa fa-check"></i><b>5.2</b> 平稳空间高斯过程</a></li>
-<li class="chapter" data-level="5.3" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.3</b> 空间广义线性混合效应模型</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="simulations.html"><a href="simulations.html#binomal-sglmm"><i class="fa fa-check"></i><b>5.3.1</b> 响应变量服从二项分布</a></li>
-<li class="chapter" data-level="5.3.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.3.2</b> 响应变量服从泊松分布</a></li>
+<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#spatial-gaussian-processes"><i class="fa fa-check"></i><b>5.1</b> 平稳空间高斯过程</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="simulations.html"><a href="simulations.html#sim-one-gp"><i class="fa fa-check"></i><b>5.1.1</b> 一维平稳空间高斯过程</a></li>
+<li class="chapter" data-level="5.1.2" data-path="simulations.html"><a href="simulations.html#sim-two-gp"><i class="fa fa-check"></i><b>5.1.2</b> 二维平稳空间高斯过程</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.2</b> 空间广义线性混合效应模型</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="simulations.html"><a href="simulations.html#sim-binomal-sglmm"><i class="fa fa-check"></i><b>5.2.1</b> 响应变量服从二项分布</a></li>
+<li class="chapter" data-level="5.2.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.2.2</b> 响应变量服从泊松分布</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> 数据分析</a><ul>
@@ -194,13 +197,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> 总结展望</a></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附录</a><ul>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#sessioninfo"><i class="fa fa-check"></i>软件信息</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#random-number-generation"><i class="fa fa-check"></i>随机数生成</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#compare-algrithms"><i class="fa fa-check"></i>算法比较</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#tables-simulations"><i class="fa fa-check"></i>表格</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>数据模拟</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i><b>7.0.1</b> 模拟平稳高斯过程</a></li>
+<li class="chapter" data-level="7.0.2" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i><b>7.0.2</b> 模拟空间广义线性混合效应模型</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="References.html"><a href="References.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#HMC-Algrithms"><i class="fa fa-check"></i>HMC 算法</a></li>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#compileinfo"><i class="fa fa-check"></i><b>7.1</b> 编译信息</a></li>
+<li class="chapter" data-level="7.2" data-path="appendix.html"><a href="appendix.html#hardwareinfo"><i class="fa fa-check"></i><b>7.2</b> 硬件环境</a></li>
+<li class="chapter" data-level="7.3" data-path="appendix.html"><a href="appendix.html#sysinfo"><i class="fa fa-check"></i><b>7.3</b> 系统环境</a></li>
+<li class="chapter" data-level="7.4" data-path="appendix.html"><a href="appendix.html#softwareinfo"><i class="fa fa-check"></i><b>7.4</b> 软件环境</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">本论文由 bookdown 强力驱动</a></li>
 
 </ul>
 
@@ -211,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">master thesis template</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Master Thesis Template</a>
           </h1>
         </div>
 
@@ -224,62 +234,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="todo">本章概要</span></p>
 <div id="sec:exp" class="section level2">
 <h2><span class="header-section-number">2.1</span> 指数族</h2>
-<p>Exponential family:</p>
-<p><span class="math display">\[
-f(y;\theta,\phi) = \exp[(a(y) b(\theta) + c(\theta))/f(\phi) + d(y,\phi)]
-\]</span></p>
-<p>Poisson (with <span class="math inline">\(\lambda \to \theta\)</span>, <span class="math inline">\(x \to y\)</span>) (<span class="math inline">\(\phi=1\)</span>):</p>
-<p><span class="math display" id="eq:another-exp-fam">\[\begin{equation*}
-\begin{split}
-f(y,\theta) &amp; = \exp(-\theta) \theta^y/(y!) \\
-            &amp; = \exp\left( \underbrace{y}_{a(y)} 
-                           \underbrace{\log \theta}_{b(\theta)} + 
-                           \underbrace{(-\theta)}_{c(\theta)} + 
-                           \underbrace{(- \log(y!))}_{d(y)} \right)
-\end{split} \tag{2.1}
-\end{equation*}\]</span></p>
 <p>一般地，样本 <span class="math inline">\(\mathbf{Y}\)</span> 的分布服从指数族，即形如</p>
 <p><span class="math display" id="eq:common-exponential-family">\[\begin{equation}
 f_{Y}(y;\theta,\phi) = \exp\big\{ \big(y\theta - b(\theta) \big)/a(\phi) + c(y,\phi) \big\}
-\tag{2.2}
+\tag{2.1}
 \end{equation}\]</span></p>
 <p>其中，<span class="math inline">\(a(\cdot),b(\cdot),c(\cdot)\)</span> 是某些特定的函数。如果 <span class="math inline">\(\phi\)</span> 已知，这是一个含有典则参数 <span class="math inline">\(\theta\)</span> 的指数族模型，如果 <span class="math inline">\(\phi\)</span> 未知，它可能是含有两个参数的指数族。对于正态分布</p>
 <p><span class="math display" id="eq:normal-distribution">\[\begin{equation}
 \begin{aligned}
 f_{Y}(y;\theta,\phi) &amp; = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\{-\frac{(y - \mu)^2}{2\sigma^2}  \}  \\
  &amp; = \exp\big \{ (y\mu - \mu^2/2)/\sigma^2 - \frac{1}{2}\big(y^2/\sigma^2 + \log(2\pi\sigma^2)\big) \big\}
-\end{aligned} \tag{2.3}
+\end{aligned} \tag{2.2}
 \end{equation}\]</span></p>
-<p>通过与 <a href="prepare.html#eq:common-exponential-family">(2.2)</a> 式对比，可知 <span class="math inline">\(\theta = \mu\)</span>，<span class="math inline">\(\phi = \sigma^2\)</span>，并且有</p>
+<p>通过与 <a href="prepare.html#eq:common-exponential-family">(2.1)</a> 式对比，可知 <span class="math inline">\(\theta = \mu\)</span>，<span class="math inline">\(\phi = \sigma^2\)</span>，并且有</p>
 <p><span class="math display">\[
 a(\phi) = \phi, \quad b(\theta) = \theta^2/2, \quad c(y,\phi) = - \frac{1}{2}\{ y^2/\sigma^2 + \log(2\pi\sigma^2) \} 
 \]</span></p>
 <p>记 <span class="math inline">\(l(\theta,\phi;y) = \log f_{Y}(y;\theta,\phi)\)</span> 为给定样本点 <span class="math inline">\(y\)</span> 的情况下，关于 <span class="math inline">\(\theta\)</span> 和 <span class="math inline">\(\phi\)</span> 的对数似然函数。样本分布 <span class="math inline">\(Y\)</span> 的均值和方差具有如下关系</p>
 <p><span class="math display" id="eq:mean-log-lik">\[\begin{equation}
 \mathsf{E}\big( \frac{\partial l}{\partial \theta} \big) = 0
-\tag{2.4}
+\tag{2.3}
 \end{equation}\]</span></p>
 <p>和</p>
 <p><span class="math display" id="eq:variance-log-lik">\[\begin{equation}
 \mathsf{E}\big( \frac{\partial^2 l}{\partial \theta^2} \big) + \mathsf{E}\big(\frac{\partial l}{\partial \theta}\big)^2  = 0
-\tag{2.5}
+\tag{2.4}
 \end{equation}\]</span></p>
-<p>从 <a href="prepare.html#eq:common-exponential-family">(2.2)</a> 式知</p>
+<p>从 <a href="prepare.html#eq:common-exponential-family">(2.1)</a> 式知</p>
 <p><span class="math display">\[ l(\theta,\phi;y) = {y\theta - b(\theta)}/a(\phi) + c(y,\phi) \]</span></p>
 <p>因此，</p>
 <p><span class="math display" id="eq:partial-log-lik">\[\begin{equation}
 \begin{aligned}
 \frac{\partial l}{\partial \theta} &amp; = {y - b&#39;(\theta)}/a(\phi)  \\
 \frac{\partial^2 l}{\partial \theta^2}  &amp; = - b&#39;&#39;(\theta)/a(\phi)
-\end{aligned} \tag{2.6}
+\end{aligned} \tag{2.5}
 \end{equation}\]</span></p>
-<p>从 <a href="prepare.html#eq:mean-log-lik">(2.4)</a> 式和 <a href="prepare.html#eq:partial-log-lik">(2.6)</a>，可以得出</p>
+<p>从 <a href="prepare.html#eq:mean-log-lik">(2.3)</a> 式和 <a href="prepare.html#eq:partial-log-lik">(2.5)</a>，可以得出</p>
 <p><span class="math display">\[ 
 0 = \mathsf{E}\big( \frac{\partial l}{\partial \theta} \big) = \big\{ \mu - b&#39;(\theta) \big\}/a(\phi)
 \]</span></p>
 <p>所以</p>
 <p><span class="math display">\[ \mathsf{E}(Y) = \mu = b&#39;(\theta) \]</span></p>
-<p>根据 <a href="prepare.html#eq:variance-log-lik">(2.5)</a> 式和 <a href="prepare.html#eq:partial-log-lik">(2.6)</a> 式，可得</p>
+<p>根据 <a href="prepare.html#eq:variance-log-lik">(2.4)</a> 式和 <a href="prepare.html#eq:partial-log-lik">(2.5)</a> 式，可得</p>
 <p><span class="math display">\[ 0 = - \frac{b&#39;&#39;(\theta)}{a(\phi)} + \frac{\mathsf{Var}(Y)}{a^2(\phi)} \]</span></p>
 <p>所以</p>
 <p><span class="math display">\[ \mathsf{Var}(Y) = b&#39;&#39;(\theta)a(\phi) \]</span></p>
@@ -289,7 +285,7 @@ a(\phi) = \phi, \quad b(\theta) = \theta^2/2, \quad c(y,\phi) = - \frac{1}{2}\{ 
 <p>其中 <span class="math inline">\(\phi\)</span> 可由 <span class="math inline">\(\sigma^2\)</span> 表示，故而也叫做发散参数 (dispersion parameter)，是一个与样本观察值相关的常数，<span class="math inline">\(w\)</span> 是已知的权重，随样本观察值变化。对正态分布模型而言，<span class="math inline">\(w\)</span> 的分量是 <span class="math inline">\(m\)</span> 个相互独立的样本观察值的均值，我们有</p>
 <p><span class="math display">\[ a(\phi) = \sigma^2/m\]</span></p>
 <p>所以，<span class="math inline">\(w = m\)</span>。</p>
-<p>根据 <a href="prepare.html#eq:common-exponential-family">(2.2)</a>式，正态、泊松和二项分布的特征见表 <a href="prepare.html#tab:common-characteristics">2.1</a>，其它常见分布见 Peter McCullagh 等 (1989年) <span class="citation">(McCullagh and Nelder <a href="#ref-McCullagh1989">1989</a>)</span>。</p>
+<p>根据 <a href="prepare.html#eq:common-exponential-family">(2.1)</a>式，正态、泊松和二项分布的特征见表 <a href="prepare.html#tab:common-characteristics">2.1</a>，其它常见分布见 Peter McCullagh 等 (1989年) <span class="citation">(McCullagh and Nelder <a href="#ref-McCullagh1989">1989</a>)</span>。</p>
 <table>
 <caption><span id="tab:common-characteristics">表 2.1: </span> 指数族内常见的一元分布的共同特征及符号表示<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></caption>
 <colgroup>
@@ -363,21 +359,21 @@ a(\phi) = \phi, \quad b(\theta) = \theta^2/2, \quad c(y,\phi) = - \frac{1}{2}\{ 
 <h2><span class="header-section-number">2.2</span> 最小二乘估计</h2>
 <p>考虑如下线性模型的最小二乘估计</p>
 <p><span class="math display" id="eq:linear-models">\[\begin{equation}
-\mathsf{E}\mathbf{Y} = \mathbf{X}\boldsymbol{\beta}; \mathsf{Var}(\mathbf{Y}) = \sigma^2 \mathbf{I}_{n} \tag{2.7}
+\mathsf{E}\mathbf{Y} = \mathbf{X}\boldsymbol{\beta}; \mathsf{Var}(\mathbf{Y}) = \sigma^2 \mathbf{I}_{n} \tag{2.6}
 \end{equation}\]</span></p>
 <p>其中， <span class="math inline">\(\mathbf{Y}\)</span> 为 <span class="math inline">\(n \times 1\)</span> 维观测向量， <span class="math inline">\(\mathbf{X}\)</span> 为已知的 <span class="math inline">\(n \times p (p \leq n)\)</span> 阶设计矩阵，<span class="math inline">\(\boldsymbol{\beta}\)</span> 为 <span class="math inline">\(p \times 1\)</span> 维未知参数，<span class="math inline">\(\sigma^2\)</span> 未知，<span class="math inline">\(\mathbf{I}_{n}\)</span> 为 <span class="math inline">\(n\)</span> 阶单位阵。</p>
 
 <div class="definition">
-<p><span id="def:least-squares-estimate" class="definition"><strong>定义 2.1  (最小二乘估计)  </strong></span>在模型 <a href="prepare.html#eq:linear-models">(2.7)</a> 中，如果</p>
+<p><span id="def:least-squares-estimate" class="definition"><strong>定义 2.1  (最小二乘估计)  </strong></span>在模型 <a href="prepare.html#eq:linear-models">(2.6)</a> 中，如果</p>
 <p><span class="math display" id="eq:least-squares">\[\begin{equation}
-(\mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}})^{\top}(\mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}}) = \min_{\beta}(\mathbf{Y} - \mathbf{X}\boldsymbol{\beta})^{\top}(\mathbf{Y} - \mathbf{X}\boldsymbol{\beta}) \tag{2.8}
+(\mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}})^{\top}(\mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}}) = \min_{\beta}(\mathbf{Y} - \mathbf{X}\boldsymbol{\beta})^{\top}(\mathbf{Y} - \mathbf{X}\boldsymbol{\beta}) \tag{2.7}
 \end{equation}\]</span></p>
 则称 <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> 为 <span class="math inline">\(\boldsymbol{\beta}\)</span> 的最小二乘估计 (Least Squares Estimate，简称 LSE)。
 </div>
 
 
 <div class="theorem">
-<p><span id="thm:unbiased" class="theorem"><strong>定理 2.1  (最小二乘估计)  </strong></span>若模型 <a href="prepare.html#eq:linear-models">(2.7)</a> 中的 <span class="math inline">\(\mathbf{X}\)</span> 是列满秩的矩阵，则 <span class="math inline">\(\boldsymbol{\beta}\)</span> 的最小二乘估计为</p>
+<p><span id="thm:unbiased" class="theorem"><strong>定理 2.1  (最小二乘估计)  </strong></span>若模型 <a href="prepare.html#eq:linear-models">(2.6)</a> 中的 <span class="math inline">\(\mathbf{X}\)</span> 是列满秩的矩阵，则 <span class="math inline">\(\boldsymbol{\beta}\)</span> 的最小二乘估计为</p>
 <p><span class="math display">\[
 \hat{\boldsymbol{\beta}}_{LS} = ( \mathbf{X}^{\top}\mathbf{X} )^{-1}\mathbf{X}^{\top} \mathbf{Y}, \quad  \mathsf{Var}(\hat{\boldsymbol{\beta}}_{LS}) = \sigma^2 (\mathbf{X}^{\top}\mathbf{X})^{-1}  
 \]</span></p>
@@ -385,7 +381,7 @@ a(\phi) = \phi, \quad b(\theta) = \theta^2/2, \quad c(y,\phi) = - \frac{1}{2}\{ 
 <p><span class="math display">\[
 \hat{\sigma^2}_{LS} = (\mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}}_{LS})^{\top}(\mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}}_{LS})/(n - p)
 \]</span></p>
-<p>若将模型 <a href="prepare.html#eq:linear-models">(2.7)</a> 的条件 <span class="math inline">\(\mathsf{Var}(\mathbf{Y}) = \sigma^2 \mathbf{I}_{n}\)</span> 改为 <span class="math inline">\(\mathsf{Var}(\mathbf{Y}) = \sigma^2 \mathbf{G}\)</span>， <span class="math inline">\(G(&gt;0)\)</span> 为已知正定阵，则<span class="math inline">\(\boldsymbol{\beta}\)</span> 的最小二乘估计为</p>
+<p>若将模型 <a href="prepare.html#eq:linear-models">(2.6)</a> 的条件 <span class="math inline">\(\mathsf{Var}(\mathbf{Y}) = \sigma^2 \mathbf{I}_{n}\)</span> 改为 <span class="math inline">\(\mathsf{Var}(\mathbf{Y}) = \sigma^2 \mathbf{G}\)</span>， <span class="math inline">\(G(&gt;0)\)</span> 为已知正定阵，则<span class="math inline">\(\boldsymbol{\beta}\)</span> 的最小二乘估计为</p>
 <p><span class="math display">\[
 \tilde{\boldsymbol{\beta}}_{LS} = ( \mathbf{X}^{\top} G^{-1} \mathbf{X})^{-1} \mathbf{X}^{\top} G^{-1} \mathbf{Y} 
 \]</span></p>
@@ -408,13 +404,13 @@ a(\phi) = \phi, \quad b(\theta) = \theta^2/2, \quad c(y,\phi) = - \frac{1}{2}\{ 
 <p><span class="math display">\[ l(\boldsymbol{\theta},\mathbf{x}) = \ln L(\boldsymbol{\theta},\mathbf{x}) \]</span></p>
 <p>为 <span class="math inline">\(\boldsymbol{\theta}\)</span> 的对数似然函数。对数变换是严格单调的，所以 <span class="math inline">\(l(\boldsymbol{\theta},\mathbf{x})\)</span> 与 <span class="math inline">\(L(\boldsymbol{\theta},\mathbf{x})\)</span> 的极大值是等价的。当 MLE 存在时，寻找 MLE 的常用方法是求导数。如果 <span class="math inline">\(\hat{\boldsymbol{\theta}}(\mathbf{x})\)</span> 是 <span class="math inline">\(\boldsymbol{\Theta}\)</span> 的内点，则 <span class="math inline">\(\hat{\boldsymbol{\theta}}(\mathbf{x})\)</span> 是下列似然方程组</p>
 <p><span class="math display" id="eq:likelihood-equations">\[\begin{equation}
-\partial l(\boldsymbol{\theta},\mathbf{x})/ \partial \boldsymbol{\theta}_{i} = 0, \quad i = 1,\ldots, m \tag{2.9}
+\partial l(\boldsymbol{\theta},\mathbf{x})/ \partial \boldsymbol{\theta}_{i} = 0, \quad i = 1,\ldots, m \tag{2.8}
 \end{equation}\]</span></p>
-<p>的解。<span class="math inline">\(p(\mathbf{x};\boldsymbol{\theta})\)</span> 属于指数族时，似然方程组 <a href="prepare.html#eq:likelihood-equations">(2.9)</a> 的解唯一。</p>
+<p>的解。<span class="math inline">\(p(\mathbf{x};\boldsymbol{\theta})\)</span> 属于指数族时，似然方程组 <a href="prepare.html#eq:likelihood-equations">(2.8)</a> 的解唯一。</p>
 
 <div class="theorem">
 <p><span id="thm:consistency" class="theorem"><strong>定理 2.2  (相合性)  </strong></span>设 <span class="math inline">\(x_{1}, \ldots, x_{n}\)</span> 是来自概率密度函数 <span class="math inline">\(p(x;\theta)\)</span> 的一个样本，叙述简单起见，考虑单参数情形，参数空间 <span class="math inline">\(\boldsymbol{\Theta}\)</span> 是一个开区间，<span class="math inline">\(l(\theta;x) = \sum_{i=1}^{n}\ln p(x_{i};\theta)\)</span>。</p>
-若 <span class="math inline">\(\ln (p;\theta)\)</span> 在 <span class="math inline">\(\boldsymbol{\Theta}\)</span> 上可微，且 <span class="math inline">\(p(x;\theta)\)</span> 是可识别的（即 <span class="math inline">\(\forall \theta_1 \neq \theta_2, \{x: p(x;\theta_1) \neq p(x; \theta_2)\}\)</span> 不是零测集），则似然方程 <a href="prepare.html#eq:likelihood-equations">(2.9)</a> 在 <span class="math inline">\(n \to \infty\)</span> 时，以概率 1 有解，且此解关于 <span class="math inline">\(\theta\)</span> 是相合的。
+若 <span class="math inline">\(\ln (p;\theta)\)</span> 在 <span class="math inline">\(\boldsymbol{\Theta}\)</span> 上可微，且 <span class="math inline">\(p(x;\theta)\)</span> 是可识别的（即 <span class="math inline">\(\forall \theta_1 \neq \theta_2, \{x: p(x;\theta_1) \neq p(x; \theta_2)\}\)</span> 不是零测集），则似然方程 <a href="prepare.html#eq:likelihood-equations">(2.8)</a> 在 <span class="math inline">\(n \to \infty\)</span> 时，以概率 1 有解，且此解关于 <span class="math inline">\(\theta\)</span> 是相合的。
 </div>
 
 
@@ -471,7 +467,7 @@ I(\theta_{0}) = \mathsf{E}_{\theta_{0}} \big[ \frac{ p&#39;(x,\theta_{0}) }{ p(x
 \begin{aligned}
 I_{-\kappa}(u) &amp; =  \sum_{m=0}^{\infty} \frac{1}{m!\Gamma(m + \kappa + 1)} \big(\frac{u}{2}\big)^{2m + \kappa} \\
 \mathcal{K}_{\kappa}(u) &amp; = \frac{\pi}{2} \frac{I_{-\kappa}(u) - I_{\kappa}(u)}{\sin (\kappa \pi)}
-\end{aligned} \tag{2.10}
+\end{aligned} \tag{2.9}
 \end{equation}\]</span></p>
 <p>其中 <span class="math inline">\(u \geq 0\)</span>，<span class="math inline">\(\kappa \in \mathbb{R}\)</span>，如果 <span class="math inline">\(\kappa \in \mathbb{Z}\)</span>，则取该点的极限值，实际上 R 内置的函数 <code>besselK</code> 可以计算 <span class="math inline">\(\mathcal{K}_{\kappa}(u)\)</span> <span class="citation">(Campbell <a href="#ref-Campbell1980">1980</a>)</span></p>
 <div class="figure" style="text-align: center"><span id="fig:Bessel-function"></span>
@@ -501,7 +497,7 @@ f(x) = f(a) + \frac{f&#39;(a)}{1!}(x-a) + \frac{f&#39;&#39;(a)}{2!}(x-a)^2 + \fr
 <p><span class="math display">\[
 \int g(x) \mathrm{d}x = \int \exp[\log g(x)] \mathrm{d}x \approx \mathrm{constant} \int \exp[- \frac{(x - \hat{x})^2}{2\hat{\sigma}^2}] \mathrm{d}x
 \]</span></p>
-<p>拉普拉斯方法用正态分布近似分布 <span class="math inline">\(f(x)\)</span>， 其均值 <span class="math inline">\(\hat(x)\)</span>，可以通过求解 <span class="math inline">\(f&#39;(x) = 0\)</span> 获得，方差 <span class="math inline">\(\hat{\sigma}^2 = -1/f&#39;&#39;(\hat{x})\)</span></p>
+<p>拉普拉斯方法用正态分布近似分布 <span class="math inline">\(f(x)\)</span>， 其均值 <span class="math inline">\(\hat{x}\)</span>，可以通过求解 <span class="math inline">\(f&#39;(x) = 0\)</span> 获得，方差 <span class="math inline">\(\hat{\sigma}^2 = -1/f&#39;&#39;(\hat{x})\)</span></p>
 <p>以卡方分布 <span class="math inline">\(\chi^2\)</span> 为例，</p>
 <p><span class="math display">\[\begin{align*}
     f(x; k) &amp; = \frac{ x^{k/2-1} \mathrm{e}^{-x/2} }{ 2^{k/2}\Gamma(k/2) }, x \geq 0 \\
@@ -525,10 +521,10 @@ f(x) = f(a) + \frac{f&#39;(a)}{1!}(x-a) + \frac{f&#39;&#39;(a)}{2!}(x-a)^2 + \fr
 </ol>
 </div>
 <div id="bayes-methods" class="section level2">
-<h2><span class="header-section-number">2.9</span> 贝叶斯理论</h2>
-<p><span class="todo">贝叶斯方法，贝叶斯定理，非信息先验分布，扁平先验</span></p>
+<h2><span class="header-section-number">2.9</span> 贝叶斯定理与先验分布</h2>
+<p><span class="todo">非信息先验分布，扁平先验 flat prior，模糊先验</span></p>
 <p>以标准线性模型为例介绍贝叶斯分析及其基本概念 <span class="citation">(Rasmussen and Williams <a href="#ref-Rasmussen2006">2006</a>)</span>，为什么不用 RMSE 均方误差，WAIC pDIC 模型选择 loo K-CV</p>
-<p>贝叶斯定理 <a href="prepare.html#fig:bayes-theorem">2.2</a> 贝叶斯定理 <a href="prepare.html#eq:bayes-theorem">(2.11)</a></p>
+<p>贝叶斯定理 <a href="prepare.html#fig:bayes-theorem">2.2</a> 贝叶斯定理 <a href="prepare.html#eq:bayes-theorem">(2.10)</a></p>
 <div class="figure" style="text-align: center"><span id="fig:bayes-theorem"></span>
 <img src="figures/bayes-theorem.png" alt="贝叶斯定理" width="70%" />
 <p class="caption">
@@ -552,94 +548,11 @@ p(\boldsymbol{\theta}|\mathbf{Y})  &amp; =  &amp; \displaystyle \frac{p(\boldsym
 \\[16pt]
 &amp; \propto &amp; \displaystyle p(\mathbf{Y}|\boldsymbol{\theta})p(\boldsymbol{\theta})
 &amp; \mbox{ [$\mathbf{Y}$ 已知]}
-\end{array} \tag{2.11}
+\end{array} \tag{2.10}
 \end{align}\]</span></p>
 </div>
-<div id="bayesian-data-analysis" class="section level2">
-<h2><span class="header-section-number">2.10</span> 贝叶斯数据分析</h2>
-<p>以一个广义线性模型为例说明贝叶斯数据分析的过程。模拟数据集 logit 来自 R包 <strong>mcmc</strong>，它包含5个变量，一个响应变量 y 和四个预测变量 x1，x2，x3，x4。频率派的分析可以用这样几行 R 代码实现</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mcmc)
-<span class="kw">data</span>(logit)
-fit &lt;-<span class="st"> </span><span class="kw">glm</span>(y <span class="op">~</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span>x3 <span class="op">+</span><span class="st"> </span>x4, <span class="dt">data =</span> logit, 
-           <span class="dt">family =</span> <span class="kw">binomial</span>(), <span class="dt">x =</span> <span class="ot">TRUE</span>)
-<span class="kw">summary</span>(fit)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call:</span>
-<span class="co">#&gt; glm(formula = y ~ x1 + x2 + x3 + x4, family = binomial(), data = logit, </span>
-<span class="co">#&gt;     x = TRUE)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Deviance Residuals: </span>
-<span class="co">#&gt;    Min      1Q  Median      3Q     Max  </span>
-<span class="co">#&gt; -1.746  -0.691   0.154   0.704   2.194  </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;             Estimate Std. Error z value Pr(&gt;|z|)   </span>
-<span class="co">#&gt; (Intercept)    0.633      0.301    2.10   0.0354 * </span>
-<span class="co">#&gt; x1             0.739      0.362    2.04   0.0410 * </span>
-<span class="co">#&gt; x2             1.114      0.363    3.07   0.0021 **</span>
-<span class="co">#&gt; x3             0.478      0.354    1.35   0.1766   </span>
-<span class="co">#&gt; x4             0.694      0.399    1.74   0.0817 . </span>
-<span class="co">#&gt; ---</span>
-<span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     Null deviance: 137.628  on 99  degrees of freedom</span>
-<span class="co">#&gt; Residual deviance:  87.668  on 95  degrees of freedom</span>
-<span class="co">#&gt; AIC: 97.67</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Number of Fisher Scoring iterations: 6</span></code></pre>
-<p>现在，我们想用贝叶斯的方法来分析同一份数据，假定5个参数（回归系数）的先验分布是独立同正态分布，且均值为 0，标准差为 2。</p>
-<p>该广义线性模型的对数后验密度（对数似然加上对数先验）可以通过下面的 R 命令给出</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>fit<span class="op">$</span>x
-y &lt;-<span class="st"> </span>fit<span class="op">$</span>y
-lupost &lt;-<span class="st"> </span><span class="cf">function</span>(beta, x, y) {
-  eta &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(x <span class="op">%*%</span><span class="st"> </span>beta)
-  logp &lt;-<span class="st"> </span><span class="kw">ifelse</span>(eta <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, eta <span class="op">-</span><span class="st"> </span><span class="kw">log1p</span>(<span class="kw">exp</span>(eta)), <span class="op">-</span><span class="kw">log1p</span>(<span class="kw">exp</span>(<span class="op">-</span>eta)))
-  logq &lt;-<span class="st"> </span><span class="kw">ifelse</span>(eta <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, <span class="op">-</span><span class="kw">log1p</span>(<span class="kw">exp</span>(eta)), <span class="op">-</span>eta <span class="op">-</span><span class="st"> </span><span class="kw">log1p</span>(<span class="kw">exp</span>(<span class="op">-</span>eta)))
-  logl &lt;-<span class="st"> </span><span class="kw">sum</span>(logp[ y <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]) <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>(logq[y <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])
-  <span class="kw">return</span>(logl <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(beta<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="dv">8</span>)
-}</code></pre>
-<p>为了防止溢出 (overflow) 和巨量消失 (catastrophic cancellation)，计算 <span class="math inline">\(\log(p)\)</span> 和 <span class="math inline">\(\log(q)\)</span> 使用了如下技巧</p>
-<p><span class="math display">\[\begin{align*}
-p &amp;= \frac{\exp(\eta)}{1 + \exp(\eta)} = \frac{1}{1 + \exp(- \eta)} \\
-q &amp;= \frac{1}{1 + \exp(\eta)} = \frac{\exp(- \eta)}{1 + \exp(- \eta)}
-\end{align*}\]</span></p>
-<p>然后对上式取对数</p>
-<p><span class="math display">\[\begin{align*}
-\log(p) &amp;= \eta - \log(1 + \exp(\eta)) = - \log(1 + \exp(- \eta)) \\
-\log(q) &amp;= - \log(1 + exp(\eta)) = - \eta - \log(1 + \exp(-\eta))
-\end{align*}\]</span></p>
-<p>为防止溢出，我们总是让 exp 的参数取负数，也防止在 <span class="math inline">\(|\eta|\)</span> 很大时巨量消失。比如，当 <span class="math inline">\(\eta\)</span> 为很大的正数时，</p>
-<p><span class="math display">\[\begin{align*}
-p &amp; \approx  1  \\
-q &amp; \approx  0 \\
-\log(p) &amp; \approx  - \exp(-\eta) \\
-\log(q) &amp; \approx  - \eta - \exp(-\eta)
-\end{align*}\]</span></p>
-<p>当 <span class="math inline">\(\eta\)</span> 为很小的数时，使用 R 内置的函数 log1p 计算，当 <span class="math inline">\(\eta\)</span> 为大的负数时，情况类似<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>。</p>
-<p>有了上面这些准备，现在可以运行随机游走 Metropolis 算法模拟后验分布</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2018</span>)
-beta.init &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">coefficients</span>(fit))
-fit.bayes &lt;-<span class="st"> </span><span class="kw">metrop</span>(<span class="dt">obj =</span> lupost, <span class="dt">initial =</span> beta.init, 
-                    <span class="dt">nbatch =</span> <span class="fl">1e3</span>, <span class="dt">blen =</span> <span class="dv">1</span>, <span class="dt">nspac =</span> <span class="dv">1</span>, <span class="dt">x =</span> x, <span class="dt">y =</span> y)
-<span class="kw">names</span>(fit.bayes)
-<span class="co">#&gt;  [1] &quot;accept&quot;       &quot;batch&quot;        &quot;initial&quot;      &quot;final&quot;       </span>
-<span class="co">#&gt;  [5] &quot;accept.batch&quot; &quot;initial.seed&quot; &quot;final.seed&quot;   &quot;time&quot;        </span>
-<span class="co">#&gt;  [9] &quot;lud&quot;          &quot;nbatch&quot;       &quot;blen&quot;         &quot;nspac&quot;       </span>
-<span class="co">#&gt; [13] &quot;scale&quot;        &quot;debug&quot;</span>
-fit.bayes<span class="op">$</span>accept
-<span class="co">#&gt; [1] 0.008</span></code></pre>
-<p>这里使用的 metrop 函数的参数说明如下：</p>
-<ul>
-<li>自编的 R 函数 lupost 计算未归一化的 Markov 链的平稳分布（后验分布）的对数密度；</li>
-<li>beta.init 表示 Markov 链的初始状态；</li>
-<li>Markov 链的 batches；</li>
-<li>x,y 是提供给目标函数 lupost 的额外参数</li>
-</ul>
-</div>
 <div id="Curse-of-Dimensionality" class="section level2">
-<h2><span class="header-section-number">2.11</span> 维数灾难与蒙特卡罗积分</h2>
+<h2><span class="header-section-number">2.10</span> 维数灾难与蒙特卡罗积分</h2>
 <p>一般地，混合效应模型的统计推断总是不可避免的要面对高维积分，处理高维积分的方法一个是寻找近似方法避免求积分，一个是寻找有效的随机模拟方法直接求积分。这里，介绍蒙特卡罗方法求积分，以计算 <span class="math inline">\(N\)</span> 维超立方体的内切球的体积为例说明。</p>
 <p>假设我们有一个 <span class="math inline">\(N\)</span> 维超立方体，其中心在坐标 <span class="math inline">\(\mathbf{0} = (0,\ldots,0)\)</span>。超立方体在点 <span class="math inline">\((\pm 1/2,\ldots,\pm 1/2)\)</span>，有 <span class="math inline">\(2^{N}\)</span> 个角落，超立方体边长是1，<span class="math inline">\(1^{N}=1\)</span>，所以它的体积是1。</p>
 <p>如果 <span class="math inline">\(N=1\)</span>，超立方体是一条从 <span class="math inline">\(-\frac{1}{2}\)</span> 到 <span class="math inline">\(\frac{1}{2}\)</span> 的单位长度的线，如果 <span class="math inline">\(N=2\)</span>，超立方体是一个单位正方形，对角是 <span class="math inline">\(\left( -\frac{1}{2}, -\frac{1}{2} \right)\)</span> 和 <span class="math inline">\(\left( \frac{1}{2}, \frac{1}{2} \right)\)</span>，如果 <span class="math inline">\(N=3\)</span>，超立方体就是单位体积的立方体，对角是 <span class="math inline">\(\left( -\frac{1}{2}, -\frac{1}{2}, -\frac{1}{2} \right)\)</span> 和 <span class="math inline">\(\left( \frac{1}{2}, \frac{1}{2}, \frac{1}{2} \right)\)</span>，依此类推，<span class="math inline">\(N\)</span> 维超立方体体积是1，对角是 <span class="math inline">\(\left( -\frac{1}{2}, \ldots, -\frac{1}{2} \right)\)</span> 和 <span class="math inline">\(\left( \frac{1}{2}, \ldots, \frac{1}{2} \right)\)</span></p>
@@ -684,13 +597,25 @@ fit.bayes<span class="op">$</span>accept
 </table>
 </div>
 <div id="Samplers" class="section level2">
-<h2><span class="header-section-number">2.12</span> 采样器与 Stan</h2>
+<h2><span class="header-section-number">2.11</span> 采样器与 Stan</h2>
 <p>随机模拟的基础是有高质量的伪随机数，如何生成和检验伪随机数的质量参见黄湘云的文章 <span class="citation">(黄湘云 <a href="#ref-Huang2017COS">2017</a>)</span>。通过随机模拟的方式从总体中获取样本，需要一个抽样（也叫采样）的过程，不同的采样算法（也叫采样器）在适用范围和采样效率方面有不同。在贝叶斯计算中，常用的采样器有 Gibbs， Metropolis 和汉密尔顿蒙特卡罗 (Hamiltonian Monte Carlo，简称 HMC) 三类。</p>
-<p>Matthew D. Hoffman 和 Andrew Gelman (2014年) <span class="citation">(Hoffman and Gelman <a href="#ref-hoffman2014">2014</a>)</span> 提出的 No-U-Turn 采样器属于 HMC 衍生的采样器。</p>
-<p>Stan 是一门基于 C++ 的高级编程语言，用户只需提供数据、模型和参数初值，目标后验分布的 Markov 链的模拟过程是自动实现的。除了可以完全在 Stan 脚本中写模型外，Stan 还提供其他编程语言的接口，如 R，Python 和 MATLAB 等，使得熟悉其他编程语言的用户也可以比较方便地调用。</p>
-<p>以分层正态模型为例，数据集 eight schools 来自 Andrew Gelman 和 John B. Carlin 等 (2003年) <span class="citation">(Gelman et al. <a href="#ref-Gelman2003">2003</a>)</span>，由 Educational Testing Service 调查搜集，用以分析不同的辅导项目对测验分数的影响。调查了8所高中，输出变量是一个分数，数据集见表 <a href="prepare.html#tab:eight-high-schools">2.3</a>。</p>
+<p>Matthew D. Hoffman 和 Andrew Gelman (2014年) <span class="citation">(Hoffman and Gelman <a href="#ref-hoffman2014">2014</a>)</span> 提出的 No-U-Turn 采样器属于 HMC 方法 衍生的采样器。</p>
+<p>Stan 是一门基于 C++ 的高级编程语言，用户只需提供数据、模型和参数初值，目标后验分布的 Markov 链的模拟过程是自动实现的。除了可以完全在 Stan 脚本中写模型外，Stan 还提供其他编程语言的接口，如 R，Python 和 MATLAB 等，使得熟悉其他编程语言的用户也可以比较方便地调用。与 Python、R 这类解释型编程语言不同， Stan 代码需要先翻译成 C++ 代码，然后编译执行。</p>
+<p>Donald B. Rubin (1981年) <span class="citation">(Rubin <a href="#ref-Rubin1981">1981</a>)</span> 分析了 Donald L. Alderman 和 Donald E. Powers <span class="citation">(Alderman and Powers <a href="#ref-Alderman1980">1980</a>)</span> 收集的原始数据，得出表 <a href="prepare.html#tab:eight-high-schools">2.3</a>， Andrew Gelman 和 John B. Carlin 等 (2003年) <span class="citation">(Gelman et al. <a href="#ref-Gelman2003">2003</a>)</span> 建立分层正态模型 <a href="prepare.html#eq:hierarchical-normal-models">(2.11)</a> 分析 Eight Schools 数据集，这里再次以该数据集和模型为例介绍 Stan 的使用和算法实现。</p>
+<p><span class="math display" id="eq:hierarchical-normal-models">\[\begin{equation}
+\begin{aligned}
+     \mu &amp; \sim \mathcal{N}(0,5) \\
+    \tau &amp; \sim \text{Half-Cauchy}(0,5) \\
+p(\mu,\tau) &amp; \propto 1 \\
+  \eta_i &amp; \sim \mathcal{N}(0,1) \\
+\theta_i &amp;  =   \mu + \tau \cdot \eta_i \\
+     y_i &amp; \sim \mathcal{N}(\theta_i,\sigma^2_{i})
+\end{aligned}
+\tag{2.11}
+\end{equation}\]</span></p>
+<p>由美国教育考试服务调查搜集，用以分析不同的辅导项目对学生考试分数的影响，调查结果用来帮助高校招生。分别随机调查了 8 所高中，输出变量是一个分数，培训效应的估计 <span class="math inline">\(y_j\)</span>，其样本方差 <span class="math inline">\(\sigma^2_j\)</span>，数据集见表 <a href="prepare.html#tab:eight-high-schools">2.3</a>。</p>
 <table>
-<caption><span id="tab:eight-high-schools">表 2.3: </span> 8 schools 数据集</caption>
+<caption><span id="tab:eight-high-schools">表 2.3: </span> Eight Schools 数据集</caption>
 <thead>
 <tr class="header">
 <th align="center">School</th>
@@ -729,7 +654,7 @@ fit.bayes<span class="op">$</span>accept
 </tr>
 </tbody>
 </table>
-<p>分层模型可以在 Stan 中写成如下形式，在工作目录下把它保存为 <code>8schools.stan</code></p>
+<p>分层正态模型可以在 Stan 中写成如下形式，在工作目录下把它保存为 <code>8schools.stan</code></p>
 <pre><code>// saved as 8schools.stan
 data {
   int&lt;lower=0&gt; J; // number of schools 
@@ -745,14 +670,326 @@ transformed parameters {
   real theta[J];  // schools effects
   for (j in 1:J)
     theta[j] = mu + tau * eta[j];
+  // theta = mu + tau*eta;
 }
 model {
+  // set prior for mu or uniform prior distribution default
+  // target += normal_lpdf(mu  | 0, 10); 
+  // target += cauchy_lpdf(tau | 0, 25); # the same as mu
   target += normal_lpdf(eta | 0, 1);
   target += normal_lpdf(y | theta, sigma); // target distribution
+  // y ~ normal(theta, sigma);
 }</code></pre>
-<p>上述代码块的第一段提供数据：学校的数目 <span class="math inline">\(J\)</span>；估计值 <span class="math inline">\(y_1,\ldots,y_{J}\)</span>；标准差 <span class="math inline">\(\sigma_1,\ldots,\sigma_{J}\)</span>，数据类型可以是整数、实数，数据结构可以是向量，甚至更一般的数组，数据可以指定约束，如在这个模型中 <span class="math inline">\(J\)</span> 限制为非负， <span class="math inline">\(\sigma_{J}\)</span> 必须是正的。</p>
-<p>第二段代码介绍参数：模型中的待估参数，学校总体的效应 <span class="math inline">\(\theta_j\)</span>，均值 <span class="math inline">\(\mu\)</span>，标准差 <span class="math inline">\(\tau\)</span></p>
-<p><a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="uri">https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started</a></p>
+<p>上述 Stan 代码的第一段提供数据：学校的数目 <span class="math inline">\(J\)</span>，估计值 <span class="math inline">\(y_1,\ldots,y_{J}\)</span>，标准差 <span class="math inline">\(\sigma_1,\ldots,\sigma_{J}\)</span>，数据类型可以是整数、实数，结构可以是向量，或更一般的数组，还可以带约束，如在这个模型中 <span class="math inline">\(J\)</span> 限制为非负， <span class="math inline">\(\sigma_{J}\)</span> 必须是正的，另外两个反斜杠 // 表示注释。</p>
+<p>第二段代码声明参数：模型中的待估参数，学校总体的效应 <span class="math inline">\(\theta_j\)</span>，均值 <span class="math inline">\(\mu\)</span>，标准差 <span class="math inline">\(\tau\)</span>，学校水平上的误差 <span class="math inline">\(\eta\)</span> 和效应 <span class="math inline">\(\theta\)</span>。在这个模型中，用 <span class="math inline">\(\mu,\tau,\eta\)</span> 表示 <span class="math inline">\(\theta\)</span> 而不是直接声明 <span class="math inline">\(\theta\)</span> 作一个参数，通过这种参数化，采样器的运行效率会提高，还应该尽量使用向量化操作代替 for 循环语句。</p>
+<p>最后一段是模型：稍微注意的是，正文中正态分布 <span class="math inline">\(N(\cdot,\cdot)\)</span> 中后一个位置是方差，而 Stan 代码中使用的是标准差。<code>target += normal_lpdf(y | theta, sigma)</code> 和 <code>y ~ normal(theta, sigma)</code> 对模型的贡献是一样的，都使用正态分布的对数概率密度函数，只是后者扔掉了对数密度函数的常数项而已，这对于 Stan 的采样、近似或优化算法没有影响 <span class="citation">(Carpenter et al. <a href="#ref-Stan2017JSS">2017</a>)</span>。</p>
+<p>算法运行的硬件环境是 16 核 32 线程主频 2.8 GHz 英特尔至强 E5-2680 处理器，系统环境 CentOS 7，R 软件版本 3.5.1，RStan 版本 2.17.3。</p>
+<p>HMC算法参数主要设置了4条链，每条链迭代 10000 次，为复现模型结果随机数种子设为 2018</p>
+<table>
+<caption><span id="tab:eight-schools-output">表 2.4: </span> 对 Eight Schools 数据集建立分层正态模型 <a href="prepare.html#eq:hierarchical-normal-models">(2.11)</a>，采用 HMC 算法估计模型参数值</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mean</th>
+<th align="right">se_mean</th>
+<th align="right">sd</th>
+<th align="right">2.5%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">97.5%</th>
+<th align="right">n_eff</th>
+<th align="right">Rhat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\mu\)</span></td>
+<td align="right">7.99</td>
+<td align="right">0.05</td>
+<td align="right">5.02</td>
+<td align="right">-1.65</td>
+<td align="right">4.75</td>
+<td align="right">7.92</td>
+<td align="right">11.15</td>
+<td align="right">18.10</td>
+<td align="right">8455</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\tau\)</span></td>
+<td align="right">6.47</td>
+<td align="right">0.06</td>
+<td align="right">5.44</td>
+<td align="right">0.22</td>
+<td align="right">2.45</td>
+<td align="right">5.18</td>
+<td align="right">9.07</td>
+<td align="right">20.50</td>
+<td align="right">7375</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\eta_1\)</span></td>
+<td align="right">0.40</td>
+<td align="right">0.01</td>
+<td align="right">0.93</td>
+<td align="right">-1.49</td>
+<td align="right">-0.21</td>
+<td align="right">0.42</td>
+<td align="right">1.02</td>
+<td align="right">2.19</td>
+<td align="right">16637</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\eta_2\)</span></td>
+<td align="right">0.00</td>
+<td align="right">0.01</td>
+<td align="right">0.87</td>
+<td align="right">-1.73</td>
+<td align="right">-0.58</td>
+<td align="right">0.00</td>
+<td align="right">0.57</td>
+<td align="right">1.70</td>
+<td align="right">16486</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\eta_3\)</span></td>
+<td align="right">-0.20</td>
+<td align="right">0.01</td>
+<td align="right">0.93</td>
+<td align="right">-1.99</td>
+<td align="right">-0.82</td>
+<td align="right">-0.20</td>
+<td align="right">0.41</td>
+<td align="right">1.66</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\eta_4\)</span></td>
+<td align="right">-0.04</td>
+<td align="right">0.01</td>
+<td align="right">0.88</td>
+<td align="right">-1.80</td>
+<td align="right">-0.60</td>
+<td align="right">-0.04</td>
+<td align="right">0.53</td>
+<td align="right">1.74</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\eta_5\)</span></td>
+<td align="right">-0.36</td>
+<td align="right">0.01</td>
+<td align="right">0.88</td>
+<td align="right">-2.06</td>
+<td align="right">-0.94</td>
+<td align="right">-0.38</td>
+<td align="right">0.20</td>
+<td align="right">1.42</td>
+<td align="right">15489</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\eta_6\)</span></td>
+<td align="right">-0.22</td>
+<td align="right">0.01</td>
+<td align="right">0.90</td>
+<td align="right">-1.96</td>
+<td align="right">-0.82</td>
+<td align="right">-0.23</td>
+<td align="right">0.37</td>
+<td align="right">1.57</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\eta_7\)</span></td>
+<td align="right">0.34</td>
+<td align="right">0.01</td>
+<td align="right">0.89</td>
+<td align="right">-1.49</td>
+<td align="right">-0.24</td>
+<td align="right">0.36</td>
+<td align="right">0.93</td>
+<td align="right">2.04</td>
+<td align="right">16262</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\eta_8\)</span></td>
+<td align="right">0.05</td>
+<td align="right">0.01</td>
+<td align="right">0.94</td>
+<td align="right">-1.81</td>
+<td align="right">-0.57</td>
+<td align="right">0.06</td>
+<td align="right">0.69</td>
+<td align="right">1.91</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta_1\)</span></td>
+<td align="right">11.45</td>
+<td align="right">0.08</td>
+<td align="right">8.27</td>
+<td align="right">-1.86</td>
+<td align="right">6.07</td>
+<td align="right">10.27</td>
+<td align="right">15.50</td>
+<td align="right">31.68</td>
+<td align="right">11788</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\theta_2\)</span></td>
+<td align="right">7.93</td>
+<td align="right">0.04</td>
+<td align="right">6.15</td>
+<td align="right">-4.45</td>
+<td align="right">3.99</td>
+<td align="right">7.90</td>
+<td align="right">11.74</td>
+<td align="right">20.44</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta_3\)</span></td>
+<td align="right">6.17</td>
+<td align="right">0.06</td>
+<td align="right">7.67</td>
+<td align="right">-11.17</td>
+<td align="right">2.07</td>
+<td align="right">6.74</td>
+<td align="right">10.89</td>
+<td align="right">19.94</td>
+<td align="right">16041</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\theta_4\)</span></td>
+<td align="right">7.66</td>
+<td align="right">0.05</td>
+<td align="right">6.51</td>
+<td align="right">-5.63</td>
+<td align="right">3.75</td>
+<td align="right">7.72</td>
+<td align="right">11.62</td>
+<td align="right">20.78</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta_5\)</span></td>
+<td align="right">5.13</td>
+<td align="right">0.05</td>
+<td align="right">6.41</td>
+<td align="right">-9.51</td>
+<td align="right">1.37</td>
+<td align="right">5.66</td>
+<td align="right">9.43</td>
+<td align="right">16.41</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\theta_6\)</span></td>
+<td align="right">6.14</td>
+<td align="right">0.05</td>
+<td align="right">6.66</td>
+<td align="right">-8.63</td>
+<td align="right">2.35</td>
+<td align="right">6.58</td>
+<td align="right">10.40</td>
+<td align="right">18.47</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\theta_7\)</span></td>
+<td align="right">10.64</td>
+<td align="right">0.05</td>
+<td align="right">6.76</td>
+<td align="right">-1.14</td>
+<td align="right">6.11</td>
+<td align="right">10.11</td>
+<td align="right">14.52</td>
+<td align="right">25.88</td>
+<td align="right">20000</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\theta_8\)</span></td>
+<td align="right">8.42</td>
+<td align="right">0.06</td>
+<td align="right">7.86</td>
+<td align="right">-7.24</td>
+<td align="right">3.91</td>
+<td align="right">8.26</td>
+<td align="right">12.60</td>
+<td align="right">25.24</td>
+<td align="right">16598</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">lp__</td>
+<td align="right">-39.55</td>
+<td align="right">0.03</td>
+<td align="right">2.64</td>
+<td align="right">-45.41</td>
+<td align="right">-41.15</td>
+<td align="right">-39.31</td>
+<td align="right">-37.67</td>
+<td align="right">-35.12</td>
+<td align="right">6325</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>表 <a href="prepare.html#tab:eight-schools-output">2.4</a> 的列为后验量的估计值：依次是均值 <span class="math inline">\(\mathsf{E}(\mu|Y)\)</span>、 标准误(standard error) <span class="math inline">\(\mathsf{Var}(\mu|Y)\)</span>、标准差 (standard deviation) <span class="math inline">\(\mathsf{E}(\sigma|Y)\)</span> 、后验分布的 5 个分位点、有效样本数 <span class="math inline">\(n_{eff}\)</span> 和潜在尺度缩减因子 (potential scale reduction factor)，最后两个量 用来分析采样效率；最后一行表示每次迭代的未正则的对数后验密度 (unnormalized log-posterior density) <span class="math inline">\(\hat{R}\)</span>，当链条都收敛到同一平稳分布的时候，<span class="math inline">\(\hat{R}\)</span> 接近 1。</p>
+<p>这里我们对 <span class="math inline">\(\tau\)</span> 采用的非信息先验分布是均匀先验，参数 <span class="math inline">\(\tau\)</span> 的 95% 的置信区间是 (0.22,20.5)， 数据支持 <span class="math inline">\(\tau\)</span> 的范围低于</p>
+<div class="figure" style="text-align: center"><span id="fig:posterior-mu-tau"></span>
+<img src="figures/posterior_mu_tau.png" alt="对 $\mu,\tau$ 给定均匀先验，后验均值 $\mu$ 和标准差 $\tau$ 的直方图" width="70%" />
+<p class="caption">
+图 2.3: 对 <span class="math inline">\(\mu,\tau\)</span> 给定均匀先验，后验均值 <span class="math inline">\(\mu\)</span> 和标准差 <span class="math inline">\(\tau\)</span> 的直方图
+</p>
+</div>
+<p>为了得到可靠的后验估计，做出合理的推断，诊断序列的几何遍历性是必不可少的部分</p>
+<div class="figure" style="text-align: center"><span id="fig:diagnostic"></span>
+<img src="figures/trace_mu_log_tau.png" alt="诊断图" width="70%" /><img src="figures/mcmc_mean_tau_div.png" alt="诊断图" width="70%" />
+<p class="caption">
+图 2.4: 诊断图
+</p>
+</div>
+</div>
+<div id="section-2.12" class="section level2">
+<h2><span class="header-section-number">2.12</span> 弱先验信息</h2>
+</div>
+<div id="section-2.13" class="section level2">
+<h2><span class="header-section-number">2.13</span> 方差缩减因子</h2>
+<p>为了评估链条之间和内部的混合效果，我们引入潜在尺度缩减因子 <span class="math inline">\(\hat{R}\)</span>，对每个待估的量 <span class="math inline">\(\omega\)</span>，模拟产生 <span class="math inline">\(m\)</span> 条链，每条链有 <span class="math inline">\(n\)</span> 次迭代值 <span class="math inline">\(\omega_{ij} (i = 1,\ldots,n;j=1,\ldots,m)\)</span>，用 <span class="math inline">\(B\)</span> 和 <span class="math inline">\(W\)</span> 分别表示链条之间（不妨看作组间方差）和内部的方差（组内方差）</p>
+<p><span class="math display" id="eq:potential-scale-reduction">\[\begin{equation}
+\begin{aligned}
+&amp; B = \frac{n}{m-1}\sum_{j=1}^{m}(\bar{\omega}_{.j} - \bar{\omega}_{..} ), \quad \bar{\omega}_{.j} = \frac{1}{n}\sum_{i=1}^{n}\omega_{ij}, \quad \bar{\omega}_{..} = \frac{1}{m}\sum_{j=1}^{m} \bar{\omega}_{.j}\\
+&amp; W = \frac{1}{m}\sum_{j=1}^{m}s^{2}_{j}, \quad s^{2}_{j} = \frac{1}{n-1}\sum_{i=1}^{n}(\omega_{ij} - \bar{\omega}_{.j})^2
+\end{aligned} \tag{2.12}
+\end{equation}\]</span></p>
+<p><span class="math inline">\(\omega\)</span> 的边际后验方差 <span class="math inline">\(\mathsf{\omega|Y}\)</span> 是 <span class="math inline">\(W\)</span> 和 <span class="math inline">\(B\)</span> 的加权平均</p>
+<p><span class="math display">\[\begin{equation}
+\widehat{\mathsf{Var}}^{+}(\omega|Y) = \frac{n-1}{n} W + \frac{1}{n} B 
+\end{equation}\]</span></p>
+<p>当初始分布发散 (overdispersed) 时，这个量会高估边际后验方差，但在链条平稳或 <span class="math inline">\(n \to \infty\)</span> 时，它是无偏的。同时，对任意有限的 <span class="math inline">\(n\)</span>，组内方差 <span class="math inline">\(W\)</span> 应该会低估 <span class="math inline">\(\mathsf{Var}(\omega|Y)\)</span>，因为单个链条没有时间覆盖目标分布；在 <span class="math inline">\(n \to \infty\)</span>， <span class="math inline">\(W\)</span> 的期望会是 <span class="math inline">\(\mathsf{Var}(\omega|Y)\)</span>。</p>
+<p>我们通过估计潜在尺度缩减因子 <span class="math inline">\(\hat{R}\)</span> 检测链条的收敛性</p>
+<p><span class="math display">\[\begin{equation}
+\hat{R} = \sqrt{\frac{\widehat{\mathsf{Var}}^{+}(\omega|Y)}{W}}
+\end{equation}\]</span></p>
+<p>随着 <span class="math inline">\(n \to \infty\)</span>， <span class="math inline">\(\hat{R}\)</span> 下降到 1。如果 <span class="math inline">\(\hat{R}\)</span> 比较大，我们有理由认为需要增加模拟次数以改进待估参数 <span class="math inline">\(\omega\)</span> 的后验分布 <span class="citation">(Gelman et al. <a href="#ref-Gelman2013R">2013</a>)</span>。</p>
 
 </div>
 </div>
@@ -785,15 +1022,26 @@ model {
 <div id="ref-hoffman2014">
 <p>Hoffman, Matthew D., and Andrew Gelman. 2014. “The No-U-Turn Sampler: Adaptively Setting Path Lengths in Hamiltonian Monte Carlo.” <em>Journal of Machine Learning Research</em> 15: 1593–1623.</p>
 </div>
+<div id="ref-Rubin1981">
+<p>Rubin, Donald B. 1981. “Estimation in Parallel Randomized Experiments.” <em>Journal of Educational Statistics</em> 6 (4): 377–401.</p>
+</div>
+<div id="ref-Alderman1980">
+<p>Alderman, Donald L., and Donald E. Powers. 1980. “The Effects of Special Preparation on Sat-Verbal Scores.” <em>American Educational Research Journal</em> 17 (2): 239–51.</p>
+</div>
 <div id="ref-Gelman2003">
 <p>Gelman, Andrew, John B. Carlin, Hal S. Stern, and Donald B. Rubin. 2003. <em>Bayesian Data Analysis</em>. Second. London: Chapman; Hall/CRC.</p>
+</div>
+<div id="ref-Stan2017JSS">
+<p>Carpenter, Bob, Andrew Gelman, Matthew Hoffman, Daniel Lee, Ben Goodrich, Michael Betancourt, Marcus Brubaker, Jiqiang Guo, Peter Li, and Allen Riddell. 2017. “Stan: A Probabilistic Programming Language.” <em>Journal of Statistical Software</em> 76 (1): 1–32.</p>
+</div>
+<div id="ref-Gelman2013R">
+<p>Gelman, Andrew, John B. Carlin, Hal S. Stern, David B. Dunson, Aki Vehtari, and Donald B. Rubin. 2013. <em>Bayesian Data Analysis</em>. Third. Boca Raton, Florida: Chapman; Hall/CRC.</p>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>均值参数用 <span class="math inline">\(\mu\)</span> 表示，二项分布里用 <span class="math inline">\(\pi\)</span> 表示；典则参数用 <span class="math inline">\(\theta\)</span> 表示，定义见 <a href="prepare.html#eq:common-exponential-family">(2.2)</a> 式，<span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\theta\)</span> 的关系在表 <a href="prepare.html#tab:common-characteristics">2.1</a> 的第 6 和第 7 行给出。<a href="prepare.html#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>更加精确的计算 <span class="math inline">\(\log(1-\exp(-|a|)), |a| \ll 1\)</span> 可以借助 <strong>Rmpfr</strong> 包 <a href="https://r-forge.r-project.org/projects/rmpfr/" class="uri">https://r-forge.r-project.org/projects/rmpfr/</a><a href="prepare.html#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>均值参数用 <span class="math inline">\(\mu\)</span> 表示，二项分布里用 <span class="math inline">\(\pi\)</span> 表示；典则参数用 <span class="math inline">\(\theta\)</span> 表示，定义见 <a href="prepare.html#eq:common-exponential-family">(2.1)</a> 式，<span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\theta\)</span> 的关系在表 <a href="prepare.html#tab:common-characteristics">2.1</a> 的第 6 和第 7 行给出。<a href="prepare.html#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -835,9 +1083,9 @@ gitbook.start({
 "link": "https://github.com/XiangyunHuang/Thesis-Template-Bookdown/edit/master/01-foundations.Rmd",
 "text": "编辑"
 },
-"download": ["Thesis-Template-Bookdown.pdf", "Thesis-Template-Bookdown.epub", "Thesis-Template-Bookdown.mobi"],
+"download": ["Thesis-Template-Bookdown.pdf"],
 "toc": {
-"collapse": "none"
+"collapse": "section"
 }
 });
 });
@@ -849,7 +1097,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

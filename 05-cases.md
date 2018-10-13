@@ -1,14 +1,11 @@
 
 # 数据分析 {#applications}
 
-<!-- 为什么要做这个数据分析，数据要介绍清楚，模型的各个部分要介绍清楚， MCML/PrevMap  ML/Low-Rank 比较 -->
-<!-- 在实际数据情况下，哪个模型好，另一方面介绍，模型结论是什么，什么对流行度/感染程度 影响大，哪个影响小，变量影响程度可以用 P值是否显著来表达， -->
-
-loaloa 和 rongelap 两个真实数据集分别来自 R 包 **PrevMap** 和 **geoRglm**， 分别被 Diggle 和 Christensen 分析过 [@Christensen2004;@Diggle2007ATMP]，第 \@ref(loaloa) 节和第 \@ref(rongelap) 节给出分析这两个数据集的模型和结果。其中，响应变量服从二项分布的空间广义线性混合效应模型（简称 Binomial-SGLMM 模型）拟合数据集 loaloa， 而响应变量服从泊松分布的空间广义线性混合效应模型（简称 Poisson-SGLMM 模型）拟合数据集 rongelap。
+loaloa 和 rongelap 两个真实数据集分别来自 R 包 **geoRglm** 和 **PrevMap**， 且被 Peter J. Diggle 等 (2007年) [@Diggle2007ATMP] 和 Ole F Christensen (2004年) [@Christensen2004] 分析过，第 \@ref(loaloa) 节和第 \@ref(rongelap) 节给出分析这两个数据集的模型和结果。其中，响应变量服从二项分布的空间广义线性混合效应模型拟合数据集 loaloa， 而响应变量服从泊松分布的空间广义线性混合效应模型拟合数据集 rongelap。
 
 ## 空间线性混合效应模型 {#sptial-random-effects}
 
-Stroup 和 Baenziger (1994年) [@Stroup1994] 采用完全随机的区组设计研究小麦产量与品种等因素的关系，在 4 块肥力不同的地里都随机种植了 56 种不同的小麦， 实验记录了小麦产量、品种、位置以及土地肥力等数据， José Pinheiro 和 Douglas Bates (2000年) [@Pinheiro2000] 将该数据集命名为 Wheat2 ，整理后放在 **nlme** 包里。 我们利用该真实的农业生产数据构建带空间效应的线性混合效应模型，展示诊断和添加空间效应的过程。
+Walter W. Stroup 和 P. Stephen Baenziger (1994年) [@Stroup1994] 采用完全随机的区组设计研究小麦产量与品种等因素的关系，在 4 块肥力不同的地里都随机种植了 56 种不同的小麦， 实验记录了小麦产量、品种、位置以及土地肥力等数据， José Pinheiro 和 Douglas Bates (2000年) [@Pinheiro2000] 将该数据集命名为 Wheat2 ，整理后放在 **nlme** 包里。 这里利用该真实的农业生产数据构建带空间效应的线性混合效应模型，展示诊断和添加空间效应的过程。
 
 图 \@ref(fig:yields-block) 按土壤肥力不同分块展示每种小麦的产量，图中暗示数据中有 block 效应，块之间也呈现异方差性，为了更好的表达这种依赖效应，可以基于经纬度信息添加与空间相关的结构 (spatial correlation structures)，相应的线性模型
 
@@ -56,19 +53,20 @@ Variogram(m1, form = ~latitude + longitude)
 
 
 ```r
-m2 <- update(m1, corr = corSpher(c(31, 0.2), form = ~latitude + longitude, nugget = TRUE))
-m2
+m2 <- update(m1, corr = corSpher(
+  c(31, 0.2), form = ~latitude + longitude, nugget = TRUE
+))
 ```
 
-用限制极大似然法做广义最小二乘拟合，空间自相关函数采用球族。二次有理族。似然函数对初始值很敏感，去掉样本变差中距离比较远的
+用限制极大似然法做广义最小二乘拟合，空间自相关函数采用球型和二次有理型函数。似然函数对初始值很敏感，去掉样本变差中距离比较远的
 
 Table: (\#tab:yields-model-compare) 小麦模型比较
 
-|           | 自相关函数 |   $\phi(\phi_0)$         |  $\tau^2(\tau^2_{0})$      | $\sigma^2(\sigma^2_{0})$ |   log-REML  |
+|           | 自相关函数 |   $\hat{\phi}(\phi_0)$   |  $\hat{\tau}^2(\tau^2_{0})$|  $\hat{\sigma}^2(\sigma^2_{0})$ |   log-REML  |
 |:----------| ----------:| -----------------------: | --------------------------:| ------------------------:| :----------:|
-| 模型 I    |       球族 | $1.515\times 10^{5}(31)$ | $5.471\times 10^{-5}(0.2)$ |    466.785               |  -533.418   |
-| 模型 II   | 二次有理族 |             $13.461(13)$ |               $0.193(0.2)$ |      8.847               |  -532.639   |
-| 模型 III  |       球族 |             $27.457(28)$ |               $0.209(0.2)$ |      7.410               |  -533.931   |
+| 模型 I    |       球型 | $1.515\times 10^{5}(31)$ | $5.471\times 10^{-5}(0.2)$ |    466.785               |  -533.418   |
+| 模型 II   | 二次有理型 |             $13.461(13)$ |               $0.193(0.2)$ |      8.847               |  -532.639   |
+| 模型 III  |       球型 |             $27.457(28)$ |               $0.209(0.2)$ |      7.410               |  -533.931   |
 
 说明两件事，其一选择合适的自相关函数可以取得好的拟合效果，其二算法对初值很敏感，选择合适的初值很重要。
 
@@ -114,7 +112,7 @@ Table: (\#tab:yields-model-compare) 小麦模型比较
 \mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u_{ij}/\phi)^{\kappa}K_{\kappa}(u_{ij}/\phi), \kappa = 2
 \] 
 
-在实际数据分析中，选择一组合适的初始值可以缩短各算法迭代的过程。我们分两步获取 $\beta = (\beta_{0},\beta_{1},\beta_{2}, \beta_{3},\beta_{4}, \beta_{5})$和 $\boldsymbol{\theta} = (\sigma^2,\phi)$的初始值。第一步，离散自协方差函数中的$\kappa$，再调用PrevMap包中的`shape.matern`函数选择一个$\kappa$；第二步，在去掉空间效应$S(x)$的情况下，以广义线性模型拟合数据得到$\beta$的初始估计值。然后分别使用贝叶斯MCMC算法和贝叶斯STAN-MCMC算法估计参数 $\beta = (\beta_{0},\beta_{1},\beta_{2}, \beta_{3},\beta_{4}, \beta_{5})$和 $\boldsymbol{\theta} = (\sigma^2,\phi)$，结果如表 \@ref(tab:loaloa-estimation2) 和表 \@ref(tab:loaloa-estimation3)所示。
+在实际数据分析中，选择一组合适的初始值可以缩短各算法迭代的过程。我们分两步获取 $\beta = (\beta_{0},\beta_{1},\beta_{2}, \beta_{3},\beta_{4}, \beta_{5})$ 和 $\boldsymbol{\theta} = (\sigma^2,\phi)$ 的初始值。第一步，离散自协方差函数中的 $\kappa$，再调用 **PrevMap** 包中的 `shape.matern` 函数选择一个 $\kappa$；第二步，在去掉空间效应 $S(x)$ 的情况下，以广义线性模型拟合数据得到 $\beta$的初始估计值。然后分别使用贝叶斯 MCMC 算法和贝叶斯 STAN-MCMC 算法估计参数 $\beta = (\beta_{0},\beta_{1},\beta_{2}, \beta_{3},\beta_{4}, \beta_{5})$ 和 $\boldsymbol{\theta} = (\sigma^2,\phi)$，结果如表 \@ref(tab:loaloa-estimation2) 和表 \@ref(tab:loaloa-estimation3)所示。
 
 Table: (\#tab:loaloa-estimation1) MCML算法估计模型的参数
 
@@ -129,7 +127,7 @@ Table: (\#tab:loaloa-estimation1) MCML算法估计模型的参数
 | $\sigma^2$  | 1.171       | 0.272       | 1.300e-03   |
 | $\phi$      | 0.486       | 0.353       | 2.344e-03   |
 
-通过表 \@ref(tab:loaloa-estimation1) 的P值，可以看出 $\beta_{0},\beta_{1},\beta_{2}$ 是显著的，分别对应模型的截距项，海拔(ELEVATION)和 NDVI的平均值(MEAN9901)，在这组数据中，刻画NDVI指标使用平均值比较能体现村庄周围植被的整体绿色度，而最大值MAX9901，最小值MIN9901，标准差STDEV9901与影响不显著。
+通过表 \@ref(tab:loaloa-estimation1) 的 P 值，可以看出 $\beta_{0},\beta_{1},\beta_{2}$ 是显著的，分别对应模型的截距项，海拔 (ELEVATION)和 NDVI 的平均值 (MEAN9901)，在这组数据中，刻画 NDVI 指标使用平均值比较能体现村庄周围植被的整体绿色度，而最大值 MAX9901，最小值 MIN9901，标准差 STDEV9901 与影响不显著。
 
 Table: (\#tab:loaloa-estimation2) 贝叶斯 MCMC 算法估计模型的参数
 
@@ -161,62 +159,49 @@ Table: (\#tab:loaloa-estimation3) 贝叶斯 STAN-MCMC 算法估计模型的参�
 
 ## 朗格拉普岛放射性残留物的空间分布 {#rongelap}
 
-朗格拉普岛位于南太平洋上，是马绍尔群岛的一部分，二战后，美国在该岛上进行了核武器测试，核爆炸后产生的放射性尘埃笼罩了全岛，目前该岛仍然不适合人类居住，只有经批准的科学研究人员才能登岛，核污染残留浓度是其中一项 [@Bordner2016]。rongelap 数据集包含伽马射线在 $N=157$ 站点不同时间间隔的放射量。
+Peter J. Diggle 等 (1998年) [@Diggle1998] 提出蒙特卡罗极大似然方法估计不带块金效应的响应变量服从泊松分布的空间广义混合效应模型 (见模型 \@ref(eq:rongelap-without-nugget-effect) )的参数，分析了朗格拉普岛上核污染浓度的空间分布，后来，Ole F Christensen (2004年) [@Christensen2004] 发现该核污染数据集中存在不能被泊松分布解释的残差，因此在 Peter J. Diggle 等 (1998年) [@Diggle1998] 的基础上添加了块金效应，见模型 \@ref(eq:rongelap-with-nugget-effect)， 同样使用蒙特卡罗极大似然方法估计了模型中的参数。
+
+朗格拉普岛位于南太平洋上，是马绍尔群岛的一部分，二战后，美国在该岛上进行了核武器测试，核爆炸后产生的放射性尘埃笼罩了全岛，目前该岛仍然不适合人类居住，只有经批准的科学研究人员才能登岛，核污染残留浓度是其中一项 [@Bordner2016]。rongelap 数据集包含伽马射线在 $N=157$ 站点不同时间间隔的放射量，伽马射线在时间间隔 units.m 内放射的粒子数目为 y，d1 和 d2 分别为测量坐标。 建立 Poisson-SGLMM 模型 
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{figures/rongelap} 
+{\centering \includegraphics[width=0.7\linewidth]{figures/rongelap-island} 
 
 }
 
 \caption{朗格拉普岛上采样点的位置，加号 + 表示采样的位置}(\#fig:rongelap-dataset)
 \end{figure}
 
-伽马射线在时间 units.m 内放射的粒子数目为 y，d1 和 d2 分别为测量坐标。 类似第 \@ref(loaloa)节，首先建立 Poisson-SGLMM 模型 
+\begin{align}
+\log\{\lambda(x_{i})\}& =  \beta + S(x_{i}) (\#eq:rongelap-without-nugget-effect)\\
+\log\{\lambda(x_{i})\}& =  \beta + S(x_{i}) + Z_{i} (\#eq:rongelap-with-nugget-effect)
+\end{align}
 
-\begin{equation}
-\log\{\lambda(x_{i})\} =  \beta_{0} + S(x_{i}) (\#eq:rongelap-without-nugget-effect)
-\end{equation}
+\noindent 其中，$\beta_0$ 是截距， 响应变量 $Y_{i} \sim \mathrm{Poisson}( \lambda(x_i) )$，平稳空间高斯过程的自协方差函数为 $\mathsf{Cov}( S(x_i), S(x_j) ) = \sigma^2 \exp( -\|x_i -x_j\|_{2} / \phi )$，$\mathsf{Var}( Z_{i} ) = \tau^2, i = 1, \ldots, N = 157$
 
-其中，$\beta_0$ 是截距， 响应变量 $Y_{i} \sim \mathrm{Poisson}(\lambda(x_i))$， 我们同样使用贝叶斯 MCMC 算法和 STAN-MCMC 算法计算 Poisson-SGLMM 模型的参数，比较效果。
+蒙特卡罗极大似然算法迭代的初值 $\beta_{0} = 6.2,\sigma^2_{0} = 2.40,\phi_{0} = 340,\tau^2_{rel} = 2.074$，模拟次数为 30000 次，前 10000 次迭代视为预热阶段 (warm-up) 而不用于参数的估计，其后每隔 20 次迭代采一个样本点，存储各模型参数的迭代值，其间模拟条件分布 $[S|y]$ 产生蒙特卡罗马尔科夫链使用了 Langevin-Hastings 算法 [@Omiros2003]。
 
-Table: (\#tab:rongelap-estimation1) MCML算法估计模型的参数
+\begin{figure}
 
-| 参数        | 估计        | 标准差      |   P 值      |
-| :---------: | :--------:  | :---------: | :------:    |
-| $\beta_{0}$ |  7.641      | 0.172       | 1.582e-14   |
-| $\sigma^2$  | 0.295       | 0.643       | -           |
-| $\phi$      | 103.075     | 1.812e+44   | -           |
+{\centering \includegraphics[width=0.7\linewidth]{figures/profile-phitausq} 
 
-Table: (\#tab:rongelap-estimation2) 贝叶斯 MCMC 算法估计模型的参数
+}
 
-| 参数        | 估计        | 标准差      |   均方误差  |
-| :---------: | :--------:  | :---------: | :------:    |
-| $\beta_{0}$ | 7.988       | 0.062       | 5.095e-03   |
-| $\sigma^2$  | 0.380       | 0.048       | 3.926e-03   |
-| $\phi$      | 16.440      | 7.828       | 6.391e-02   |
+\caption{(ref:profile-phi-tausq)}(\#fig:profile-phi-tausq)
+\end{figure}
 
-Table: (\#tab:rongelap-estimation3) 贝叶斯STAN-MCMC算法估计模型的参数
+(ref:profile-phi-tausq) 关于 $\phi$ 和相对块金效应 $\tau^2_{rel} = \tau^2 / \sigma^2$ 的剖面似然函数曲面，平稳空间高斯过程的协方差函数选用指数型
 
-| 参数        | 估计        | 标准差      |   均方误差  |
-| :---------: | :--------:  | :---------: | :------:    |
-| $\beta_{0}$ | 8.697       | 0.028       | 5.563e-03   |
-| $\sigma^2$  | 0.812       | 0.017       | 1.390e-03   |
-| $\phi$      | 10.893      | 5.302       | 4.754e-02   |
+Table: (\#tab:rangelap-mcml-result) 蒙特卡罗极大似然估计模型 \@ref(eq:rongelap-with-nugget-effect) 的参数，其中块金效应的估计值 $\hat{\tau}^2 = \hat{\sigma}^{2} \times \hat{\tau}^2_{rel} = 4.929$
 
-比较表 \@ref(tab:rongelap-estimation2) 和表 \@ref(tab:rongelap-estimation3)，发现贝叶斯 STAN-MCMC 算法与贝叶斯 MCMC 算法相比，在均方误差的意义下效果稍好一点。
+| 参数    | $\hat{\beta}$ | $\hat{\sigma}^{2}$ | $\hat{\phi}$  | $\hat{\tau}^2_{rel}$ |  $\log L_{m}$          |
+| :------:| :-------------| :-------------     | :------------ | :------------------- |:---------------------  |
+| 初始值  |    6.200      |     2.400          |   340.000     |   2.074              |         -              |
+| 估计值  |    6.190      |     2.401          |   338.126     |   2.053              | $2.892 \times 10^{-3}$ |
 
-Table: (\#tab:rongelap-without-nugget-effect) 不带块金效应的模型 \@ref(eq:rongelap-without-nugget-effect) 参数估计和 95\% 的置信区间
-
-| 参数            |   2.5\%分位点   |   97.5\%分位点  |   均值 (mean)  |  中位数 (median)  |
-| :-------------- | :-------------: | :-------------: | :------------: | :---------------: |
-| $\beta_0$       |    1.674000     |     1.989000    |    1.830112    |   -0.077961       |
-| $\sigma$        |    0.488595     |     0.594607    |    0.539014    |   -0.077961       |
 
 
 ## 冈比亚儿童疟疾流行强度的空间分布
-
-[MCMC 和 INLA 比较]{.todo}
 
 5 岁以下儿童 在非洲冈比亚的 65 个村庄里调查疟疾感染情况， 依冈比亚狭长的地带和横穿东西全境的冈比亚河， 将其看作东、中和西三个部分， 东部是河流上游，西部是河流下游相应地，村庄分为 5 个区域，西部两个， 南岸和北岸各一个，中游一个在南岸，东部两个，也是南岸和北岸各有一个， 村庄的位置在图中的黑点标记。
 
@@ -273,8 +258,4 @@ Table: (\#tab:gambia-with-nugget-effect) 带块金效应的模型 \@ref(eq:gambi
 | $\kappa$              |     0.150735    |     1.955524    |    0.935064    |    0.830548       |
 
 将投影坐标系 (UTM) 转化为地理坐标系 (WGS84)
-
-
-
-
 

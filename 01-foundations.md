@@ -5,24 +5,6 @@
 
 ## 指数族 {#sec:exp}
 
-Exponential family: 
-
-$$
-f(y;\theta,\phi) = \exp[(a(y) b(\theta) + c(\theta))/f(\phi) + d(y,\phi)]
-$$
-
-Poisson (with $\lambda \to \theta$, $x \to y$) ($\phi=1$):
-
-\begin{equation*}
-\begin{split}
-f(y,\theta) & = \exp(-\theta) \theta^y/(y!) \\
-            & = \exp\left( \underbrace{y}_{a(y)} 
-                           \underbrace{\log \theta}_{b(\theta)} + 
-                           \underbrace{(-\theta)}_{c(\theta)} + 
-                           \underbrace{(- \log(y!))}_{d(y)} \right)
-\end{split} (\#eq:another-exp-fam)
-\end{equation*}
-
 一般地，样本 $\mathbf{Y}$ 的分布服从指数族，即形如
 
 \begin{equation}
@@ -284,7 +266,7 @@ f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{
 \int g(x) \mathrm{d}x = \int \exp[\log g(x)] \mathrm{d}x \approx \mathrm{constant} \int \exp[- \frac{(x - \hat{x})^2}{2\hat{\sigma}^2}] \mathrm{d}x
 \]
 
-拉普拉斯方法用正态分布近似分布 $f(x)$， 其均值 $\hat(x)$，可以通过求解 $f'(x) = 0$ 获得，方差 $\hat{\sigma}^2 = -1/f''(\hat{x})$  
+拉普拉斯方法用正态分布近似分布 $f(x)$， 其均值 $\hat{x}$，可以通过求解 $f'(x) = 0$ 获得，方差 $\hat{\sigma}^2 = -1/f''(\hat{x})$  
 
 以卡方分布 $\chi^2$ 为例，
 
@@ -313,9 +295,9 @@ f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{
 
 
 
-## 贝叶斯理论 {#bayes-methods}
+## 贝叶斯定理与先验分布 {#bayes-methods}
 
-[贝叶斯方法，贝叶斯定理，非信息先验分布，扁平先验]{.todo}
+[非信息先验分布，扁平先验 flat prior，模糊先验]{.todo}
 
 以标准线性模型为例介绍贝叶斯分析及其基本概念 [@Rasmussen2006]，为什么不用 RMSE 均方误差，WAIC pDIC 模型选择 loo K-CV  
 
@@ -353,110 +335,6 @@ p(\boldsymbol{\theta}|\mathbf{Y})  & =  & \displaystyle \frac{p(\boldsymbol{\the
 
 
 
-## 贝叶斯数据分析 {#bayesian-data-analysis}
-
-以一个广义线性模型为例说明贝叶斯数据分析的过程。模拟数据集 logit 来自 R包 **mcmc**，它包含5个变量，一个响应变量 y 和四个预测变量 x1，x2，x3，x4。频率派的分析可以用这样几行 R 代码实现
-
-
-```r
-library(mcmc)
-data(logit)
-fit <- glm(y ~ x1 + x2 + x3 + x4, data = logit, 
-           family = binomial(), x = TRUE)
-summary(fit)
-#> 
-#> Call:
-#> glm(formula = y ~ x1 + x2 + x3 + x4, family = binomial(), data = logit, 
-#>     x = TRUE)
-#> 
-#> Deviance Residuals: 
-#>    Min      1Q  Median      3Q     Max  
-#> -1.746  -0.691   0.154   0.704   2.194  
-#> 
-#> Coefficients:
-#>             Estimate Std. Error z value Pr(>|z|)   
-#> (Intercept)    0.633      0.301    2.10   0.0354 * 
-#> x1             0.739      0.362    2.04   0.0410 * 
-#> x2             1.114      0.363    3.07   0.0021 **
-#> x3             0.478      0.354    1.35   0.1766   
-#> x4             0.694      0.399    1.74   0.0817 . 
-#> ---
-#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-#> 
-#> (Dispersion parameter for binomial family taken to be 1)
-#> 
-#>     Null deviance: 137.628  on 99  degrees of freedom
-#> Residual deviance:  87.668  on 95  degrees of freedom
-#> AIC: 97.67
-#> 
-#> Number of Fisher Scoring iterations: 6
-```
-
-现在，我们想用贝叶斯的方法来分析同一份数据，假定5个参数（回归系数）的先验分布是独立同正态分布，且均值为 0，标准差为 2。
-
-该广义线性模型的对数后验密度（对数似然加上对数先验）可以通过下面的 R 命令给出
-
-
-```r
-x <- fit$x
-y <- fit$y
-lupost <- function(beta, x, y) {
-  eta <- as.numeric(x %*% beta)
-  logp <- ifelse(eta < 0, eta - log1p(exp(eta)), -log1p(exp(-eta)))
-  logq <- ifelse(eta < 0, -log1p(exp(eta)), -eta - log1p(exp(-eta)))
-  logl <- sum(logp[ y == 1]) + sum(logq[y == 0])
-  return(logl - sum(beta^2) / 8)
-}
-```
-
-为了防止溢出 (overflow) 和巨量消失 (catastrophic cancellation)，计算 $\log(p)$ 和 $\log(q)$ 使用了如下技巧
-
-\begin{align*}
-p &= \frac{\exp(\eta)}{1 + \exp(\eta)} = \frac{1}{1 + \exp(- \eta)} \\
-q &= \frac{1}{1 + \exp(\eta)} = \frac{\exp(- \eta)}{1 + \exp(- \eta)}
-\end{align*}
-
-然后对上式取对数
-
-\begin{align*}
-\log(p) &= \eta - \log(1 + \exp(\eta)) = - \log(1 + \exp(- \eta)) \\
-\log(q) &= - \log(1 + exp(\eta)) = - \eta - \log(1 + \exp(-\eta))
-\end{align*}
-
-为防止溢出，我们总是让 exp 的参数取负数，也防止在 $|\eta|$ 很大时巨量消失。比如，当 $\eta$ 为很大的正数时，
-
-\begin{align*}
-p & \approx  1  \\
-q & \approx  0 \\
-\log(p) & \approx  - \exp(-\eta) \\
-\log(q) & \approx  - \eta - \exp(-\eta)
-\end{align*}
-
-当 $\eta$ 为很小的数时，使用 R 内置的函数 log1p 计算，当 $\eta$ 为大的负数时，情况类似^[更加精确的计算 $\log(1-\exp(-|a|)), |a| \ll 1$ 可以借助 **Rmpfr** 包 <https://r-forge.r-project.org/projects/rmpfr/>]。
-
-有了上面这些准备，现在可以运行随机游走 Metropolis 算法模拟后验分布
-
-
-```r
-set.seed(2018)
-beta.init <- as.numeric(coefficients(fit))
-fit.bayes <- metrop(obj = lupost, initial = beta.init, 
-                    nbatch = 1e3, blen = 1, nspac = 1, x = x, y = y)
-names(fit.bayes)
-#>  [1] "accept"       "batch"        "initial"      "final"       
-#>  [5] "accept.batch" "initial.seed" "final.seed"   "time"        
-#>  [9] "lud"          "nbatch"       "blen"         "nspac"       
-#> [13] "scale"        "debug"
-fit.bayes$accept
-#> [1] 0.008
-```
-
-这里使用的 metrop 函数的参数说明如下：
-
-- 自编的 R 函数 lupost 计算未归一化的 Markov 链的平稳分布（后验分布）的对数密度；
-- beta.init 表示 Markov 链的初始状态；
-- Markov 链的 batches；
-- x,y 是提供给目标函数 lupost 的额外参数
 
 
 
@@ -493,20 +371,34 @@ Table: (\#tab:calculate-volume-of-hyperball) 前10维单位超立方体内切球
 
 随机模拟的基础是有高质量的伪随机数，如何生成和检验伪随机数的质量参见黄湘云的文章 [@Huang2017COS]。通过随机模拟的方式从总体中获取样本，需要一个抽样（也叫采样）的过程，不同的采样算法（也叫采样器）在适用范围和采样效率方面有不同。在贝叶斯计算中，常用的采样器有 Gibbs， Metropolis 和汉密尔顿蒙特卡罗 (Hamiltonian Monte Carlo，简称 HMC) 三类。 
 
-Matthew D. Hoffman 和 Andrew Gelman (2014年) [@hoffman2014] 提出的 No-U-Turn 采样器属于 HMC 衍生的采样器。
+Matthew D. Hoffman 和 Andrew Gelman (2014年) [@hoffman2014] 提出的 No-U-Turn 采样器属于 HMC 方法 衍生的采样器。
 
-Stan 是一门基于 C++ 的高级编程语言，用户只需提供数据、模型和参数初值，目标后验分布的 Markov 链的模拟过程是自动实现的。除了可以完全在 Stan 脚本中写模型外，Stan 还提供其他编程语言的接口，如 R，Python 和 MATLAB 等，使得熟悉其他编程语言的用户也可以比较方便地调用。 
+Stan 是一门基于 C++ 的高级编程语言，用户只需提供数据、模型和参数初值，目标后验分布的 Markov 链的模拟过程是自动实现的。除了可以完全在 Stan 脚本中写模型外，Stan 还提供其他编程语言的接口，如 R，Python 和 MATLAB 等，使得熟悉其他编程语言的用户也可以比较方便地调用。与 Python、R 这类解释型编程语言不同， Stan 代码需要先翻译成 C++ 代码，然后编译执行。
 
-以分层正态模型为例，数据集 eight schools 来自 Andrew Gelman 和 John B. Carlin 等 (2003年) [@Gelman2003]，由 Educational Testing Service 调查搜集，用以分析不同的辅导项目对测验分数的影响。调查了8所高中，输出变量是一个分数，数据集见表 \@ref(tab:eight-high-schools)。
+Donald B. Rubin (1981年) [@Rubin1981] 分析了 Donald L. Alderman 和 Donald E. Powers [@Alderman1980] 收集的原始数据，得出表 \@ref(tab:eight-high-schools)， Andrew Gelman 和 John B. Carlin 等 (2003年) [@Gelman2003] 建立分层正态模型 \@ref(eq:hierarchical-normal-models) 分析 Eight Schools 数据集，这里再次以该数据集和模型为例介绍 Stan 的使用和算法实现。
 
-Table: (\#tab:eight-high-schools) 8 schools 数据集
+\begin{equation}
+\begin{aligned}
+     \mu & \sim \mathcal{N}(0,5) \\
+    \tau & \sim \text{Half-Cauchy}(0,5) \\
+p(\mu,\tau) & \propto 1 \\
+  \eta_i & \sim \mathcal{N}(0,1) \\
+\theta_i &  =   \mu + \tau \cdot \eta_i \\
+     y_i & \sim \mathcal{N}(\theta_i,\sigma^2_{i})
+\end{aligned}
+(\#eq:hierarchical-normal-models)
+\end{equation}
+
+由美国教育考试服务调查搜集，用以分析不同的辅导项目对学生考试分数的影响，调查结果用来帮助高校招生。分别随机调查了 8 所高中，输出变量是一个分数，培训效应的估计 $y_j$，其样本方差 $\sigma^2_j$，数据集见表 \@ref(tab:eight-high-schools)。
+
+Table: (\#tab:eight-high-schools) Eight Schools 数据集
 
 |   School   |   A   |   B   |   C   |   D   |   E   |   F   |   G   |   H   |
 |:----------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 |   $y_i$    |  28   |   8   |   -3  |   7   |   -1  |   1   |   18  |   12  |
 | $\sigma_i$ |  15   |  10   |   16  |   11  |    9  |   11  |   10  |   18  |
 
-分层模型可以在 Stan 中写成如下形式，在工作目录下把它保存为 `8schools.stan ` 
+分层正态模型可以在 Stan 中写成如下形式，在工作目录下把它保存为 `8schools.stan ` 
 
 
 ```
@@ -525,18 +417,110 @@ transformed parameters {
   real theta[J];  // schools effects
   for (j in 1:J)
     theta[j] = mu + tau * eta[j];
+  // theta = mu + tau*eta;
 }
 model {
+  // set prior for mu or uniform prior distribution default
+  // target += normal_lpdf(mu  | 0, 10); 
+  // target += cauchy_lpdf(tau | 0, 25); # the same as mu
   target += normal_lpdf(eta | 0, 1);
   target += normal_lpdf(y | theta, sigma); // target distribution
+  // y ~ normal(theta, sigma);
 }
 ```
 
-上述代码块的第一段提供数据：学校的数目 $J$；估计值 $y_1,\ldots,y_{J}$；标准差 $\sigma_1,\ldots,\sigma_{J}$，数据类型可以是整数、实数，数据结构可以是向量，甚至更一般的数组，数据可以指定约束，如在这个模型中 $J$ 限制为非负， $\sigma_{J}$ 必须是正的。
+上述 Stan 代码的第一段提供数据：学校的数目 $J$，估计值 $y_1,\ldots,y_{J}$，标准差 $\sigma_1,\ldots,\sigma_{J}$，数据类型可以是整数、实数，结构可以是向量，或更一般的数组，还可以带约束，如在这个模型中 $J$ 限制为非负， $\sigma_{J}$ 必须是正的，另外两个反斜杠 // 表示注释。
 
-第二段代码介绍参数：模型中的待估参数，学校总体的效应 $\theta_j$，均值 $\mu$，标准差 $\tau$ 
+第二段代码声明参数：模型中的待估参数，学校总体的效应 $\theta_j$，均值 $\mu$，标准差 $\tau$，学校水平上的误差 $\eta$ 和效应 $\theta$。在这个模型中，用 $\mu,\tau,\eta$ 表示 $\theta$ 而不是直接声明 $\theta$ 作一个参数，通过这种参数化，采样器的运行效率会提高，还应该尽量使用向量化操作代替 for 循环语句。
+
+最后一段是模型：稍微注意的是，正文中正态分布 $N(\cdot,\cdot)$ 中后一个位置是方差，而 Stan 代码中使用的是标准差。`target += normal_lpdf(y | theta, sigma)`  和 `y ~ normal(theta, sigma)` 对模型的贡献是一样的，都使用正态分布的对数概率密度函数，只是后者扔掉了对数密度函数的常数项而已，这对于 Stan 的采样、近似或优化算法没有影响 [@Stan2017JSS]。
+
+算法运行的硬件环境是 16 核 32 线程主频 2.8 GHz 英特尔至强 E5-2680 处理器，系统环境 CentOS 7，R 软件版本 3.5.1，RStan 版本 2.17.3。
+
+HMC算法参数主要设置了4条链，每条链迭代 10000 次，为复现模型结果随机数种子设为 2018
 
 
-<https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started>
 
 
+
+Table: (\#tab:eight-schools-output) 对 Eight Schools 数据集建立分层正态模型 \@ref(eq:hierarchical-normal-models)，采用 HMC 算法估计模型参数值
+
+|          |  mean  | se_mean |   sd  |  2.5% |   25% |   50% |   75% | 97.5% | n_eff | Rhat |
+|   :---   |  ----: |   ----: | -----:| ----: | ----: | ----: | ----: | ----: | ----: | ----:|       
+|$\mu$     |   7.99 |   0.05  |5.02   | -1.65 |  4.75 |  7.92 | 11.15 | 18.10 | 8455  |  1   |
+|$\tau$    |   6.47 |   0.06  |5.44   |  0.22 |  2.45 |  5.18 |  9.07 | 20.50 | 7375  |  1   |
+|$\eta_1$  |   0.40 |   0.01  |0.93   | -1.49 | -0.21 |  0.42 |  1.02 |  2.19 |16637  |  1   |
+|$\eta_2$  |   0.00 |   0.01  |0.87   | -1.73 | -0.58 |  0.00 |  0.57 |  1.70 |16486  |  1   |
+|$\eta_3$  |  -0.20 |   0.01  |0.93   | -1.99 | -0.82 | -0.20 |  0.41 |  1.66 |20000  |  1   |
+|$\eta_4$  |  -0.04 |   0.01  |0.88   | -1.80 | -0.60 | -0.04 |  0.53 |  1.74 |20000  |  1   |
+|$\eta_5$  |  -0.36 |   0.01  |0.88   | -2.06 | -0.94 | -0.38 |  0.20 |  1.42 |15489  |  1   |
+|$\eta_6$  |  -0.22 |   0.01  |0.90   | -1.96 | -0.82 | -0.23 |  0.37 |  1.57 |20000  |  1   |
+|$\eta_7$  |   0.34 |   0.01  |0.89   | -1.49 | -0.24 |  0.36 |  0.93 |  2.04 |16262  |  1   |
+|$\eta_8$  |   0.05 |   0.01  |0.94   | -1.81 | -0.57 |  0.06 |  0.69 |  1.91 |20000  |  1   |
+|$\theta_1$|  11.45 |   0.08  |8.27   | -1.86 |  6.07 | 10.27 | 15.50 | 31.68 |11788  |  1   |
+|$\theta_2$|   7.93 |   0.04  |6.15   | -4.45 |  3.99 |  7.90 | 11.74 | 20.44 |20000  |  1   |
+|$\theta_3$|   6.17 |   0.06  |7.67   |-11.17 |  2.07 |  6.74 | 10.89 | 19.94 |16041  |  1   |
+|$\theta_4$|   7.66 |   0.05  |6.51   | -5.63 |  3.75 |  7.72 | 11.62 | 20.78 |20000  |  1   |
+|$\theta_5$|   5.13 |   0.05  |6.41   | -9.51 |  1.37 |  5.66 |  9.43 | 16.41 |20000  |  1   |
+|$\theta_6$|   6.14 |   0.05  |6.66   | -8.63 |  2.35 |  6.58 | 10.40 | 18.47 |20000  |  1   |
+|$\theta_7$|  10.64 |   0.05  |6.76   | -1.14 |  6.11 | 10.11 | 14.52 | 25.88 |20000  |  1   |
+|$\theta_8$|   8.42 |   0.06  |7.86   | -7.24 |  3.91 |  8.26 | 12.60 | 25.24 |16598  |  1   |
+|lp__      | -39.55 |   0.03  |2.64   |-45.41 |-41.15 |-39.31 |-37.67 |-35.12 | 6325  |  1   |
+
+表 \@ref(tab:eight-schools-output) 的列为后验量的估计值：依次是均值 $\mathsf{E}(\mu|Y)$、 标准误(standard error) $\mathsf{Var}(\mu|Y)$、标准差 (standard deviation) $\mathsf{E}(\sigma|Y)$ 、后验分布的 5 个分位点、有效样本数 $n_{eff}$ 和潜在尺度缩减因子 (potential scale reduction factor)，最后两个量 用来分析采样效率；最后一行表示每次迭代的未正则的对数后验密度 (unnormalized log-posterior density) $\hat{R}$，当链条都收敛到同一平稳分布的时候，$\hat{R}$ 接近 1。
+
+这里我们对 $\tau$ 采用的非信息先验分布是均匀先验，参数 $\tau$ 的 95\% 的置信区间是 (0.22,20.5)， 数据支持 $\tau$ 的范围低于
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{figures/posterior_mu_tau} 
+
+}
+
+\caption{对 $\mu,\tau$ 给定均匀先验，后验均值 $\mu$ 和标准差 $\tau$ 的直方图}(\#fig:posterior-mu-tau)
+\end{figure}
+
+为了得到可靠的后验估计，做出合理的推断，诊断序列的几何遍历性是必不可少的部分
+
+\begin{figure}
+
+{\centering \subfloat[诊断序列的平稳性(\#fig:diagnostic1)]{\includegraphics[width=0.7\linewidth]{figures/trace_mu_log_tau} }\\\subfloat[蒙特卡罗均值误差和发散点(\#fig:diagnostic2)]{\includegraphics[width=0.7\linewidth]{figures/mcmc_mean_tau_div} }
+
+}
+
+\caption{诊断图}(\#fig:diagnostic)
+\end{figure}
+
+
+
+
+## 弱先验信息
+
+
+
+## 方差缩减因子
+
+为了评估链条之间和内部的混合效果，我们引入潜在尺度缩减因子 $\hat{R}$，对每个待估的量 $\omega$，模拟产生 $m$ 条链，每条链有 $n$ 次迭代值 $\omega_{ij} (i = 1,\ldots,n;j=1,\ldots,m)$，用 $B$ 和 $W$ 分别表示链条之间（不妨看作组间方差）和内部的方差（组内方差）
+
+\begin{equation}
+\begin{aligned}
+& B = \frac{n}{m-1}\sum_{j=1}^{m}(\bar{\omega}_{.j} - \bar{\omega}_{..} ), \quad \bar{\omega}_{.j} = \frac{1}{n}\sum_{i=1}^{n}\omega_{ij}, \quad \bar{\omega}_{..} = \frac{1}{m}\sum_{j=1}^{m} \bar{\omega}_{.j}\\
+& W = \frac{1}{m}\sum_{j=1}^{m}s^{2}_{j}, \quad s^{2}_{j} = \frac{1}{n-1}\sum_{i=1}^{n}(\omega_{ij} - \bar{\omega}_{.j})^2
+\end{aligned} (\#eq:potential-scale-reduction)
+\end{equation}
+
+$\omega$ 的边际后验方差 $\mathsf{\omega|Y}$ 是 $W$ 和 $B$ 的加权平均
+
+\begin{equation}
+\widehat{\mathsf{Var}}^{+}(\omega|Y) = \frac{n-1}{n} W + \frac{1}{n} B 
+\end{equation}
+
+当初始分布发散 (overdispersed) 时，这个量会高估边际后验方差，但在链条平稳或 $n \to \infty$ 时，它是无偏的。同时，对任意有限的 $n$，组内方差 $W$ 应该会低估 $\mathsf{Var}(\omega|Y)$，因为单个链条没有时间覆盖目标分布；在 $n \to \infty$， $W$ 的期望会是 $\mathsf{Var}(\omega|Y)$。
+
+我们通过估计潜在尺度缩减因子 $\hat{R}$ 检测链条的收敛性
+
+\begin{equation}
+\hat{R} = \sqrt{\frac{\widehat{\mathsf{Var}}^{+}(\omega|Y)}{W}}
+\end{equation}
+
+随着 $n \to \infty$， $\hat{R}$ 下降到 1。如果 $\hat{R}$ 比较大，我们有理由认为需要增加模拟次数以改进待估参数 $\omega$ 的后验分布 [@Gelman2013R]。

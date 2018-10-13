@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>master thesis template</title>
-  <meta name="description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform.">
+  <title>Master Thesis Template</title>
+  <meta name="description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="master thesis template" />
+  <meta property="og:title" content="Master Thesis Template" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/logo.png" />
-  <meta property="og:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta property="og:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="github-repo" content="XiangyunHuang/Thesis-Template-Bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="master thesis template" />
+  <meta name="twitter:title" content="Master Thesis Template" />
   
-  <meta name="twitter:description" content="Generalized linear mixed models, MCMC algorithms, Spatial generalized linear mixed models, Stan platform." />
+  <meta name="twitter:description" content="Spatial generalized linear mixed models, Stationary Spatial Gaussian Process, Stan platform, Markov chain Monte Carlo." />
   <meta name="twitter:image" content="images/logo.png" />
 
 <meta name="author" content="Xiang-Yun Huang">
 
 
-<meta name="date" content="2018-09-27">
+<meta name="date" content="2018-10-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="author.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -144,10 +145,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="prepare.html"><a href="prepare.html#Modified-Bessel-functions"><i class="fa fa-check"></i><b>2.6</b> 修正的第三类贝塞尔函数</a></li>
 <li class="chapter" data-level="2.7" data-path="prepare.html"><a href="prepare.html#Laplace-approximation"><i class="fa fa-check"></i><b>2.7</b> 拉普拉斯近似</a></li>
 <li class="chapter" data-level="2.8" data-path="prepare.html"><a href="prepare.html#Jeffreys-prior"><i class="fa fa-check"></i><b>2.8</b> Jeffreys 先验分布</a></li>
-<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯理论</a></li>
-<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#bayesian-data-analysis"><i class="fa fa-check"></i><b>2.10</b> 贝叶斯数据分析</a></li>
-<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.11</b> 维数灾难与蒙特卡罗积分</a></li>
-<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.12</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.9" data-path="prepare.html"><a href="prepare.html#bayes-methods"><i class="fa fa-check"></i><b>2.9</b> 贝叶斯定理与先验分布</a></li>
+<li class="chapter" data-level="2.10" data-path="prepare.html"><a href="prepare.html#Curse-of-Dimensionality"><i class="fa fa-check"></i><b>2.10</b> 维数灾难与蒙特卡罗积分</a></li>
+<li class="chapter" data-level="2.11" data-path="prepare.html"><a href="prepare.html#Samplers"><i class="fa fa-check"></i><b>2.11</b> 采样器与 Stan</a></li>
+<li class="chapter" data-level="2.12" data-path="prepare.html"><a href="prepare.html#section-2.12"><i class="fa fa-check"></i><b>2.12</b> 弱先验信息</a></li>
+<li class="chapter" data-level="2.13" data-path="prepare.html"><a href="prepare.html#section-2.13"><i class="fa fa-check"></i><b>2.13</b> 方差缩减因子</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>3</b> 统计模型</a><ul>
 <li class="chapter" data-level="3.1" data-path="models.html"><a href="models.html#Linear-Models"><i class="fa fa-check"></i><b>3.1</b> 线性模型</a></li>
@@ -164,25 +166,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="algorithms.html"><a href="algorithms.html"><i class="fa fa-check"></i><b>4</b> 参数估计</a><ul>
 <li class="chapter" data-level="4.1" data-path="algorithms.html"><a href="algorithms.html#mle"><i class="fa fa-check"></i><b>4.1</b> 极大似然估计</a></li>
 <li class="chapter" data-level="4.2" data-path="algorithms.html"><a href="algorithms.html#profile-likelihood"><i class="fa fa-check"></i><b>4.2</b> 剖面似然估计</a></li>
-<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#maximum-likelihood-estimates"><i class="fa fa-check"></i><b>4.3</b> 极大似然估计</a></li>
-<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.4</b> 参数估计的算法</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.4.1</b> 拉普拉斯近似算法</a></li>
-<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.4.2</b> 蒙特卡罗极大似然算法</a></li>
-<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.4.3</b> 贝叶斯 MCMC 算法</a></li>
-<li class="chapter" data-level="4.4.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.4.4</b> 低秩近似算法</a></li>
+<li class="chapter" data-level="4.3" data-path="algorithms.html"><a href="algorithms.html#algrithms"><i class="fa fa-check"></i><b>4.3</b> 参数估计的算法</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="algorithms.html"><a href="algorithms.html#LA"><i class="fa fa-check"></i><b>4.3.1</b> 拉普拉斯近似算法</a></li>
+<li class="chapter" data-level="4.3.2" data-path="algorithms.html"><a href="algorithms.html#MCML"><i class="fa fa-check"></i><b>4.3.2</b> 蒙特卡罗极大似然算法</a></li>
+<li class="chapter" data-level="4.3.3" data-path="algorithms.html"><a href="algorithms.html#MCMC"><i class="fa fa-check"></i><b>4.3.3</b> 贝叶斯 MCMC 算法</a></li>
+<li class="chapter" data-level="4.3.4" data-path="algorithms.html"><a href="algorithms.html#LowRank"><i class="fa fa-check"></i><b>4.3.4</b> 低秩近似算法</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.5</b> 贝叶斯 STAN-MCMC 算法</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="algorithms.html"><a href="algorithms.html#section-4.5.1"><i class="fa fa-check"></i><b>4.5.1</b> 算法提出的背景和意义</a></li>
-<li class="chapter" data-level="4.5.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.5.2</b> STAN-MCMC 算法实现过程</a></li>
-<li class="chapter" data-level="4.5.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.5.3</b> 求解模型的 R 包</a></li>
+<li class="chapter" data-level="4.4" data-path="algorithms.html"><a href="algorithms.html#STAN-MCMC"><i class="fa fa-check"></i><b>4.4</b> 贝叶斯 STAN-MCMC 算法</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="algorithms.html"><a href="algorithms.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 算法提出的背景和意义</a></li>
+<li class="chapter" data-level="4.4.2" data-path="algorithms.html"><a href="algorithms.html#STANMCMC"><i class="fa fa-check"></i><b>4.4.2</b> STAN-MCMC 算法实现过程</a></li>
+<li class="chapter" data-level="4.4.3" data-path="algorithms.html"><a href="algorithms.html#-r-"><i class="fa fa-check"></i><b>4.4.3</b> 求解模型的 R 包</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="simulations.html"><a href="simulations.html"><i class="fa fa-check"></i><b>5</b> 数值模拟</a><ul>
-<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 一维空间高斯过程</a></li>
-<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-gp"><i class="fa fa-check"></i><b>5.2</b> 平稳空间高斯过程</a></li>
-<li class="chapter" data-level="5.3" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.3</b> 空间广义线性混合效应模型</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="simulations.html"><a href="simulations.html#binomal-sglmm"><i class="fa fa-check"></i><b>5.3.1</b> 响应变量服从二项分布</a></li>
-<li class="chapter" data-level="5.3.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.3.2</b> 响应变量服从泊松分布</a></li>
+<li class="chapter" data-level="5.1" data-path="simulations.html"><a href="simulations.html#spatial-gaussian-processes"><i class="fa fa-check"></i><b>5.1</b> 平稳空间高斯过程</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="simulations.html"><a href="simulations.html#sim-one-gp"><i class="fa fa-check"></i><b>5.1.1</b> 一维平稳空间高斯过程</a></li>
+<li class="chapter" data-level="5.1.2" data-path="simulations.html"><a href="simulations.html#sim-two-gp"><i class="fa fa-check"></i><b>5.1.2</b> 二维平稳空间高斯过程</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="simulations.html"><a href="simulations.html#sim-sglmm"><i class="fa fa-check"></i><b>5.2</b> 空间广义线性混合效应模型</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="simulations.html"><a href="simulations.html#sim-binomal-sglmm"><i class="fa fa-check"></i><b>5.2.1</b> 响应变量服从二项分布</a></li>
+<li class="chapter" data-level="5.2.2" data-path="simulations.html"><a href="simulations.html#possion-sglmm"><i class="fa fa-check"></i><b>5.2.2</b> 响应变量服从泊松分布</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> 数据分析</a><ul>
@@ -194,13 +197,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>7</b> 总结展望</a></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附录</a><ul>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#sessioninfo"><i class="fa fa-check"></i>软件信息</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#random-number-generation"><i class="fa fa-check"></i>随机数生成</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#compare-algrithms"><i class="fa fa-check"></i>算法比较</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#tables-simulations"><i class="fa fa-check"></i>表格</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>数据模拟</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i><b>7.0.1</b> 模拟平稳高斯过程</a></li>
+<li class="chapter" data-level="7.0.2" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i><b>7.0.2</b> 模拟空间广义线性混合效应模型</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="References.html"><a href="References.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#HMC-Algrithms"><i class="fa fa-check"></i>HMC 算法</a></li>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#compileinfo"><i class="fa fa-check"></i><b>7.1</b> 编译信息</a></li>
+<li class="chapter" data-level="7.2" data-path="appendix.html"><a href="appendix.html#hardwareinfo"><i class="fa fa-check"></i><b>7.2</b> 硬件环境</a></li>
+<li class="chapter" data-level="7.3" data-path="appendix.html"><a href="appendix.html#sysinfo"><i class="fa fa-check"></i><b>7.3</b> 系统环境</a></li>
+<li class="chapter" data-level="7.4" data-path="appendix.html"><a href="appendix.html#softwareinfo"><i class="fa fa-check"></i><b>7.4</b> 软件环境</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">本论文由 bookdown 强力驱动</a></li>
 
 </ul>
 
@@ -211,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">master thesis template</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Master Thesis Template</a>
           </h1>
         </div>
 
@@ -222,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="summary" class="section level1">
 <h1><span class="header-section-number">第 7 章</span> 总结展望</h1>
 <p>本文研究的重点是估计空间广义线性混合效应模型参数的算法，包括蒙特卡罗最大似然算法（简称MCML算法）、低秩近似算法（简称Low-Rank算法）、贝叶斯MCMC算法和贝叶斯STAN-MCMC算法。在相同设置下，比较了它们的性能，结论是MCML算法比Low-Rank算法收敛要慢很多，但是准确度比较它高，Low-Rank 可以增加采样点的数目快速接近MCML算法的精度，代价是运行时间会显著增加；基于Stan实现的贝叶斯STAN-MCMC算法比贝叶斯MCMC算法快很多，但是需要较多的计算机资源才能体现它的优势。目前，得益于计算机硬件的快速发展，无论是CPU还是GPU，甚至是谷歌专为机器学习量身打造的TPU也都进入量产了，分布式的多机并行算法一定是大规模数据集和复杂模型的出路，所以将可并行的传统算法用Stan重写是有实际应用价值的。</p>
-<p>近年来，基于近似贝叶斯推断的算法也受到越来越多的关注，尤其是 INLA 算法(Integrated Nested Laplace Approximations)，因其高效的计算性能，快速发展的 INLA 社区<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>，相关软件 R-INLA 的广泛使用和日益成熟的理论。将INLA算法和蒙特卡罗方法结合是值得研究的方向，Stan 程序库在 GPU 上的并行已经列入开发日程<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>，可以预见，将估计模型参数的算法基于Stan实现是快速提高计算效率的捷径。</p>
+<p>近年来，基于近似贝叶斯推断的算法也受到越来越多的关注，尤其是 INLA 算法(Integrated Nested Laplace Approximations)，因其高效的计算性能，快速发展的 INLA 社区<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>，相关软件 R-INLA 的广泛使用和日益成熟的理论。将INLA算法和蒙特卡罗方法结合是值得研究的方向，Stan 程序库在 GPU 上的并行已经列入开发日程<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>，可以预见，将估计模型参数的算法基于Stan实现是快速提高计算效率的捷径。</p>
 <!-- 数据模拟和案例分析的部分，还可以增加响应变量服从指数族其它分布的情形，如泊松分布。算法性能的比较可以同时考虑时间和计算平台，记录多次运行同一个算法的时间数据，比较它们所耗时间的分布差异，可以获得更加可靠的结果。计算平台如多核，多线程，甚至集群环境的实现和比较，可以获得算法扩展性方面的结论。此外，不能单纯看算法实现的语言方式，从文中的计算结果来看，R 语言的性能是弱于 C++ （ Stan 是基于 C++ 的计算库，需要先编译源码和加载动态链接库）的，但是利用 R 编程可以快速实现算法原型。 INLA 算法和软件非常高效的表现，得益于随机偏微分方程已有的实现算法和近似手段，如三角网格划分，迭代格式让算法有更快的收敛速度，近似效果没有 MCML 和 Low-Rank 好。由此可知，算法的选择需要去做效果和效率的平衡， Stan 更新迭代的速度很快，可在不久的将来进入应用界，但是却也要求更多的学习成本和优化技巧。 -->
 
 
@@ -235,9 +245,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p><a href="http://www.r-inla.org/" class="uri">http://www.r-inla.org/</a><a href="summary.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p><a href="https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List" class="uri">https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List</a><a href="summary.html#fnref5" class="footnote-back">↩</a></p></li>
+<ol start="3">
+<li id="fn3"><p><a href="http://www.r-inla.org/" class="uri">http://www.r-inla.org/</a><a href="summary.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p><a href="https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List" class="uri">https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List</a><a href="summary.html#fnref4" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -279,9 +289,9 @@ gitbook.start({
 "link": "https://github.com/XiangyunHuang/Thesis-Template-Bookdown/edit/master/06-summary.Rmd",
 "text": "编辑"
 },
-"download": ["Thesis-Template-Bookdown.pdf", "Thesis-Template-Bookdown.epub", "Thesis-Template-Bookdown.mobi"],
+"download": ["Thesis-Template-Bookdown.pdf"],
 "toc": {
-"collapse": "none"
+"collapse": "section"
 }
 });
 });
@@ -293,7 +303,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

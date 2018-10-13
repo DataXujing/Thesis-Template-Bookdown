@@ -1,4 +1,5 @@
 
+
 # 统计模型 {#models}
 
 [重新安排逻辑顺序第三章 空间广义线性混合效应模型 1. 模型结构]{.todo}
@@ -99,6 +100,15 @@ V_{T}(u_{ij})
 \end{equation}
 
 \noindent 相关函数 $\rho(u)$ 的作用和地位就显而易见了，它是既决定理论变差又决定协方差矩阵的结构。
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{figures/semi-variance} 
+
+}
+
+\caption{变差函数 $V_{T}(u)$ 示意图}(\#fig:semi-variance)
+\end{figure}
 
 常见的自相关函数族有高斯协方差函数、球面协方差函数和 Matérn 协方差函数：
 
