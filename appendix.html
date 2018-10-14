@@ -196,8 +196,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附录</a><ul>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#tables-simulations"><i class="fa fa-check"></i>表格</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>代码</a><ul>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i>模拟平稳高斯过程</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i>模拟空间广义线性混合效应模型</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i>模拟平稳空间高斯过程</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i>模拟空间广义线性模型</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#HMC-Algrithms"><i class="fa fa-check"></i>HMC 算法</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#compileinfo"><i class="fa fa-check"></i>编译信息</a></li>
@@ -957,8 +957,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simulate-code" class="section level2 unnumbered">
 <h2>代码</h2>
 <div id="simulate-SGP-code" class="section level3 unnumbered">
-<h3>模拟平稳高斯过程</h3>
-<p>STAN 代码模拟高斯过程，自协方差函数见方程 </p>
+<h3>模拟平稳空间高斯过程</h3>
+<p>STAN 代码模拟高斯过程，指数型自协方差函数见方程 </p>
 <pre><code>// Sample from a Gaussian process using exponentiated covariance function.
 // Fixed kernel hyperparameters: phi=0.15, sigma=sqrt(1)
 
@@ -1001,9 +1001,8 @@ generated quantities {
 }</code></pre>
 </div>
 <div id="simulate-SGLMM-code" class="section level3 unnumbered">
-<h3>模拟空间广义线性混合效应模型</h3>
-<p>模拟空间广义线性混合效应模型的函数：
-<code>generate_sim_data</code> 函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型</p>
+<h3>模拟空间广义线性模型</h3>
+<p>模拟空间广义线性混合效应模型的函数：函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型</p>
 <pre class="sourceCode r"><code class="sourceCode r">generate_sim_data &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">N =</span> <span class="dv">49</span>, <span class="dt">intercept =</span> <span class="fl">-1.0</span>, 
                               <span class="dt">slope1 =</span> <span class="fl">1.0</span>, <span class="dt">slope2 =</span> <span class="fl">0.5</span>,
                               <span class="dt">lscale =</span> <span class="dv">1</span>, <span class="dt">sdgp =</span> <span class="dv">1</span>, 
@@ -1054,7 +1053,7 @@ generated quantities {
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 加载程序包</span>
 <span class="kw">library</span>(rstan)
 <span class="kw">library</span>(brms)
-<span class="co"># 以并行方式运行STAN-MCMC算法，指定CPU的核心数</span>
+<span class="co"># 以并行方式运行 STAN-MCMC 算法，指定 CPU 的核心数</span>
 <span class="kw">options</span>(<span class="dt">mc.cores =</span> parallel<span class="op">::</span><span class="kw">detectCores</span>())
 <span class="co"># 将编译后的模型写入磁盘，可防止重新编译</span>
 <span class="kw">rstan_options</span>(<span class="dt">auto_write =</span> <span class="ot">TRUE</span>)
@@ -1090,21 +1089,16 @@ benchmark.poisson &lt;-<span class="st"> </span>microbenchmark<span class="op">:
 </div>
 <div id="compileinfo" class="section level2 unnumbered">
 <h2>编译信息</h2>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="dt">path =</span> <span class="kw">c</span>(
-  <span class="st">&quot;figures/compiling.png&quot;</span>, 
-  <span class="st">&quot;figures/sampling.png&quot;</span>
-))</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:compiling-sampling"></span>
-<img src="figures/compiling.png" alt="基于 Stan 编程的模型编译和采样过程" width="70%" /><img src="figures/sampling.png" alt="基于 Stan 编程的模型编译和采样过程" width="70%" />
+<img src="figures/compiling.png" alt="基于 Stan 编程的模型编译和采样过程图" width="70%" /><img src="figures/sampling.png" alt="基于 Stan 编程的模型编译和采样过程图" width="70%" />
 <p class="caption">
-图 7.1: 基于 Stan 编程的模型编译和采样过程
+图 7.1: 基于 Stan 编程的模型编译和采样过程图
 </p>
 </div>
 </div>
 <div id="hardwareinfo" class="section level2 unnumbered">
 <h2>硬件环境</h2>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## 32  Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz</span>
-<span class="kw">cat</span>(<span class="kw">system</span>(<span class="st">&quot;cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">system</span>(<span class="st">&quot;cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c&quot;</span>, <span class="dt">intern =</span> <span class="ot">TRUE</span>), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
 <span class="co">#&gt;      32  Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz</span>
 parallel<span class="op">::</span><span class="kw">detectCores</span>()
 <span class="co">#&gt; [1] 32</span></code></pre>

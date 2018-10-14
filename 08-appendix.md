@@ -77,12 +77,11 @@ Table: (\#tab:LH-binom-SGLMM) Langevin-Hastings 算法：模型 \@ref(eq:binom-S
 |$p(x_{64})$  |  0.633|  0.017|  0.131|  0.354|  0.545|  0.644|  0.729|  0.861|
 
 
-
 ## 代码 {#simulate-code .unnumbered}
 
-### 模拟平稳高斯过程 {#simulate-SGP-code .unnumbered}
+### 模拟平稳空间高斯过程 {#simulate-SGP-code .unnumbered}
 
-STAN 代码模拟高斯过程，自协方差函数见方程 \ref{eq:exp-quad}
+STAN 代码模拟高斯过程，指数型自协方差函数见方程 \ref{eq:cov-exp} 
 
 
 ```
@@ -128,10 +127,9 @@ generated quantities {
 }
 ```
 
-### 模拟空间广义线性混合效应模型 {#simulate-SGLMM-code .unnumbered}
+### 模拟空间广义线性模型 {#simulate-SGLMM-code .unnumbered}
 
-模拟空间广义线性混合效应模型的函数：
-`generate_sim_data` 函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型
+模拟空间广义线性混合效应模型的函数：函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型
 
 
 ```r
@@ -188,7 +186,7 @@ generate_sim_data <- function(N = 49, intercept = -1.0,
 # 加载程序包
 library(rstan)
 library(brms)
-# 以并行方式运行STAN-MCMC算法，指定CPU的核心数
+# 以并行方式运行 STAN-MCMC 算法，指定 CPU 的核心数
 options(mc.cores = parallel::detectCores())
 # 将编译后的模型写入磁盘，可防止重新编译
 rstan_options(auto_write = TRUE)
@@ -226,12 +224,6 @@ plot(fit.poisson)
 
 
 
-```r
-knitr::include_graphics(path = c(
-  "figures/compiling.png", 
-  "figures/sampling.png"
-))
-```
 
 
 
