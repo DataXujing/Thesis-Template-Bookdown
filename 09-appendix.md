@@ -1,9 +1,12 @@
 
 \cleardoublepage 
 
-# 附录 {#appendix .unnumbered}
 
-\chaptermark{附录}
+
+```{=latex}
+\chapter*{\markboth{附录}{附录}{附\quad 录}}
+\addcontentsline{toc}{chapter}{附\quad 录}
+```
 
 ## 表格 {#tables-simulations .unnumbered}
 
