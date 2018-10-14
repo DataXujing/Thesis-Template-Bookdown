@@ -146,7 +146,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{China University of Mining and Technology, Beijing}
 \author{Xiang-Yun Huang}
-\date{2018-10-13}
+\date{2018-10-14}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{定理}[chapter]
@@ -1265,7 +1265,7 @@ lp\_\_ & -39.55 & 0.03 & 2.64 & -45.41 & -41.15 & -39.31 & -37.67 &
 \caption{对 $\mu,\tau$ 给定均匀先验，后验均值 $\mu$ 和标准差 $\tau$ 的直方图}\label{fig:posterior-mu-tau}
 \end{figure}
 
-为了得到可靠的后验估计，做出合理的推断，诊断序列的几何遍历性是必不可少的部分
+为了得到可靠的后验估计，做出合理的推断，诊断序列的平稳性是必不可少的部分
 
 \begin{figure}
 
@@ -1275,8 +1275,6 @@ lp\_\_ & -39.55 & 0.03 & 2.64 & -45.41 & -41.15 & -39.31 & -37.67 &
 
 \caption{诊断图}\label{fig:diagnostic}
 \end{figure}
-
-\section{弱先验信息}
 
 \section{方差缩减因子}
 
@@ -1317,8 +1315,6 @@ lp\_\_ & -39.55 & 0.03 & 2.64 & -45.41 & -41.15 & -39.31 & -37.67 &
 
 \hypertarget{models}{%
 \chapter{统计模型}\label{models}}
-
-{重新安排逻辑顺序第三章 空间广义线性混合效应模型 1. 模型结构}
 
 第 \ref{Linear-Models} 节，第 \ref{Generalized-Linear-Models} 节和第
 \ref{Generalized-Linear-Mixed-Effects-Models} 节简略介绍了线性模型，
@@ -1389,13 +1385,6 @@ McCullagh 和 Nelder 所著的《广义线性模型》 \citep{McCullagh1989}。 
 \eqref{eq:GLM} 的 R 函数是 \texttt{glm}， 常用拟似然法去估计模型
 \eqref{eq:GLM} 的参数。
 
-\hypertarget{Linear-Mixed-Effects-Models}{%
-\section{线性混合效应模型}\label{Linear-Mixed-Effects-Models}}
-
-模型结构，参数估计，惩罚最小二乘和广义最小二乘
-极大似然估计和限制极大似然估计 lme4 包 \citep{Bates2015} 剖面似然估计
-profile 似然
-
 \hypertarget{Generalized-Linear-Mixed-Effects-Models}{%
 \section{广义线性混合效应模型}\label{Generalized-Linear-Mixed-Effects-Models}}
 
@@ -1420,13 +1409,6 @@ g(\mu) = X^{\top}\boldsymbol{\beta} + Z^{\top}\mathbf{b}  \label{eq:GLMM}
 可以拟合一些非线性混合效应模型， \textbf{mgcv}
 可以拟合广义可加混合效应模型， \textbf{lme4} 使用了高性能的 Eigen
 数值代数库，可以加快模型的求解过程。
-
-MCMC 方法应用于 GLMM 模型 \citep{MCMCglmm2010}
-
-\section{空间线性混合效应模型}
-
-Kriging 插值 \citep{gstat2004, gstat2016} gstat: Spatial and
-Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
 
 \hypertarget{Spatial-Generalized-linear-mixed-effects-models}{%
 \section{空间广义线性混合效应模型}\label{Spatial-Generalized-linear-mixed-effects-models}}
@@ -1827,8 +1809,6 @@ MCEMG 的基础上提出近似蒙特卡罗期望极大梯度 (Approximate Monte 
 Gradient) 算法\citep{Hosseini2016}。2004 年 Ole F Christensen 将 MCML
 方法用于 SGLMM 模型 \citep{Christensen2004}，2016 年 Peter J. Diggle 和
 Emanuele Giorgi 将 MCML 方法应用于分析西非流行病调查数据。
-
-在依据似然函数做统计推断的情况下，必须解决高维积分的问题，解决高维积分的两条路：采用拉普拉斯近似方法近似积分，蒙特卡罗方法求积分
 
 \hypertarget{LA}{%
 \subsection{拉普拉斯近似算法}\label{LA}}
@@ -2699,9 +2679,10 @@ g(\mu_i) = \log\{\frac{p(x_i)}{1-p(x_i)}\} = \alpha + S(x_i) \label{eq:binom-SGL
 的先验分布选期望为 0.2 的指数分布，参数 \(\sigma^2\)
 的先验分布是非中心的逆卡方分布，其非中心化参数为 0.5，自由度为
 5，各参数的先验选择来自 Ole F. Christensen 和 Peter J. Ribeiro Jr.
-(2002年) \citep{geoRglm2002}。Langevin-Hastings 算法运行 11000
-次迭代，前 1000 次迭代用作热身 (warm-up)，后 10 万次迭代里间隔 100
-采样。
+(2002年) \citep{geoRglm2002}。Langevin-Hastings 算法运行 110000
+次迭代，前 10000 次迭代用作热身 (warm-up)，后 10 万次迭代里间隔 100
+次迭代采样，获得关于参数 \(\alpha,\phi,\sigma^2\)
+的后验分布的样本，样本量是1000。
 
 \begin{align}
 \alpha   & \sim \mathcal{N}(0,1) \\
@@ -2766,28 +2747,43 @@ g(\mu_i) = \log(\lambda(x_i)) = \alpha + S(x_i) \label{eq:pois-SGLMM}
 
 \noindent 其中，\(S(x)\) 是平稳空间高斯过程，其均值为
 \(\mathbf{0}\)，协方差函数为
-\(\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)\)，\(\kappa = 0.5\)，联系函数
+\(\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)\)，联系函数
 \(g(\mu_i) = \log\{\lambda(x_{i})\}\)。
 
 类似 \ref{sim-binomal-sglmm} 小节产生随机数的过程，
 
-\begin{longtable}[]{@{}lrrrrrrr@{}}
+\begin{longtable}[]{@{}lrrrrrrrrr@{}}
 \caption{\label{tab:Pois-MCLV-vs-NUTS} 模型参数真值设置为
-\(\alpha = 1, \sigma^2 = 1, \phi = 0.2, \kappa = 0.5\)}\tabularnewline
+\(\alpha = 0.5, \phi = 0.2, \sigma^2 = 2.0, \kappa = 1.5\)，采样点数目分别为
+\(N=36,64,100\)}\tabularnewline
 \toprule
-& mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\%\tabularnewline
+& true & mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\% &
+N\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-& mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\%\tabularnewline
+& true & mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\% &
+N\tabularnewline
 \midrule
 \endhead
-\(\alpha\) & 0.983 & 0.034 & 0.628 & 0.868 & 0.985 & 1.102 &
-1.335\tabularnewline
-\(\phi\) & 0.324 & 0.054 & 0.020 & 0.140 & 0.280 & 0.460 &
-0.900\tabularnewline
-\(\sigma^2\) & 0.883 & 0.083 & 0.446 & 0.681 & 0.833 & 1.036 &
-1.610\tabularnewline
+\(\alpha\) & 0.5 & 0.527 & 0.418 & -0.759 & 0.189 & 0.514 & 0.855 &
+1.864 & 36\tabularnewline
+\(\phi\) & 0.2 & 0.401 & 0.052 & 0.100 & 0.240 & 0.360 & 0.520 & 0.960 &
+36\tabularnewline
+\(\sigma^2\) & 2.0 & 1.311 & 0.660 & 0.365 & 0.766 & 1.081 & 1.584 &
+3.562 & 36\tabularnewline
+\(\alpha\) & 0.5 & 0.866 & 1.517 & -1.610 & 0.059 & 0.870 & 1.666 &
+3.159 & 64\tabularnewline
+\(\phi\) & 0.2 & 0.682 & 0.073 & 0.300 & 0.480 & 0.640 & 0.820 & 1.380 &
+64\tabularnewline
+\(\sigma^2\) & 2.0 & 3.932 & 2.594 & 1.667 & 2.800 & 3.642 & 4.744 &
+7.740 & 64\tabularnewline
+\(\alpha\) & 0.5 & 0.323 & 0.657 & -1.449 & -0.124 & 0.416 & 0.812 &
+1.831 & 100\tabularnewline
+\(\phi\) & 0.2 & 0.617 & 0.085 & 0.220 & 0.400 & 0.560 & 0.785 & 1.320 &
+100\tabularnewline
+\(\sigma^2\) & 2.0 & 1.479 & 0.498 & 0.545 & 0.941 & 1.352 & 1.822 &
+3.195 & 100\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -2797,7 +2793,8 @@ g(\mu_i) = \log(\lambda(x_i)) = \alpha + S(x_i) \label{eq:pois-SGLMM}
 loaloa 和 rongelap 两个真实数据集分别来自 R 包 \textbf{geoRglm} 和
 \textbf{PrevMap}， 且被 Peter J. Diggle 等 (2007年)
 \citep{Diggle2007ATMP} 和 Ole F Christensen (2004年)
-\citep{Christensen2004} 分析过，第 \ref{loaloa} 节和第 \ref{rongelap}
+\citep{Christensen2004} 分析过，第 \ref{case-loaloa} 节和第
+\ref{case-rongelap}
 节给出分析这两个数据集的模型和结果。其中，响应变量服从二项分布的空间广义线性混合效应模型拟合数据集
 loaloa， 而响应变量服从泊松分布的空间广义线性混合效应模型拟合数据集
 rongelap。
@@ -2969,8 +2966,8 @@ log-REML\strut
 \caption{模型诊断}\label{fig:model-check}
 \end{figure}
 
-\hypertarget{loaloa}{%
-\section{喀麦隆及周边地区盘尾丝虫病的空间分布}\label{loaloa}}
+\hypertarget{case-loaloa}{%
+\section{喀麦隆及周边地区盘尾丝虫病的空间分布}\label{case-loaloa}}
 
 盘尾丝虫病是由一种可致盲的热带疾病，非洲盘尾丝虫病控制项目 APOC (African
 Programme for Onchocerciasis Control) 搜集了 \(N=168\) 个村庄的
@@ -3103,8 +3100,8 @@ MAX9901，最小值 MIN9901，标准差 STDEV9901 与影响不显著。
 发现贝叶斯 STAN-MCMC 算法比贝叶斯 MCMC 算法稍好一点，
 多半的参数估计的标准差要小一些， 均方误差普遍要小一点。
 
-\hypertarget{rongelap}{%
-\section{朗格拉普岛放射性残留物的空间分布}\label{rongelap}}
+\hypertarget{case-rongelap}{%
+\section{朗格拉普岛核污染浓度的空间分布}\label{case-rongelap}}
 
 Peter J. Diggle 等 (1998年) \citep{Diggle1998}
 提出蒙特卡罗极大似然方法估计不带块金效应的响应变量服从泊松分布的空间广义混合效应模型
@@ -3181,9 +3178,10 @@ y，d1 和 d2 分别为测量坐标。 建立 Poisson-SGLMM 模型
 \bottomrule
 \end{longtable}
 
-\section{冈比亚儿童疟疾流行强度的空间分布}
+\hypertarget{case-gambia}{%
+\section{冈比亚儿童疟疾流行强度的空间分布}\label{case-gambia}}
 
-5 岁以下儿童 在非洲冈比亚的 65 个村庄里调查疟疾感染情况，
+5 岁以下儿童在非洲冈比亚的 65 个村庄里调查疟疾感染情况，
 依冈比亚狭长的地带和横穿东西全境的冈比亚河，
 将其看作东、中和西三个部分，
 东部是河流上游，西部是河流下游相应地，村庄分为 5 个区域，西部两个，
@@ -3485,11 +3483,12 @@ R-INLA
 \end{longtable}
 
 \hypertarget{simulate-code}{%
-\section*{数据模拟}\label{simulate-code}}
-\addcontentsline{toc}{section}{数据模拟}
+\section*{代码}\label{simulate-code}}
+\addcontentsline{toc}{section}{代码}
 
 \hypertarget{simulate-SGP-code}{%
-\subsection{模拟平稳高斯过程}\label{simulate-SGP-code}}
+\subsection*{模拟平稳高斯过程}\label{simulate-SGP-code}}
+\addcontentsline{toc}{subsection}{模拟平稳高斯过程}
 
 STAN 代码模拟高斯过程，自协方差函数见方程 \ref{eq:exp-quad}
 
@@ -3537,7 +3536,8 @@ generated quantities {
 \end{verbatim}
 
 \hypertarget{simulate-SGLMM-code}{%
-\subsection{模拟空间广义线性混合效应模型}\label{simulate-SGLMM-code}}
+\subsection*{模拟空间广义线性混合效应模型}\label{simulate-SGLMM-code}}
+\addcontentsline{toc}{subsection}{模拟空间广义线性混合效应模型}
 
 模拟空间广义线性混合效应模型的函数： \texttt{generate\_sim\_data}
 函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型
@@ -3590,8 +3590,8 @@ generate_sim_data <- function(N = 49, intercept = -1.0,
 \end{verbatim}
 
 \hypertarget{HMC-Algrithms}{%
-\section*{HMC 算法}\label{HMC-Algrithms}}
-\addcontentsline{toc}{section}{HMC 算法}
+\subsection*{HMC 算法}\label{HMC-Algrithms}}
+\addcontentsline{toc}{subsection}{HMC 算法}
 
 \begin{verbatim}
 # 加载程序包
@@ -3633,190 +3633,10 @@ plot(fit.poisson)
 
 \begin{verbatim}
 knitr::include_graphics(path = c(
-  "figures/compiling.png", "figures/sampling.png"
+  "figures/compiling.png", 
+  "figures/sampling.png"
 ))
 \end{verbatim}
-
-\begin{figure}
-
-{\centering \subfloat[编译\label{fig:compiling-sampling1}]{\includegraphics[width=0.7\linewidth]{figures/compiling} }\subfloat[采样\label{fig:compiling-sampling2}]{\includegraphics[width=0.7\linewidth]{figures/sampling} }
-
-}
-
-\caption{基于 Stan 编程的模型编译和采样过程}\label{fig:compiling-sampling}
-\end{figure}
-
-\begin{verbatim}
-## 32  Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
-cat(system("cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c", intern = TRUE), sep = "\n")
-#>      32  Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
-parallel::detectCores()
-#> [1] 32
-\end{verbatim}
-
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-setting & value\tabularnewline
-\midrule
-\endhead
-version & R version 3.5.0 (2017-01-27)\tabularnewline
-os & Ubuntu 14.04.5 LTS\tabularnewline
-system & x86\_64, linux-gnu\tabularnewline
-ui & X11\tabularnewline
-language & (EN)\tabularnewline
-collate & en\_US.UTF-8\tabularnewline
-ctype & en\_US.UTF-8\tabularnewline
-tz & UTC\tabularnewline
-date & 2018-10-13\tabularnewline
-\bottomrule
-\end{longtable}
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-package & version & source\tabularnewline
-\midrule
-\endhead
-abind & 1.4-7 & R-Forge (R 3.5.0)\tabularnewline
-assertthat & 0.2.0 & CRAN (R 3.5.0)\tabularnewline
-backports & 1.1.2 & CRAN (R 3.5.0)\tabularnewline
-base64enc & 0.1-3 & CRAN (R 3.5.0)\tabularnewline
-bayesplot & 1.6.0 & CRAN (R 3.5.0)\tabularnewline
-BH & 1.66.0-1 & CRAN (R 3.5.0)\tabularnewline
-bibtex & 0.4.2 & CRAN (R 3.5.0)\tabularnewline
-bindr & 0.1.1 & CRAN (R 3.5.0)\tabularnewline
-bindrcpp & 0.2.2 & CRAN (R 3.5.0)\tabularnewline
-bitops & 1.0-6 & CRAN (R 3.5.0)\tabularnewline
-bookdown & 0.7.21 & Github (rstudio/bookdown@d1f44e5)\tabularnewline
-bridgesampling & 0.5-2 & CRAN (R 3.5.0)\tabularnewline
-brms & 2.5.0 & CRAN (R 3.5.0)\tabularnewline
-Brobdingnag & 1.2-6 & CRAN (R 3.5.0)\tabularnewline
-class & 7.3-14 & CRAN (R 3.5.0)\tabularnewline
-classInt & 0.2-3 & CRAN (R 3.5.0)\tabularnewline
-cli & 1.0.1 & CRAN (R 3.5.0)\tabularnewline
-clipr & 0.4.1 & CRAN (R 3.5.0)\tabularnewline
-coda & 0.19-2 & CRAN (R 3.5.0)\tabularnewline
-codetools & 0.2-15 & CRAN (R 3.5.0)\tabularnewline
-colorspace & 1.4-0 & R-Forge (R 3.5.0)\tabularnewline
-colourpicker & 1.0 & CRAN (R 3.5.0)\tabularnewline
-crayon & 1.3.4 & CRAN (R 3.5.0)\tabularnewline
-crosstalk & 1.0.0 & CRAN (R 3.5.0)\tabularnewline
-curl & 3.2 & CRAN (R 3.5.0)\tabularnewline
-DBI & 1.0.0 & CRAN (R 3.5.0)\tabularnewline
-desc & 1.2.0 & CRAN (R 3.5.0)\tabularnewline
-digest & 0.6.18 & CRAN (R 3.5.0)\tabularnewline
-doRNG & 1.7.1 & CRAN (R 3.5.0)\tabularnewline
-doSNOW & 1.0.17 & R-Forge (R 3.5.0)\tabularnewline
-dplyr & 0.7.6 & CRAN (R 3.5.0)\tabularnewline
-DT & 0.4 & CRAN (R 3.5.0)\tabularnewline
-dygraphs & 1.1.1.6 & CRAN (R 3.5.0)\tabularnewline
-e1071 & 1.7-0 & CRAN (R 3.5.0)\tabularnewline
-evaluate & 0.12 & CRAN (R 3.5.0)\tabularnewline
-fansi & 0.4.0 & CRAN (R 3.5.0)\tabularnewline
-foreach & 1.5.1 & R-Forge (R 3.5.0)\tabularnewline
-formatR & 1.5 & CRAN (R 3.5.0)\tabularnewline
-gdtools & 0.1.7 & CRAN (R 3.5.0)\tabularnewline
-ggplot2 & 3.0.0.9000 & Github (tidyverse/ggplot2@3e1e6e4)\tabularnewline
-ggridges & 0.5.1 & CRAN (R 3.5.0)\tabularnewline
-glue & 1.3.0 & CRAN (R 3.5.0)\tabularnewline
-gridExtra & 2.3 & CRAN (R 3.5.0)\tabularnewline
-gtable & 0.2.0 & CRAN (R 3.5.0)\tabularnewline
-gtools & 3.8.1 & CRAN (R 3.5.0)\tabularnewline
-highr & 0.7 & CRAN (R 3.5.0)\tabularnewline
-hms & 0.4.2.9001 & Github (tidyverse/hms@979286f)\tabularnewline
-htmldeps & 0.1.1 & Github (rstudio/htmldeps@c1023e0)\tabularnewline
-htmltools & 0.3.6 & CRAN (R 3.5.0)\tabularnewline
-htmlwidgets & 1.3 & CRAN (R 3.5.0)\tabularnewline
-httpuv & 1.4.5 & CRAN (R 3.5.0)\tabularnewline
-httr & 1.3.1 & CRAN (R 3.5.0)\tabularnewline
-igraph & 1.2.2 & CRAN (R 3.5.0)\tabularnewline
-inline & 0.3.15 & CRAN (R 3.5.0)\tabularnewline
-iterators & 1.0.11 & R-Forge (R 3.5.0)\tabularnewline
-jsonlite & 1.5 & CRAN (R 3.5.0)\tabularnewline
-kableExtra & 0.9.0 & CRAN (R 3.5.0)\tabularnewline
-knitr & 1.20 & CRAN (R 3.5.0)\tabularnewline
-labeling & 0.3 & CRAN (R 3.5.0)\tabularnewline
-later & 0.7.5 & CRAN (R 3.5.0)\tabularnewline
-lattice & 0.20-35 & CRAN (R 3.5.0)\tabularnewline
-lazyeval & 0.2.1 & CRAN (R 3.5.0)\tabularnewline
-lme4 & 1.1-18-1 & CRAN (R 3.5.0)\tabularnewline
-loo & 2.0.0 & CRAN (R 3.5.0)\tabularnewline
-magrittr & 1.5 & CRAN (R 3.5.0)\tabularnewline
-markdown & 0.8 & CRAN (R 3.5.0)\tabularnewline
-MASS & 7.3-49 & CRAN (R 3.5.0)\tabularnewline
-Matrix & 1.2-14 & CRAN (R 3.5.0)\tabularnewline
-matrixStats & 0.54.0 & CRAN (R 3.5.0)\tabularnewline
-mcmc & 0.9-5 & CRAN (R 3.5.0)\tabularnewline
-mgcv & 1.8-23 & CRAN (R 3.5.0)\tabularnewline
-mime & 0.6 & CRAN (R 3.5.0)\tabularnewline
-miniUI & 0.1.1.1 & CRAN (R 3.5.0)\tabularnewline
-minqa & 1.2.4 & CRAN (R 3.5.0)\tabularnewline
-munsell & 0.5.0 & CRAN (R 3.5.0)\tabularnewline
-mvtnorm & 1.0-8 & CRAN (R 3.5.0)\tabularnewline
-nleqslv & 3.3.2 & CRAN (R 3.5.0)\tabularnewline
-nlme & 3.1-137 & CRAN (R 3.5.0)\tabularnewline
-nloptr & 1.2.1 & CRAN (R 3.5.0)\tabularnewline
-openssl & 1.0.2 & CRAN (R 3.5.0)\tabularnewline
-packrat & 0.4.9-3 & CRAN (R 3.5.0)\tabularnewline
-pillar & 1.3.0 & CRAN (R 3.5.0)\tabularnewline
-pkgconfig & 2.0.2 & CRAN (R 3.5.0)\tabularnewline
-pkgmaker & 0.27 & CRAN (R 3.5.0)\tabularnewline
-PKI & 0.1-5.1 & CRAN (R 3.5.0)\tabularnewline
-plogr & 0.2.0 & CRAN (R 3.5.0)\tabularnewline
-plyr & 1.8.4 & CRAN (R 3.5.0)\tabularnewline
-promises & 1.0.1 & CRAN (R 3.5.0)\tabularnewline
-purrr & 0.2.5 & CRAN (R 3.5.0)\tabularnewline
-R6 & 2.3.0 & CRAN (R 3.5.0)\tabularnewline
-RColorBrewer & 1.1-2 & CRAN (R 3.5.0)\tabularnewline
-Rcpp & 0.12.19 & CRAN (R 3.5.0)\tabularnewline
-RcppEigen & 0.3.3.4.0 & CRAN (R 3.5.0)\tabularnewline
-RCurl & 1.95-4.11 & CRAN (R 3.5.0)\tabularnewline
-readr & 1.2.0 & Github (tidyverse/readr@156dc31)\tabularnewline
-registry & 0.5 & CRAN (R 3.5.0)\tabularnewline
-reshape2 & 1.4.3 & CRAN (R 3.5.0)\tabularnewline
-RJSONIO & 1.3-0 & CRAN (R 3.5.0)\tabularnewline
-rlang & 0.2.2 & CRAN (R 3.5.0)\tabularnewline
-rmarkdown & 1.10.14 & Github (rstudio/rmarkdown@dcc7d37)\tabularnewline
-rngtools & 1.3.1 & CRAN (R 3.5.0)\tabularnewline
-rprojroot & 1.3-2 & CRAN (R 3.5.0)\tabularnewline
-rsconnect & 0.8.8 & CRAN (R 3.5.0)\tabularnewline
-rstan & 2.17.4 & CRAN (R 3.5.0)\tabularnewline
-rstanarm & 2.17.4 & CRAN (R 3.5.0)\tabularnewline
-rstansim & 0.1.1 & CRAN (R 3.5.0)\tabularnewline
-rstantools & 1.5.1 & CRAN (R 3.5.0)\tabularnewline
-rstudioapi & 0.8 & CRAN (R 3.5.0)\tabularnewline
-rvest & 0.3.2 & CRAN (R 3.5.0)\tabularnewline
-scales & 1.0.0 & CRAN (R 3.5.0)\tabularnewline
-selectr & 0.4-1 & CRAN (R 3.5.0)\tabularnewline
-sessioninfo & 1.1.0 & CRAN (R 3.5.0)\tabularnewline
-sf & 0.6-3 & CRAN (R 3.5.0)\tabularnewline
-shiny & 1.1.0 & CRAN (R 3.5.0)\tabularnewline
-shinyjs & 1.0 & CRAN (R 3.5.0)\tabularnewline
-shinystan & 2.5.0 & CRAN (R 3.5.0)\tabularnewline
-shinythemes & 1.1.1 & CRAN (R 3.5.0)\tabularnewline
-snow & 0.4-3 & CRAN (R 3.5.0)\tabularnewline
-sourcetools & 0.1.7 & CRAN (R 3.5.0)\tabularnewline
-spData & 0.2.9.4 & CRAN (R 3.5.0)\tabularnewline
-StanHeaders & 2.18.0 & CRAN (R 3.5.0)\tabularnewline
-stringi & 1.2.4 & CRAN (R 3.5.0)\tabularnewline
-stringr & 1.3.1 & CRAN (R 3.5.0)\tabularnewline
-survival & 2.41-3 & CRAN (R 3.5.0)\tabularnewline
-svglite & 1.2.1 & CRAN (R 3.5.0)\tabularnewline
-threejs & 0.3.1 & CRAN (R 3.5.0)\tabularnewline
-tibble & 1.4.2 & CRAN (R 3.5.0)\tabularnewline
-tidyselect & 0.2.5 & CRAN (R 3.5.0)\tabularnewline
-tinytex & 0.8 & CRAN (R 3.5.0)\tabularnewline
-units & 0.6-1 & CRAN (R 3.5.0)\tabularnewline
-utf8 & 1.1.4 & CRAN (R 3.5.0)\tabularnewline
-viridisLite & 0.3.0 & CRAN (R 3.5.0)\tabularnewline
-withr & 2.1.2 & CRAN (R 3.5.0)\tabularnewline
-xfun & 0.3 & CRAN (R 3.5.0)\tabularnewline
-xml2 & 1.2.0 & CRAN (R 3.5.0)\tabularnewline
-xtable & 1.8-3 & CRAN (R 3.5.0)\tabularnewline
-xts & 0.11-1 & CRAN (R 3.5.0)\tabularnewline
-yaml & 2.2.0 & CRAN (R 3.5.0)\tabularnewline
-zoo & 1.8-4 & R-Forge (R 3.5.0)\tabularnewline
-\bottomrule
-\end{longtable}
 
 
 \backmatter

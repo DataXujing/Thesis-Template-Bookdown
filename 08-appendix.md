@@ -78,9 +78,9 @@ Table: (\#tab:LH-binom-SGLMM) Langevin-Hastings 算法：模型 \@ref(eq:binom-S
 
 
 
-## 数据模拟 {#simulate-code .unnumbered}
+## 代码 {#simulate-code .unnumbered}
 
-### 模拟平稳高斯过程 {#simulate-SGP-code}
+### 模拟平稳高斯过程 {#simulate-SGP-code .unnumbered}
 
 STAN 代码模拟高斯过程，自协方差函数见方程 \ref{eq:exp-quad}
 
@@ -128,7 +128,7 @@ generated quantities {
 }
 ```
 
-### 模拟空间广义线性混合效应模型 {#simulate-SGLMM-code}
+### 模拟空间广义线性混合效应模型 {#simulate-SGLMM-code .unnumbered}
 
 模拟空间广义线性混合效应模型的函数：
 `generate_sim_data` 函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型
@@ -181,7 +181,7 @@ generate_sim_data <- function(N = 49, intercept = -1.0,
 }
 ```
 
-## HMC 算法 {#HMC-Algrithms .unnumbered}
+### HMC 算法 {#HMC-Algrithms .unnumbered}
 
 
 ```r
@@ -228,186 +228,19 @@ plot(fit.poisson)
 
 ```r
 knitr::include_graphics(path = c(
-  "figures/compiling.png", "figures/sampling.png"
+  "figures/compiling.png", 
+  "figures/sampling.png"
 ))
 ```
 
-\begin{figure}
-
-{\centering \subfloat[编译(\#fig:compiling-sampling1)]{\includegraphics[width=0.7\linewidth]{figures/compiling} }\subfloat[采样(\#fig:compiling-sampling2)]{\includegraphics[width=0.7\linewidth]{figures/sampling} }
-
-}
-
-\caption{基于 Stan 编程的模型编译和采样过程}(\#fig:compiling-sampling)
-\end{figure}
 
 
 
 
-```r
-## 32  Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
-cat(system("cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c", intern = TRUE), sep = "\n")
-#>      32  Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
-parallel::detectCores()
-#> [1] 32
-```
 
 
 
 
-|setting  |value                        |
-|:--------|:----------------------------|
-|version  |R version 3.5.0 (2017-01-27) |
-|os       |Ubuntu 14.04.5 LTS           |
-|system   |x86_64, linux-gnu            |
-|ui       |X11                          |
-|language |(EN)                         |
-|collate  |en_US.UTF-8                  |
-|ctype    |en_US.UTF-8                  |
-|tz       |UTC                          |
-|date     |2018-10-13                   |
 
 
 
-
-|package        |version    |source                              |
-|:--------------|:----------|:-----------------------------------|
-|abind          |1.4-7      |R-Forge (R 3.5.0)                   |
-|assertthat     |0.2.0      |CRAN (R 3.5.0)                      |
-|backports      |1.1.2      |CRAN (R 3.5.0)                      |
-|base64enc      |0.1-3      |CRAN (R 3.5.0)                      |
-|bayesplot      |1.6.0      |CRAN (R 3.5.0)                      |
-|BH             |1.66.0-1   |CRAN (R 3.5.0)                      |
-|bibtex         |0.4.2      |CRAN (R 3.5.0)                      |
-|bindr          |0.1.1      |CRAN (R 3.5.0)                      |
-|bindrcpp       |0.2.2      |CRAN (R 3.5.0)                      |
-|bitops         |1.0-6      |CRAN (R 3.5.0)                      |
-|bookdown       |0.7.21     |Github (rstudio/bookdown\@d1f44e5)  |
-|bridgesampling |0.5-2      |CRAN (R 3.5.0)                      |
-|brms           |2.5.0      |CRAN (R 3.5.0)                      |
-|Brobdingnag    |1.2-6      |CRAN (R 3.5.0)                      |
-|class          |7.3-14     |CRAN (R 3.5.0)                      |
-|classInt       |0.2-3      |CRAN (R 3.5.0)                      |
-|cli            |1.0.1      |CRAN (R 3.5.0)                      |
-|clipr          |0.4.1      |CRAN (R 3.5.0)                      |
-|coda           |0.19-2     |CRAN (R 3.5.0)                      |
-|codetools      |0.2-15     |CRAN (R 3.5.0)                      |
-|colorspace     |1.4-0      |R-Forge (R 3.5.0)                   |
-|colourpicker   |1.0        |CRAN (R 3.5.0)                      |
-|crayon         |1.3.4      |CRAN (R 3.5.0)                      |
-|crosstalk      |1.0.0      |CRAN (R 3.5.0)                      |
-|curl           |3.2        |CRAN (R 3.5.0)                      |
-|DBI            |1.0.0      |CRAN (R 3.5.0)                      |
-|desc           |1.2.0      |CRAN (R 3.5.0)                      |
-|digest         |0.6.18     |CRAN (R 3.5.0)                      |
-|doRNG          |1.7.1      |CRAN (R 3.5.0)                      |
-|doSNOW         |1.0.17     |R-Forge (R 3.5.0)                   |
-|dplyr          |0.7.6      |CRAN (R 3.5.0)                      |
-|DT             |0.4        |CRAN (R 3.5.0)                      |
-|dygraphs       |1.1.1.6    |CRAN (R 3.5.0)                      |
-|e1071          |1.7-0      |CRAN (R 3.5.0)                      |
-|evaluate       |0.12       |CRAN (R 3.5.0)                      |
-|fansi          |0.4.0      |CRAN (R 3.5.0)                      |
-|foreach        |1.5.1      |R-Forge (R 3.5.0)                   |
-|formatR        |1.5        |CRAN (R 3.5.0)                      |
-|gdtools        |0.1.7      |CRAN (R 3.5.0)                      |
-|ggplot2        |3.0.0.9000 |Github (tidyverse/ggplot2\@3e1e6e4) |
-|ggridges       |0.5.1      |CRAN (R 3.5.0)                      |
-|glue           |1.3.0      |CRAN (R 3.5.0)                      |
-|gridExtra      |2.3        |CRAN (R 3.5.0)                      |
-|gtable         |0.2.0      |CRAN (R 3.5.0)                      |
-|gtools         |3.8.1      |CRAN (R 3.5.0)                      |
-|highr          |0.7        |CRAN (R 3.5.0)                      |
-|hms            |0.4.2.9001 |Github (tidyverse/hms\@979286f)     |
-|htmldeps       |0.1.1      |Github (rstudio/htmldeps\@c1023e0)  |
-|htmltools      |0.3.6      |CRAN (R 3.5.0)                      |
-|htmlwidgets    |1.3        |CRAN (R 3.5.0)                      |
-|httpuv         |1.4.5      |CRAN (R 3.5.0)                      |
-|httr           |1.3.1      |CRAN (R 3.5.0)                      |
-|igraph         |1.2.2      |CRAN (R 3.5.0)                      |
-|inline         |0.3.15     |CRAN (R 3.5.0)                      |
-|iterators      |1.0.11     |R-Forge (R 3.5.0)                   |
-|jsonlite       |1.5        |CRAN (R 3.5.0)                      |
-|kableExtra     |0.9.0      |CRAN (R 3.5.0)                      |
-|knitr          |1.20       |CRAN (R 3.5.0)                      |
-|labeling       |0.3        |CRAN (R 3.5.0)                      |
-|later          |0.7.5      |CRAN (R 3.5.0)                      |
-|lattice        |0.20-35    |CRAN (R 3.5.0)                      |
-|lazyeval       |0.2.1      |CRAN (R 3.5.0)                      |
-|lme4           |1.1-18-1   |CRAN (R 3.5.0)                      |
-|loo            |2.0.0      |CRAN (R 3.5.0)                      |
-|magrittr       |1.5        |CRAN (R 3.5.0)                      |
-|markdown       |0.8        |CRAN (R 3.5.0)                      |
-|MASS           |7.3-49     |CRAN (R 3.5.0)                      |
-|Matrix         |1.2-14     |CRAN (R 3.5.0)                      |
-|matrixStats    |0.54.0     |CRAN (R 3.5.0)                      |
-|mcmc           |0.9-5      |CRAN (R 3.5.0)                      |
-|mgcv           |1.8-23     |CRAN (R 3.5.0)                      |
-|mime           |0.6        |CRAN (R 3.5.0)                      |
-|miniUI         |0.1.1.1    |CRAN (R 3.5.0)                      |
-|minqa          |1.2.4      |CRAN (R 3.5.0)                      |
-|munsell        |0.5.0      |CRAN (R 3.5.0)                      |
-|mvtnorm        |1.0-8      |CRAN (R 3.5.0)                      |
-|nleqslv        |3.3.2      |CRAN (R 3.5.0)                      |
-|nlme           |3.1-137    |CRAN (R 3.5.0)                      |
-|nloptr         |1.2.1      |CRAN (R 3.5.0)                      |
-|openssl        |1.0.2      |CRAN (R 3.5.0)                      |
-|packrat        |0.4.9-3    |CRAN (R 3.5.0)                      |
-|pillar         |1.3.0      |CRAN (R 3.5.0)                      |
-|pkgconfig      |2.0.2      |CRAN (R 3.5.0)                      |
-|pkgmaker       |0.27       |CRAN (R 3.5.0)                      |
-|PKI            |0.1-5.1    |CRAN (R 3.5.0)                      |
-|plogr          |0.2.0      |CRAN (R 3.5.0)                      |
-|plyr           |1.8.4      |CRAN (R 3.5.0)                      |
-|promises       |1.0.1      |CRAN (R 3.5.0)                      |
-|purrr          |0.2.5      |CRAN (R 3.5.0)                      |
-|R6             |2.3.0      |CRAN (R 3.5.0)                      |
-|RColorBrewer   |1.1-2      |CRAN (R 3.5.0)                      |
-|Rcpp           |0.12.19    |CRAN (R 3.5.0)                      |
-|RcppEigen      |0.3.3.4.0  |CRAN (R 3.5.0)                      |
-|RCurl          |1.95-4.11  |CRAN (R 3.5.0)                      |
-|readr          |1.2.0      |Github (tidyverse/readr\@156dc31)   |
-|registry       |0.5        |CRAN (R 3.5.0)                      |
-|reshape2       |1.4.3      |CRAN (R 3.5.0)                      |
-|RJSONIO        |1.3-0      |CRAN (R 3.5.0)                      |
-|rlang          |0.2.2      |CRAN (R 3.5.0)                      |
-|rmarkdown      |1.10.14    |Github (rstudio/rmarkdown\@dcc7d37) |
-|rngtools       |1.3.1      |CRAN (R 3.5.0)                      |
-|rprojroot      |1.3-2      |CRAN (R 3.5.0)                      |
-|rsconnect      |0.8.8      |CRAN (R 3.5.0)                      |
-|rstan          |2.17.4     |CRAN (R 3.5.0)                      |
-|rstanarm       |2.17.4     |CRAN (R 3.5.0)                      |
-|rstansim       |0.1.1      |CRAN (R 3.5.0)                      |
-|rstantools     |1.5.1      |CRAN (R 3.5.0)                      |
-|rstudioapi     |0.8        |CRAN (R 3.5.0)                      |
-|rvest          |0.3.2      |CRAN (R 3.5.0)                      |
-|scales         |1.0.0      |CRAN (R 3.5.0)                      |
-|selectr        |0.4-1      |CRAN (R 3.5.0)                      |
-|sessioninfo    |1.1.0      |CRAN (R 3.5.0)                      |
-|sf             |0.6-3      |CRAN (R 3.5.0)                      |
-|shiny          |1.1.0      |CRAN (R 3.5.0)                      |
-|shinyjs        |1.0        |CRAN (R 3.5.0)                      |
-|shinystan      |2.5.0      |CRAN (R 3.5.0)                      |
-|shinythemes    |1.1.1      |CRAN (R 3.5.0)                      |
-|snow           |0.4-3      |CRAN (R 3.5.0)                      |
-|sourcetools    |0.1.7      |CRAN (R 3.5.0)                      |
-|spData         |0.2.9.4    |CRAN (R 3.5.0)                      |
-|StanHeaders    |2.18.0     |CRAN (R 3.5.0)                      |
-|stringi        |1.2.4      |CRAN (R 3.5.0)                      |
-|stringr        |1.3.1      |CRAN (R 3.5.0)                      |
-|survival       |2.41-3     |CRAN (R 3.5.0)                      |
-|svglite        |1.2.1      |CRAN (R 3.5.0)                      |
-|threejs        |0.3.1      |CRAN (R 3.5.0)                      |
-|tibble         |1.4.2      |CRAN (R 3.5.0)                      |
-|tidyselect     |0.2.5      |CRAN (R 3.5.0)                      |
-|tinytex        |0.8        |CRAN (R 3.5.0)                      |
-|units          |0.6-1      |CRAN (R 3.5.0)                      |
-|utf8           |1.1.4      |CRAN (R 3.5.0)                      |
-|viridisLite    |0.3.0      |CRAN (R 3.5.0)                      |
-|withr          |2.1.2      |CRAN (R 3.5.0)                      |
-|xfun           |0.3        |CRAN (R 3.5.0)                      |
-|xml2           |1.2.0      |CRAN (R 3.5.0)                      |
-|xtable         |1.8-3      |CRAN (R 3.5.0)                      |
-|xts            |0.11-1     |CRAN (R 3.5.0)                      |
-|yaml           |2.2.0      |CRAN (R 3.5.0)                      |
-|zoo            |1.8-4      |R-Forge (R 3.5.0)                   |

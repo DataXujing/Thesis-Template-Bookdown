@@ -3,7 +3,7 @@
 title: "Master Thesis Template"
 subtitle: "China University of Mining and Technology, Beijing"
 author: "Xiang-Yun Huang"
-date: "2018-10-13"
+date: "2018-10-14"
 site: bookdown::bookdown_site
 documentclass: book
 mainfont: Times New Roman
