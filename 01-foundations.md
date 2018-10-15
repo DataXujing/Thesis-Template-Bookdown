@@ -493,9 +493,9 @@ Table: (\#tab:eight-schools-output) 对 Eight Schools 数据集建立分层正�
 
 
 
-## 方差缩减因子
+## 方差缩减因子 {#sec:scale-r-hat}
 
-为了评估链条之间和内部的混合效果，我们引入潜在尺度缩减因子 $\hat{R}$，对每个待估的量 $\omega$，模拟产生 $m$ 条链，每条链有 $n$ 次迭代值 $\omega_{ij} (i = 1,\ldots,n;j=1,\ldots,m)$，用 $B$ 和 $W$ 分别表示链条之间（不妨看作组间方差）和内部的方差（组内方差）
+为了评估链条之间和内部的混合效果，我们引入潜在尺度缩减因子 (potential scale reduction factor) $\hat{R}$，用以描述链条的波动程度，类似一组数据的方差含义，方差越小波动性越小，数据越集中，这里意味着链条波动性小。一般地，对于每个待估的量 $\omega$，模拟产生 $m$ 条链，每条链有 $n$ 次迭代值 $\omega_{ij} (i = 1,\ldots,n;j=1,\ldots,m)$，用 $B$ 和 $W$ 分别表示链条之间（不妨看作组间方差）和内部的方差（组内方差）
 
 \begin{equation}
 \begin{aligned}
@@ -519,3 +519,5 @@ $\omega$ 的边际后验方差 $\mathsf{\omega|Y}$ 是 $W$ 和 $B$ 的加权平�
 \end{equation}
 
 随着 $n \to \infty$， $\hat{R}$ 下降到 1。如果 $\hat{R}$ 比较大，我们有理由认为需要增加模拟次数以改进待估参数 $\omega$ 的后验分布 [@Gelman2013R]。
+
+## 本章小结 {#sec:foundations}

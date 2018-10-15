@@ -146,7 +146,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{China University of Mining and Technology, Beijing}
 \author{Xiang-Yun Huang}
-\date{2018-10-14}
+\date{2018-10-15}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{定理}[chapter]
@@ -1276,12 +1276,15 @@ lp\_\_ & -39.55 & 0.03 & 2.64 & -45.41 & -41.15 & -39.31 & -37.67 &
 \caption{诊断图}\label{fig:diagnostic}
 \end{figure}
 
-\section{方差缩减因子}
+\hypertarget{sec:scale-r-hat}{%
+\section{方差缩减因子}\label{sec:scale-r-hat}}
 
-为了评估链条之间和内部的混合效果，我们引入潜在尺度缩减因子
-\(\hat{R}\)，对每个待估的量 \(\omega\)，模拟产生 \(m\) 条链，每条链有
-\(n\) 次迭代值 \(\omega_{ij} (i = 1,\ldots,n;j=1,\ldots,m)\)，用 \(B\)
-和 \(W\) 分别表示链条之间（不妨看作组间方差）和内部的方差（组内方差）
+为了评估链条之间和内部的混合效果，我们引入潜在尺度缩减因子 (potential
+scale reduction factor)
+\(\hat{R}\)，用以描述链条的波动程度，类似一组数据的方差含义，方差越小波动性越小，数据越集中，这里意味着链条波动性小。一般地，对于每个待估的量
+\(\omega\)，模拟产生 \(m\) 条链，每条链有 \(n\) 次迭代值
+\(\omega_{ij} (i = 1,\ldots,n;j=1,\ldots,m)\)，用 \(B\) 和 \(W\)
+分别表示链条之间（不妨看作组间方差）和内部的方差（组内方差）
 
 \begin{equation}
 \begin{aligned}
@@ -1312,6 +1315,9 @@ lp\_\_ & -39.55 & 0.03 & 2.64 & -45.41 & -41.15 & -39.31 & -37.67 &
 随着 \(n \to \infty\)， \(\hat{R}\) 下降到 1。如果 \(\hat{R}\)
 比较大，我们有理由认为需要增加模拟次数以改进待估参数 \(\omega\)
 的后验分布 \citep{Gelman2013R}。
+
+\hypertarget{sec:foundations}{%
+\section{本章小结}\label{sec:foundations}}
 
 \hypertarget{models}{%
 \chapter{统计模型}\label{models}}
@@ -1572,6 +1578,9 @@ g(\mu_i) = d(x_i)^{\top}\beta + S(x_i) \label{eq:no-nugget-SGLMM}
 已知或者在同一位置可以用重复测量 的方法直接估计时，参数
 \(\tau^2, \sigma^2, \phi\) 是可识别的
 \citep{Diggle2002Childhood, Diggle2007}。
+
+\hypertarget{sec:models}{%
+\section{本章小结}\label{sec:models}}
 
 \hypertarget{algorithms}{%
 \chapter{参数估计}\label{algorithms}}
@@ -2486,6 +2495,9 @@ spBayes\tabularnewline
 \bottomrule
 \end{longtable}
 
+\hypertarget{sec:estimations}{%
+\section{本章小结}\label{sec:estimations}}
+
 \hypertarget{simulations}{%
 \chapter{数值模拟}\label{simulations}}
 
@@ -2690,49 +2702,58 @@ g(\mu_i) = \log\{\frac{p(x_i)}{1-p(x_i)}\} = \alpha + S(x_i) \label{eq:binom-SGL
 \sigma^2 & \sim \mathrm{Inv-}\chi^2(5,0.5)
 \end{align}
 
-\begin{longtable}[]{@{}lrrrrrrrr@{}}
-\caption{\label{tab:MCLH-vs-NUTS} Langevin-Hastings 算法与 NUTS
-算法的数值模拟比较，模型参数 \(\alpha,\phi,\sigma^2\)
+\begin{longtable}[]{@{}lrrrrrrrrr@{}}
+\caption{\label{tab:MCLH-vs-NUTS} Langevin-Hastings
+算法与汉密尔顿蒙特卡罗算法的数值模拟比较，模型参数
+\(\alpha,\phi,\sigma^2\)
 的估计值（后验分布的均值）、方差（后验分布的方差）和 5
 个分位点（后验分布的 5 个分位点），采样点数目分别考虑了
 \(N = 36, 64, 81, 100\) 的情况，括号内为相应参数的真值}\tabularnewline
 \toprule
-& mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\% & N\tabularnewline
+& true & mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\% &
+N\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-& mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\% & N\tabularnewline
+& true & mean & var & 2.5\% & 25\% & 50\% & 75\% & 97.5\% &
+N\tabularnewline
 \midrule
 \endhead
-\(\alpha\) & -0.354(0) & 0.079 & -0.938 & -0.524 & -0.361 & -0.173 &
+\(\alpha\) & 0.0 & -0.354 & 0.079 & -0.938 & -0.524 & -0.361 & -0.173 &
 0.215 & 36\tabularnewline
-\(\phi\) & 0.121(0.2) & 0.006 & 0.005 & 0.055 & 0.110 & 0.180 & 0.285 &
+\(\phi\) & 0.2 & 0.121 & 0.006 & 0.005 & 0.055 & 0.110 & 0.180 & 0.285 &
 36\tabularnewline
-\(\sigma^2\) & 0.683(0.5) & 0.147 & 0.215 & 0.408 & 0.596 & 0.850 &
+\(\sigma^2\) & 0.5 & 0.683 & 0.147 & 0.215 & 0.408 & 0.596 & 0.850 &
 1.667 & 36\tabularnewline
-\(\alpha\) & 0.003(0) & 0.089 & -0.596 & -0.169 & 0.013 & 0.179 & 0.609
-& 64\tabularnewline
-\(\phi\) & 0.194(0.2) & 0.004 & 0.070 & 0.145 & 0.195 & 0.250 & 0.295 &
+\(\alpha\) & 0.0 & 0.003 & 0.089 & -0.596 & -0.169 & 0.013 & 0.179 &
+0.609 & 64\tabularnewline
+\(\phi\) & 0.2 & 0.194 & 0.004 & 0.070 & 0.145 & 0.195 & 0.250 & 0.295 &
 64\tabularnewline
-\(\sigma^2\) & 0.656(0.5) & 0.096 & 0.254 & 0.449 & 0.592 & 0.781 &
+\(\sigma^2\) & 0.5 & 0.656 & 0.096 & 0.254 & 0.449 & 0.592 & 0.781 &
 1.453 & 64\tabularnewline
-\(\beta\) & -0.155(0) & 0.044 & -0.565 & -0.284 & -0.156 & -0.03 & 0.273
-& 81\tabularnewline
-\(\phi\) & 0.116(0.2) & 0.006 & 0.005 & 0.055 & 0.105 & 0.17 & 0.280 &
+\(\beta\) & 0.0 & -0.155 & 0.044 & -0.565 & -0.284 & -0.156 & -0.03 &
+0.273 & 81\tabularnewline
+\(\phi\) & 0.2 & 0.116 & 0.006 & 0.005 & 0.055 & 0.105 & 0.17 & 0.280 &
 81\tabularnewline
-\(\sigma^2\) & 0.468(0.5) & 0.057 & 0.180 & 0.311 & 0.414 & 0.56 & 1.129
-& 81\tabularnewline
+\(\sigma^2\) & 0.5 & 0.468 & 0.057 & 0.180 & 0.311 & 0.414 & 0.56 &
+1.129 & 81\tabularnewline
+\(\alpha\) & 0.0 & 0.046 & 0.251 & -0.947 & -0.269 & 0.049 & 0.356 &
+1.069 & 64\tabularnewline
+\(\phi\) & 0.2 & 1.042 & 0.246 & 0.471 & 0.708 & 0.921 & 1.247 & 2.324 &
+64\tabularnewline
+\(\sigma^2\) & 0.5 & 0.647 & 0.228 & 0.170 & 0.338 & 0.524 & 0.779 &
+1.958 & 64\tabularnewline
 \bottomrule
 \end{longtable}
 
 参数 \(\alpha,\phi,\sigma^2\)
-的贝叶斯估计没有显式表达式，通常用后验分布的均值作为参数的估计，
-估计的精度或者说好坏用后验分布的方差衡量，而均方误差在参数估计取后验均值时，就是后验方差，所以表
+的贝叶斯估计没有显式表达式，通常用后验分布的均值作为参数的估计，即所谓的贝叶斯估计，它的定义就是使得估计的均方误差达到最小时的估计。贝叶斯估计
+的精度或者说好坏常用后验分布的方差衡量，因为均方误差在参数估计取后验均值时就是后验方差，所以表
 \ref{tab:MCLH-vs-NUTS} 不再提供估计的均方误差值，而是提供了 5
 个后验分布的分位点，在 95\% 的置信水平下，样本分位点 0.025 和 0.975
-的值组成了置信区间的上下界。64 个采样点处 \(p(x_i), i = 1, \ldots, 64\)
-的后验分布的均值、方差、标准差和 5个分位点见附表
-\ref{tab:LH-binom-SGLMM}
+的值组成了置信区间的上下界。除了获得各参数的估计值外，还获得 64
+个采样点处 \(p(x_i), i = 1, \ldots, 64\) 的后验均值、方差、标准差和
+5个分位点，详见附表 \ref{tab:LH-binom-SGLMM}
 
 \hypertarget{possion-sglmm}{%
 \subsection{响应变量服从泊松分布}\label{possion-sglmm}}
@@ -2750,7 +2771,11 @@ g(\mu_i) = \log(\lambda(x_i)) = \alpha + S(x_i) \label{eq:pois-SGLMM}
 \(\mathrm{Cov}(S(x_i),S(x_j)) = \sigma^2 \big\{2^{\kappa-1}\Gamma(\kappa)\big\}^{-1}(u/\phi)^{\kappa}K_{\kappa}(u/\phi)\)，联系函数
 \(g(\mu_i) = \log\{\lambda(x_{i})\}\)。
 
-类似 \ref{sim-binomal-sglmm} 小节产生随机数的过程，
+类似 \ref{sim-binomal-sglmm} 小节，首先产生服从平稳空间高斯过程 \(S(x)\)
+的随机数 \(S(x_i),i=1,\ldots,N\)，则根据 \eqref{eq:pois-SGLMM} 式，
+\(\lambda(x_i) = \exp(\alpha + S(x_i))\)，又响应变量
+\(Y_i \sim \mathrm{Possion}(\lambda(x_{i}))\)，根据 R 内置函数
+\texttt{rpois} 产生服从参数为 \(\lambda(x_i)\) 的泊松分布的随机数。
 
 \begin{longtable}[]{@{}lrrrrrrrrr@{}}
 \caption{\label{tab:Pois-MCLV-vs-NUTS} 模型参数真值设置为
@@ -2784,8 +2809,29 @@ N\tabularnewline
 100\tabularnewline
 \(\sigma^2\) & 2.0 & 1.479 & 0.498 & 0.545 & 0.941 & 1.352 & 1.822 &
 3.195 & 100\tabularnewline
+\(\alpha\) & 0.5 & 0.498 & 0.402 & -0.775 & 0.082 & 0.534 & 0.917 &
+1.798 & 64\tabularnewline
+\(\phi\) & 0.2 & 0.385 & 0.003 & 0.285 & 0.343 & 0.380 & 0.422 & 0.509 &
+64\tabularnewline
+\(\sigma^2\) & 2.0 & 2.473 & 0.292 & 1.585 & 2.102 & 2.416 & 2.804 &
+3.734 & 64\tabularnewline
 \bottomrule
 \end{longtable}
+
+100 个采样点的模拟实验中，精心调了 Langevin-Hastings
+算法的参数，得到比较好的估计值，在该组参数设置下，更改采样点数目分别为
+36 和 64，得到估计值，见表
+\ref{tab:Pois-MCLV-vs-NUTS}，可以看出估计值变差。
+
+添加偏差 置信区间长度
+
+Stan 2000 次迭代，前 1000 次迭代作为 warm-up 阶段，后 1000
+次迭代全部采样
+
+完整的表格见附表 \ref{tab:HMC-Pois-SGLMM}
+
+\hypertarget{sec:simulations}{%
+\section{本章小结}\label{sec:simulations}}
 
 \hypertarget{applications}{%
 \chapter{数据分析}\label{applications}}
@@ -3281,6 +3327,9 @@ y，d1 和 d2 分别为测量坐标。 建立 Poisson-SGLMM 模型
 
 将投影坐标系 (UTM) 转化为地理坐标系 (WGS84)
 
+\hypertarget{sec:cases}{%
+\section{本章小结}\label{sec:cases}}
+
 \hypertarget{summary}{%
 \chapter{总结展望}\label{summary}}
 
@@ -3314,6 +3363,15 @@ R-INLA
 
 黄湘云，男（1992-），2015年毕业于中国矿业大学（北京），获理学学位；2018年毕业于中国矿业大学（北京），攻读硕士学位，专业为统计学，研究方向为数据分析与统计计算。
 
+\begin{center} \kaishu \zihao{4}{{在学期间参加科研项目}}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  国家自然科学基金面上项目``混合模型的方差元素检验及函数型混合模型研究''参加。项目编号：11671398。2017年1月-2020年12月。
+\end{enumerate}
+
 \begin{center} \kaishu \zihao{4}{{主要获奖}}\end{center}
 
 \begin{enumerate}
@@ -3321,6 +3379,10 @@ R-INLA
 \tightlist
 \item
   2015-2016 年度获研究生优秀学生一等奖学金
+\item
+  2016 年第十三届全国研究生数学建模大赛成功参赛奖
+\item
+  2016-2017 年度获研究生优秀学生二等奖学金
 \item
   2016-2017 年度获研究生优秀学生奖学金
 \end{enumerate}
@@ -3476,6 +3538,32 @@ R-INLA
 0.802\tabularnewline
 \(p(x_{64})\) & 0.633 & 0.017 & 0.131 & 0.354 & 0.545 & 0.644 & 0.729 &
 0.861\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}lrrrrrrrrrr@{}}
+\caption{\label{tab:HMC-Pois-SGLMM} 汉密尔顿蒙特卡罗算法，采样点 64
+个，泊松空间模型参数 \(\alpha,\phi,\sigma^2\)
+的估计值，后验均值(mean)、蒙特卡罗误差 (se\_mean)、后验标准差
+(sd)、5个后验分位点等}\tabularnewline
+\toprule
+& mean & se\_mean & sd & 2.5\% & 25\% & 50\% & 75\% & 97.5\% & n\_eff &
+Rhat\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& mean & se\_mean & sd & 2.5\% & 25\% & 50\% & 75\% & 97.5\% & n\_eff &
+Rhat\tabularnewline
+\midrule
+\endhead
+\(\alpha\) & 0.50 & 0.02 & 0.63 & -0.77 & 0.08 & 0.53 & 0.92 & 1.80 &
+1000.00 & 1.00\tabularnewline
+\(\phi\) & 0.39 & 0.00 & 0.06 & 0.28 & 0.34 & 0.38 & 0.42 & 0.51 &
+777.31 & 1.00\tabularnewline
+\(\sigma^2\) & 2.47 & 0.02 & 0.54 & 1.59 & 2.10 & 2.42 & 2.80 & 3.73 &
+1000.00 & 1.00\tabularnewline
+lp\_\_ & 722.28 & 0.39 & 6.83 & 708.00 & 718.14 & 722.49 & 726.91 &
+734.71 & 312.69 & 1.03\tabularnewline
 \bottomrule
 \end{longtable}
 

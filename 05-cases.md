@@ -259,3 +259,5 @@ Table: (\#tab:gambia-with-nugget-effect) 带块金效应的模型 \@ref(eq:gambi
 
 将投影坐标系 (UTM) 转化为地理坐标系 (WGS84)
 
+
+## 本章小结 {#sec:cases}
