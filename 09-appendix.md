@@ -91,9 +91,7 @@ Table: (\#tab:HMC-Pois-SGLMM) 汉密尔顿蒙特卡罗算法，采样点 64 个�
 
 ## 代码 {#simulate-code .unnumbered}
 
-### 模拟平稳空间高斯过程 {#simulate-SGP-code .unnumbered}
-
-STAN 代码模拟高斯过程，指数型自协方差函数见方程 \ref{eq:cov-exp} 
+模拟平稳空间高斯过程 
 
 
 ```
@@ -139,9 +137,7 @@ generated quantities {
 }
 ```
 
-### 模拟空间广义线性模型 {#simulate-SGLMM-code .unnumbered}
-
-模拟空间广义线性混合效应模型的函数：函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型
+模拟空间广义线性模型
 
 
 ```r
@@ -191,7 +187,7 @@ generate_sim_data <- function(N = 49, intercept = -1.0,
 }
 ```
 
-### HMC 算法 {#HMC-Algrithms .unnumbered}
+HMC 算法
 
 
 ```r

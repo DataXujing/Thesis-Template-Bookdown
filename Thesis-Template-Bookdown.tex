@@ -146,7 +146,7 @@
 \providecommand{\subtitle}[1]{}
 \subtitle{China University of Mining and Technology, Beijing}
 \author{Xiang-Yun Huang}
-\date{2018-10-15}
+\date{2018-10-16}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{定理}[chapter]
@@ -3385,6 +3385,8 @@ R-INLA
   2016-2017 年度获研究生优秀学生二等奖学金
 \item
   2016-2017 年度获研究生优秀学生奖学金
+\item
+  2018 年第一届 bookdown 国际大赛亚军
 \end{enumerate}
 
 \cleardoublepage
@@ -3571,11 +3573,7 @@ lp\_\_ & 722.28 & 0.39 & 6.83 & 708.00 & 718.14 & 722.49 & 726.91 &
 \section*{代码}\label{simulate-code}}
 \addcontentsline{toc}{section}{代码}
 
-\hypertarget{simulate-SGP-code}{%
-\subsection*{模拟平稳空间高斯过程}\label{simulate-SGP-code}}
-\addcontentsline{toc}{subsection}{模拟平稳空间高斯过程}
-
-STAN 代码模拟高斯过程，指数型自协方差函数见方程 \ref{eq:cov-exp}
+模拟平稳空间高斯过程
 
 \begin{verbatim}
 // Sample from a Gaussian process using exponentiated covariance function.
@@ -3620,11 +3618,7 @@ generated quantities {
 }
 \end{verbatim}
 
-\hypertarget{simulate-SGLMM-code}{%
-\subsection*{模拟空间广义线性模型}\label{simulate-SGLMM-code}}
-\addcontentsline{toc}{subsection}{模拟空间广义线性模型}
-
-模拟空间广义线性混合效应模型的函数：函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型
+模拟空间广义线性模型
 
 \begin{verbatim}
 generate_sim_data <- function(N = 49, intercept = -1.0, 
@@ -3673,9 +3667,7 @@ generate_sim_data <- function(N = 49, intercept = -1.0,
 }
 \end{verbatim}
 
-\hypertarget{HMC-Algrithms}{%
-\subsection*{HMC 算法}\label{HMC-Algrithms}}
-\addcontentsline{toc}{subsection}{HMC 算法}
+HMC 算法
 
 \begin{verbatim}
 # 加载程序包

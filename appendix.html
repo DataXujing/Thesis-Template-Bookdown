@@ -25,7 +25,7 @@
 <meta name="author" content="Xiang-Yun Huang">
 
 
-<meta name="date" content="2018-10-15">
+<meta name="date" content="2018-10-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -201,11 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>附录</a><ul>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#tables-simulations"><i class="fa fa-check"></i>表格</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>代码</a><ul>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-SGP-code"><i class="fa fa-check"></i>模拟平稳空间高斯过程</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-SGLMM-code"><i class="fa fa-check"></i>模拟空间广义线性模型</a></li>
-<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#HMC-Algrithms"><i class="fa fa-check"></i>HMC 算法</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#simulate-code"><i class="fa fa-check"></i>代码</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#compileinfo"><i class="fa fa-check"></i>编译信息</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#hardwareinfo"><i class="fa fa-check"></i>硬件环境</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#sysinfo"><i class="fa fa-check"></i>系统环境</a></li>
@@ -1034,9 +1030,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="simulate-code" class="section level2 unnumbered">
 <h2>代码</h2>
-<div id="simulate-SGP-code" class="section level3 unnumbered">
-<h3>模拟平稳空间高斯过程</h3>
-<p>STAN 代码模拟高斯过程，指数型自协方差函数见方程 </p>
+<p>模拟平稳空间高斯过程</p>
 <pre><code>// Sample from a Gaussian process using exponentiated covariance function.
 // Fixed kernel hyperparameters: phi=0.15, sigma=sqrt(1)
 
@@ -1077,10 +1071,7 @@ generated quantities {
     f = multi_normal_cholesky_rng(zeros, L_cov);
   }
 }</code></pre>
-</div>
-<div id="simulate-SGLMM-code" class="section level3 unnumbered">
-<h3>模拟空间广义线性模型</h3>
-<p>模拟空间广义线性混合效应模型的函数：函数可生成响应变量服从泊松分布或二项分布，平稳高斯过程的自相关函数为二次幂指数型或梅隆型的模型</p>
+<p>模拟空间广义线性模型</p>
 <pre class="sourceCode r"><code class="sourceCode r">generate_sim_data &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">N =</span> <span class="dv">49</span>, <span class="dt">intercept =</span> <span class="fl">-1.0</span>, 
                               <span class="dt">slope1 =</span> <span class="fl">1.0</span>, <span class="dt">slope2 =</span> <span class="fl">0.5</span>,
                               <span class="dt">lscale =</span> <span class="dv">1</span>, <span class="dt">sdgp =</span> <span class="dv">1</span>, 
@@ -1125,9 +1116,7 @@ generated quantities {
          }
   )
 }</code></pre>
-</div>
-<div id="HMC-Algrithms" class="section level3 unnumbered">
-<h3>HMC 算法</h3>
+<p>HMC 算法</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 加载程序包</span>
 <span class="kw">library</span>(rstan)
 <span class="kw">library</span>(brms)
@@ -1163,7 +1152,6 @@ benchmark.poisson &lt;-<span class="st"> </span>microbenchmark<span class="op">:
 }, <span class="dt">times =</span> 10L)
 <span class="kw">summary</span>(fit.poisson)
 <span class="kw">plot</span>(fit.poisson)</code></pre>
-</div>
 </div>
 <div id="compileinfo" class="section level2 unnumbered">
 <h2>编译信息</h2>
@@ -1225,7 +1213,7 @@ parallel<span class="op">::</span><span class="kw">detectCores</span>()
 </tr>
 <tr class="odd">
 <td align="left">date</td>
-<td align="left">2018-10-15</td>
+<td align="left">2018-10-16</td>
 </tr>
 </tbody>
 </table>
@@ -1439,7 +1427,7 @@ parallel<span class="op">::</span><span class="kw">detectCores</span>()
 <tr class="even">
 <td align="left">ggplot2</td>
 <td align="left">3.0.0.9000</td>
-<td align="left">Github (tidyverse/ggplot2@3e1e6e4)</td>
+<td align="left">Github (tidyverse/ggplot2@09ff5a4)</td>
 </tr>
 <tr class="odd">
 <td align="left">ggridges</td>
